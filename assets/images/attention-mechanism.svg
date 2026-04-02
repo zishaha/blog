@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" font-family="'Microsoft YaHei', sans-serif">
+  <rect width="800" height="420" fill="#fafafa" rx="12"/>
+
+  <!-- Title -->
+  <text x="400" y="36" text-anchor="middle" font-size="16" font-weight="bold" fill="#242424">注意力机制：同一个词，不同语境，不同理解</text>
+
+  <!-- Sentence 1 -->
+  <text x="40" y="80" font-size="13" fill="#6B6B6B">句子 1：</text>
+  <rect x="40" y="90" width="720" height="44" rx="8" fill="#fff" stroke="#E6E6E6"/>
+  <text x="60" y="118" font-size="15" fill="#242424">我很喜欢吃</text>
+  <rect x="178" y="96" width="52" height="30" rx="6" fill="#1A8917" opacity="0.15"/>
+  <text x="204" y="118" text-anchor="middle" font-size="15" font-weight="bold" fill="#1A8917">苹果</text>
+  <text x="238" y="118" font-size="15" fill="#242424">，又</text>
+  <text x="278" y="118" font-size="15" fill="#e05c00">甜</text>
+  <text x="296" y="118" font-size="15" fill="#242424">又</text>
+  <text x="314" y="118" font-size="15" fill="#e05c00">脆</text>
+  <text x="332" y="118" font-size="15" fill="#242424">。</text>
+
+  <!-- Attention arrows sentence 1 -->
+  <line x1="204" y1="126" x2="278" y2="126" stroke="#1A8917" stroke-width="2" stroke-dasharray="4,3" opacity="0.7"/>
+  <line x1="204" y1="126" x2="314" y2="126" stroke="#1A8917" stroke-width="2" stroke-dasharray="4,3" opacity="0.5"/>
+  <text x="400" y="118" font-size="13" fill="#1A8917">→ 关注"甜"、"脆" → 水果🍎</text>
+
+  <!-- Sentence 2 -->
+  <text x="40" y="170" font-size="13" fill="#6B6B6B">句子 2：</text>
+  <rect x="40" y="180" width="720" height="44" rx="8" fill="#fff" stroke="#E6E6E6"/>
+  <rect x="40" y="186" width="52" height="30" rx="6" fill="#764ba2" opacity="0.15"/>
+  <text x="66" y="208" text-anchor="middle" font-size="15" font-weight="bold" fill="#764ba2">苹果</text>
+  <text x="100" y="208" font-size="15" fill="#e05c00">公司</text>
+  <text x="130" y="208" font-size="15" fill="#242424">发布了新款</text>
+  <text x="220" y="208" font-size="15" fill="#e05c00">iPhone</text>
+  <text x="278" y="208" font-size="15" fill="#242424">。</text>
+  <line x1="66" y1="216" x2="100" y2="216" stroke="#764ba2" stroke-width="2" stroke-dasharray="4,3" opacity="0.7"/>
+  <line x1="66" y1="216" x2="220" y2="216" stroke="#764ba2" stroke-width="2" stroke-dasharray="4,3" opacity="0.5"/>
+  <text x="400" y="208" font-size="13" fill="#764ba2">→ 关注"公司"、"iPhone" → 科技公司💻</text>
+
+  <!-- Divider -->
+  <line x1="40" y1="250" x2="760" y2="250" stroke="#E6E6E6" stroke-width="1"/>
+
+  <!-- Attention matrix title -->
+  <text x="400" y="278" text-anchor="middle" font-size="14" font-weight="bold" fill="#242424">注意力权重矩阵（句子1）</text>
+
+  <!-- Matrix -->
+  <g transform="translate(100, 290)">
+    <!-- Headers -->
+    <text x="80"  y="15" text-anchor="middle" font-size="12" fill="#6B6B6B">我</text>
+    <text x="130" y="15" text-anchor="middle" font-size="12" fill="#6B6B6B">吃</text>
+    <text x="180" y="15" text-anchor="middle" font-size="12" fill="#1A8917" font-weight="bold">苹果</text>
+    <text x="230" y="15" text-anchor="middle" font-size="12" fill="#e05c00">甜</text>
+    <text x="280" y="15" text-anchor="middle" font-size="12" fill="#e05c00">脆</text>
+
+    <!-- Row labels -->
+    <text x="30" y="45"  text-anchor="middle" font-size="12" fill="#6B6B6B">我</text>
+    <text x="30" y="85"  text-anchor="middle" font-size="12" fill="#6B6B6B">吃</text>
+    <text x="30" y="125" text-anchor="middle" font-size="12" fill="#1A8917" font-weight="bold">苹果</text>
+    <text x="30" y="165" text-anchor="middle" font-size="12" fill="#e05c00">甜</text>
+    <text x="30" y="205" text-anchor="middle" font-size="12" fill="#e05c00">脆</text>
+
+    <!-- Cells: row=我 -->
+    <rect x="55" y="25" width="50" height="30" rx="4" fill="#1A8917" opacity="0.7"/><text x="80"  y="45" text-anchor="middle" font-size="11" fill="white">0.8</text>
+    <rect x="105" y="25" width="50" height="30" rx="4" fill="#1A8917" opacity="0.1"/><text x="130" y="45" text-anchor="middle" font-size="11" fill="#555">0.1</text>
+    <rect x="155" y="25" width="50" height="30" rx="4" fill="#1A8917" opacity="0.1"/><text x="180" y="45" text-anchor="middle" font-size="11" fill="#555">0.1</text>
+    <rect x="205" y="25" width="50" height="30" rx="4" fill="#1A8917" opacity="0.05"/><text x="230" y="45" text-anchor="middle" font-size="11" fill="#aaa">0.0</text>
+    <rect x="255" y="25" width="50" height="30" rx="4" fill="#1A8917" opacity="0.05"/><text x="280" y="45" text-anchor="middle" font-size="11" fill="#aaa">0.0</text>
+
+    <!-- Row=吃 -->
+    <rect x="55" y="65" width="50" height="30" rx="4" fill="#1A8917" opacity="0.1"/><text x="80"  y="85" text-anchor="middle" font-size="11" fill="#555">0.1</text>
+    <rect x="105" y="65" width="50" height="30" rx="4" fill="#1A8917" opacity="0.4"/><text x="130" y="85" text-anchor="middle" font-size="11" fill="white">0.4</text>
+    <rect x="155" y="65" width="50" height="30" rx="4" fill="#1A8917" opacity="0.5"/><text x="180" y="85" text-anchor="middle" font-size="11" fill="white">0.5</text>
+    <rect x="205" y="65" width="50" height="30" rx="4" fill="#1A8917" opacity="0.1"/><text x="230" y="85" text-anchor="middle" font-size="11" fill="#555">0.1</text>
+    <rect x="255" y="65" width="50" height="30" rx="4" fill="#1A8917" opacity="0.05"/><text x="280" y="85" text-anchor="middle" font-size="11" fill="#aaa">0.0</text>
+
+    <!-- Row=苹果 -->
+    <rect x="55" y="105" width="50" height="30" rx="4" fill="#1A8917" opacity="0.05"/><text x="80"  y="125" text-anchor="middle" font-size="11" fill="#aaa">0.0</text>
+    <rect x="105" y="105" width="50" height="30" rx="4" fill="#1A8917" opacity="0.3"/><text x="130" y="125" text-anchor="middle" font-size="11" fill="white">0.3</text>
+    <rect x="155" y="105" width="50" height="30" rx="4" fill="#1A8917" opacity="0.2"/><text x="180" y="125" text-anchor="middle" font-size="11" fill="#555">0.2</text>
+    <rect x="205" y="105" width="50" height="30" rx="4" fill="#1A8917" opacity="0.7"/><text x="230" y="125" text-anchor="middle" font-size="11" fill="white">0.7</text>
+    <rect x="255" y="105" width="50" height="30" rx="4" fill="#1A8917" opacity="0.6"/><text x="280" y="125" text-anchor="middle" font-size="11" fill="white">0.6</text>
+
+    <!-- Row=甜 -->
+    <rect x="55" y="145" width="50" height="30" rx="4" fill="#1A8917" opacity="0.05"/><text x="80"  y="165" text-anchor="middle" font-size="11" fill="#aaa">0.0</text>
+    <rect x="105" y="145" width="50" height="30" rx="4" fill="#1A8917" opacity="0.2"/><text x="130" y="165" text-anchor="middle" font-size="11" fill="#555">0.2</text>
+    <rect x="155" y="145" width="50" height="30" rx="4" fill="#1A8917" opacity="0.6"/><text x="180" y="165" text-anchor="middle" font-size="11" fill="white">0.6</text>
+    <rect x="205" y="145" width="50" height="30" rx="4" fill="#1A8917" opacity="0.5"/><text x="230" y="165" text-anchor="middle" font-size="11" fill="white">0.5</text>
+    <rect x="255" y="145" width="50" height="30" rx="4" fill="#1A8917" opacity="0.3"/><text x="280" y="165" text-anchor="middle" font-size="11" fill="white">0.3</text>
+
+    <!-- Row=脆 -->
+    <rect x="55" y="185" width="50" height="30" rx="4" fill="#1A8917" opacity="0.05"/><text x="80"  y="205" text-anchor="middle" font-size="11" fill="#aaa">0.0</text>
+    <rect x="105" y="185" width="50" height="30" rx="4" fill="#1A8917" opacity="0.1"/><text x="130" y="205" text-anchor="middle" font-size="11" fill="#555">0.1</text>
+    <rect x="155" y="185" width="50" height="30" rx="4" fill="#1A8917" opacity="0.5"/><text x="180" y="205" text-anchor="middle" font-size="11" fill="white">0.5</text>
+    <rect x="205" y="185" width="50" height="30" rx="4" fill="#1A8917" opacity="0.3"/><text x="230" y="205" text-anchor="middle" font-size="11" fill="white">0.3</text>
+    <rect x="255" y="185" width="50" height="30" rx="4" fill="#1A8917" opacity="0.7"/><text x="280" y="205" text-anchor="middle" font-size="11" fill="white">0.7</text>
+
+    <!-- Legend -->
+    <text x="360" y="60" font-size="12" fill="#6B6B6B">颜色越深 = 关注度越高</text>
+    <rect x="360" y="70" width="16" height="16" rx="3" fill="#1A8917" opacity="0.8"/>
+    <text x="382" y="83" font-size="11" fill="#555">高关注 (0.6~0.8)</text>
+    <rect x="360" y="95" width="16" height="16" rx="3" fill="#1A8917" opacity="0.3"/>
+    <text x="382" y="108" font-size="11" fill="#555">中关注 (0.2~0.5)</text>
+    <rect x="360" y="120" width="16" height="16" rx="3" fill="#1A8917" opacity="0.08"/>
+    <text x="382" y="133" font-size="11" fill="#555">低关注 (0.0~0.1)</text>
+  </g>
+</svg>
