@@ -1,0 +1,44 @@
+---
+layout: default
+---
+<article class="post">
+  <header class="post-header">
+    <div class="post-meta">
+      {% if page.tags %}
+        {% for tag in page.tags %}
+          <span class="post-tag">{{ tag }}</span>
+        {% endfor %}
+      {% endif %}
+    </div>
+    <h1 class="post-title">{{ page.title }}</h1>
+    {% if page.subtitle %}
+      <p class="post-subtitle">{{ page.subtitle }}</p>
+    {% endif %}
+    <div class="post-byline">
+      <span class="post-author">{{ page.author | default: site.author }}</span>
+      <span class="post-sep">·</span>
+      <time class="post-date">{{ page.date | date: "%Y年%m月%d日" }}</time>
+      <span class="post-sep">·</span>
+      <span class="post-read-time">{{ content | number_of_words | divided_by: 300 | plus: 1 }} 分钟阅读</span>
+    </div>
+  </header>
+
+  {% if page.cover %}
+    <div class="post-cover">
+      <img src="{{ page.cover }}" alt="{{ page.title }}">
+    </div>
+  {% endif %}
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+  <footer class="post-footer">
+    <div class="post-tags-footer">
+      {% for tag in page.tags %}
+        <span class="tag-pill">{{ tag }}</span>
+      {% endfor %}
+    </div>
+    <a href="{{ '/' | relative_url }}" class="back-link">← 返回首页</a>
+  </footer>
+</article>
