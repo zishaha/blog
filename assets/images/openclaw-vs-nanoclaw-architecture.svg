@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" font-family="'Microsoft YaHei', sans-serif">
+  <defs>
+    <marker id="arrow4" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#666"/>
+    </marker>
+  </defs>
+
+  <rect width="900" height="500" fill="#fafafa" rx="12"/>
+
+  <!-- Title -->
+  <text x="450" y="35" text-anchor="middle" font-size="18" font-weight="bold" fill="#242424">OpenClaw vs NanoClaw 架构对比</text>
+
+  <!-- OpenClaw side -->
+  <rect x="40" y="70" width="380" height="400" rx="10" fill="#fff3e0" stroke="#f57c00" stroke-width="2"/>
+  <text x="230" y="95" text-anchor="middle" font-size="15" font-weight="bold" fill="#f57c00">OpenClaw：分层复杂</text>
+
+  <!-- OpenClaw layers -->
+  <rect x="70" y="110" width="320" height="45" rx="6" fill="#fff" stroke="#f57c00"/>
+  <text x="230" y="137" text-anchor="middle" font-size="12" fill="#242424">用户消息（多平台）</text>
+
+  <line x1="230" y1="155" x2="230" y2="175" stroke="#f57c00" stroke-width="2" marker-end="url(#arrow4)"/>
+
+  <rect x="70" y="175" width="320" height="45" rx="6" fill="#ffe0b2" stroke="#f57c00"/>
+  <text x="230" y="195" text-anchor="middle" font-size="11" font-weight="bold" fill="#242424">消息路由层</text>
+  <text x="230" y="210" text-anchor="middle" font-size="9" fill="#666">53 个配置文件</text>
+
+  <line x1="230" y1="220" x2="230" y2="240" stroke="#f57c00" stroke-width="2" marker-end="url(#arrow4)"/>
+
+  <rect x="70" y="240" width="320" height="45" rx="6" fill="#ffe0b2" stroke="#f57c00"/>
+  <text x="230" y="260" text-anchor="middle" font-size="11" font-weight="bold" fill="#242424">意图识别层</text>
+  <text x="230" y="275" text-anchor="middle" font-size="9" fill="#666">NLU 引擎</text>
+
+  <line x1="230" y1="285" x2="230" y2="305" stroke="#f57c00" stroke-width="2" marker-end="url(#arrow4)"/>
+
+  <rect x="70" y="305" width="320" height="45" rx="6" fill="#ffe0b2" stroke="#f57c00"/>
+  <text x="230" y="325" text-anchor="middle" font-size="11" font-weight="bold" fill="#242424">插件调度层</text>
+  <text x="230" y="340" text-anchor="middle" font-size="9" fill="#666">插件市场（数百个插件）</text>
+
+  <line x1="230" y1="350" x2="230" y2="370" stroke="#f57c00" stroke-width="2" marker-end="url(#arrow4)"/>
+
+  <rect x="70" y="370" width="320" height="45" rx="6" fill="#ffe0b2" stroke="#f57c00"/>
+  <text x="230" y="390" text-anchor="middle" font-size="11" font-weight="bold" fill="#242424">执行引擎</text>
+  <text x="230" y="405" text-anchor="middle" font-size="9" fill="#666">工作流编排</text>
+
+  <line x1="230" y1="415" x2="230" y2="435" stroke="#f57c00" stroke-width="2" marker-end="url(#arrow4)"/>
+
+  <rect x="70" y="435" width="320" height="25" rx="6" fill="#fff" stroke="#f57c00"/>
+  <text x="230" y="452" text-anchor="middle" font-size="11" fill="#242424">返回用户</text>
+
+  <!-- Metrics -->
+  <text x="230" y="485" text-anchor="middle" font-size="10" fill="#666">代码：数万行 | 配置：53 文件</text>
+
+  <!-- NanoClaw side -->
+  <rect x="480" y="70" width="380" height="400" rx="10" fill="#e8f5e9" stroke="#1A8917" stroke-width="2"/>
+  <text x="670" y="95" text-anchor="middle" font-size="15" font-weight="bold" fill="#1A8917">NanoClaw：扁平高效</text>
+
+  <!-- NanoClaw layers -->
+  <rect x="510" y="110" width="320" height="45" rx="6" fill="#fff" stroke="#1A8917"/>
+  <text x="670" y="137" text-anchor="middle" font-size="12" fill="#242424">用户消息（多平台）</text>
+
+  <line x1="670" y1="155" x2="670" y2="185" stroke="#1A8917" stroke-width="2" marker-end="url(#arrow4)"/>
+
+  <rect x="510" y="185" width="320" height="70" rx="6" fill="#c8e6c9" stroke="#1A8917"/>
+  <text x="670" y="210" text-anchor="middle" font-size="11" font-weight="bold" fill="#242424">Docker 沙箱</text>
+  <text x="670" y="225" text-anchor="middle" font-size="9" fill="#666">安全隔离 | 资源限制</text>
+  <text x="670" y="240" text-anchor="middle" font-size="9" fill="#666">只读文件系统 | 审计日志</text>
+
+  <line x1="670" y1="255" x2="670" y2="285" stroke="#1A8917" stroke-width="2" marker-end="url(#arrow4)"/>
+
+  <rect x="510" y="285" width="320" height="70" rx="6" fill="#c8e6c9" stroke="#1A8917"/>
+  <text x="670" y="310" text-anchor="middle" font-size="11" font-weight="bold" fill="#242424">Claude Agent SDK</text>
+  <text x="670" y="325" text-anchor="middle" font-size="9" fill="#666">核心 AI 推理能力</text>
+  <text x="670" y="340" text-anchor="middle" font-size="9" fill="#666">500-900 行核心代码</text>
+
+  <line x1="670" y1="355" x2="670" y2="385" stroke="#1A8917" stroke-width="2" marker-end="url(#arrow4)"/>
+
+  <rect x="510" y="385" width="320" height="50" rx="6" fill="#c8e6c9" stroke="#1A8917"/>
+  <text x="670" y="405" text-anchor="middle" font-size="11" font-weight="bold" fill="#242424">MCP 工具层</text>
+  <text x="670" y="420" text-anchor="middle" font-size="9" fill="#666">标准化扩展接口</text>
+
+  <line x1="670" y1="435" x2="670" y2="455" stroke="#1A8917" stroke-width="2" marker-end="url(#arrow4)"/>
+
+  <rect x="510" y="455" width="320" height="25" rx="6" fill="#fff" stroke="#1A8917"/>
+  <text x="670" y="472" text-anchor="middle" font-size="11" fill="#242424">返回用户</text>
+
+  <!-- Metrics -->
+  <text x="670" y="495" text-anchor="middle" font-size="10" fill="#666">代码：500-900 行 | 配置：开箱即用</text>
+
+  <!-- Comparison arrow -->
+  <text x="450" y="260" text-anchor="middle" font-size="14" font-weight="bold" fill="#d32f2f">VS</text>
+</svg>

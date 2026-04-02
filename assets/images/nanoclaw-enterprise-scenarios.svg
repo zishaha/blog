@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700" font-family="'Microsoft YaHei', sans-serif">
+  <rect width="900" height="700" fill="#fafafa" rx="12"/>
+
+  <!-- Title -->
+  <text x="450" y="35" text-anchor="middle" font-size="18" font-weight="bold" fill="#242424">NanoClaw 企业级应用场景</text>
+
+  <!-- Scenario 1: Customer Service -->
+  <rect x="40" y="70" width="400" height="140" rx="10" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+  <text x="60" y="95" font-size="14" font-weight="bold" fill="#1976d2">场景 1：智能客服（电商）</text>
+  <rect x="60" y="105" width="360" height="90" rx="6" fill="#fff"/>
+  <text x="240" y="125" text-anchor="middle" font-size="11" fill="#242424">WhatsApp/微信客户咨询</text>
+  <text x="240" y="142" text-anchor="middle" font-size="10" fill="#666">↓ NanoClaw Agent</text>
+  <text x="240" y="157" text-anchor="middle" font-size="10" fill="#1976d2">• 订单查询 • 退货处理 • FAQ 搜索</text>
+  <text x="240" y="172" text-anchor="middle" font-size="10" fill="#1A8917">✓ 自动解决率 78% | 响应时间 10s</text>
+  <text x="240" y="187" text-anchor="middle" font-size="10" fill="#1A8917">✓ 客服成本降低 60%</text>
+
+  <!-- Scenario 2: Dev Team -->
+  <rect x="460" y="70" width="400" height="140" rx="10" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="2"/>
+  <text x="480" y="95" font-size="14" font-weight="bold" fill="#7b1fa2">场景 2：研发协作（科技公司）</text>
+  <rect x="480" y="105" width="360" height="90" rx="6" fill="#fff"/>
+  <text x="660" y="125" text-anchor="middle" font-size="11" fill="#242424">Slack 团队协作</text>
+  <text x="660" y="142" text-anchor="middle" font-size="10" fill="#666">↓ NanoClaw Agent</text>
+  <text x="660" y="157" text-anchor="middle" font-size="10" fill="#7b1fa2">• Jira 任务 • GitHub PR • 文档查询</text>
+  <text x="660" y="172" text-anchor="middle" font-size="10" fill="#1A8917">✓ 任务创建时间 2min → 10s</text>
+  <text x="660" y="187" text-anchor="middle" font-size="10" fill="#1A8917">✓ 协作效率提升 40%</text>
+
+  <!-- Scenario 3: Knowledge Base -->
+  <rect x="40" y="230" width="400" height="140" rx="10" fill="#fff3e0" stroke="#f57c00" stroke-width="2"/>
+  <text x="60" y="255" font-size="14" font-weight="bold" fill="#f57c00">场景 3：知识库（咨询公司）</text>
+  <rect x="60" y="265" width="360" height="90" rx="6" fill="#fff"/>
+  <text x="240" y="285" text-anchor="middle" font-size="11" fill="#242424">企业微信知识查询</text>
+  <text x="240" y="302" text-anchor="middle" font-size="10" fill="#666">↓ NanoClaw Agent + RAG</text>
+  <text x="240" y="317" text-anchor="middle" font-size="10" fill="#f57c00">• Confluence • Notion • SharePoint</text>
+  <text x="240" y="332" text-anchor="middle" font-size="10" fill="#1A8917">✓ 查找时间 15min → 30s</text>
+  <text x="240" y="347" text-anchor="middle" font-size="10" fill="#1A8917">✓ 知识复用率提升 3 倍</text>
+
+  <!-- Scenario 4: Finance -->
+  <rect x="460" y="230" width="400" height="140" rx="10" fill="#e8f5e9" stroke="#1A8917" stroke-width="2"/>
+  <text x="480" y="255" font-size="14" font-weight="bold" fill="#1A8917">场景 4：财务审批（金融）</text>
+  <rect x="480" y="265" width="360" height="90" rx="6" fill="#fff"/>
+  <text x="660" y="285" text-anchor="middle" font-size="11" fill="#242424">钉钉审批流程</text>
+  <text x="660" y="302" text-anchor="middle" font-size="10" fill="#666">↓ NanoClaw Agent</text>
+  <text x="660" y="317" text-anchor="middle" font-size="10" fill="#1A8917">• OCR 识别 • 规则引擎 • 异常检测</text>
+  <text x="660" y="332" text-anchor="middle" font-size="10" fill="#1A8917">✓ 审批时效 2天 → 2小时</text>
+  <text x="660" y="347" text-anchor="middle" font-size="10" fill="#1A8917">✓ 人工审核量减少 70%</text>
+
+  <!-- Deployment Architecture -->
+  <rect x="40" y="390" width="820" height="280" rx="10" fill="#f5f5f5" stroke="#666" stroke-width="2"/>
+  <text x="60" y="415" font-size="14" font-weight="bold" fill="#242424">部署架构（高可用方案）</text>
+
+  <!-- Load Balancer -->
+  <rect x="370" y="430" width="160" height="40" rx="8" fill="#1976d2"/>
+  <text x="450" y="455" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff">Load Balancer (Nginx)</text>
+
+  <!-- Instances -->
+  <rect x="200" y="500" width="140" height="60" rx="8" fill="#fff" stroke="#1976d2" stroke-width="2"/>
+  <text x="270" y="520" text-anchor="middle" font-size="11" font-weight="bold" fill="#242424">NanoClaw</text>
+  <text x="270" y="535" text-anchor="middle" font-size="11" font-weight="bold" fill="#242424">Instance #1</text>
+  <text x="270" y="550" text-anchor="middle" font-size="9" fill="#666">Docker Container</text>
+
+  <rect x="560" y="500" width="140" height="60" rx="8" fill="#fff" stroke="#1976d2" stroke-width="2"/>
+  <text x="630" y="520" text-anchor="middle" font-size="11" font-weight="bold" fill="#242424">NanoClaw</text>
+  <text x="630" y="535" text-anchor="middle" font-size="11" font-weight="bold" fill="#242424">Instance #2</text>
+  <text x="630" y="550" text-anchor="middle" font-size="9" fill="#666">Docker Container</text>
+
+  <!-- Arrows from LB to instances -->
+  <line x1="420" y1="470" x2="270" y2="500" stroke="#1976d2" stroke-width="2"/>
+  <line x1="480" y1="470" x2="630" y2="500" stroke="#1976d2" stroke-width="2"/>
+
+  <!-- Redis -->
+  <rect x="200" y="590" width="140" height="50" rx="8" fill="#fff" stroke="#d32f2f" stroke-width="2"/>
+  <text x="270" y="610" text-anchor="middle" font-size="11" font-weight="bold" fill="#242424">Redis Cluster</text>
+  <text x="270" y="625" text-anchor="middle" font-size="9" fill="#666">消息队列/缓存</text>
+
+  <!-- PostgreSQL -->
+  <rect x="560" y="590" width="140" height="50" rx="8" fill="#fff" stroke="#1A8917" stroke-width="2"/>
+  <text x="630" y="610" text-anchor="middle" font-size="11" font-weight="bold" fill="#242424">PostgreSQL HA</text>
+  <text x="630" y="625" text-anchor="middle" font-size="9" fill="#666">主从复制</text>
+
+  <!-- Arrows from instances to DB -->
+  <line x1="270" y1="560" x2="270" y2="590" stroke="#d32f2f" stroke-width="2"/>
+  <line x1="630" y1="560" x2="630" y2="590" stroke="#1A8917" stroke-width="2"/>
+
+  <!-- Cross connections -->
+  <line x1="340" y1="615" x2="560" y2="615" stroke="#666" stroke-width="1" stroke-dasharray="3,3"/>
+
+  <!-- Metrics -->
+  <text x="450" y="665" text-anchor="middle" font-size="11" fill="#666">适用场景：50-500 人团队 | 1000-10000 条消息/天 | 99.9% 可用性</text>
+
+  <!-- Bottom note -->
+  <text x="450" y="695" text-anchor="middle" font-size="11" fill="#242424">
+    <tspan font-weight="bold" fill="#1A8917">核心优势：</tspan>
+    极简架构 | 安全隔离 | 开箱即用 | 易于扩展
+  </text>
+</svg>
