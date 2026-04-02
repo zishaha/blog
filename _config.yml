@@ -13,6 +13,9 @@ kramdown:
   input: GFM
   syntax_highlighter: rouge
 
+include:
+  - assets
+
 exclude:
   - README.md
   - plan.md
