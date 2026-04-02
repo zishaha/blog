@@ -12,8 +12,8 @@
   --color-border: #E6E6E6;
   --color-accent: #1A8917;
   --color-hover: #F7F7F7;
-  --font-serif: 'Microsoft YaHei', '微软雅黑', 'Segoe UI', Tahoma, sans-serif;
-  --font-sans: 'Microsoft YaHei', '微软雅黑', 'Inter', -apple-system, sans-serif;
+  --font-serif: 'Noto Serif SC', 'Songti SC', STSong, Georgia, serif;
+  --font-sans: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
   --font-mono: 'JetBrains Mono', 'Consolas', monospace;
   --max-width: 680px;
   --spacing-unit: 8px;
@@ -21,11 +21,14 @@
 
 body {
   font-family: var(--font-serif);
-  font-size: 20px;
-  line-height: 1.7;
+  font-size: 18px;
+  line-height: 1.9;
   color: var(--color-text);
   background: var(--color-bg);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1;
 }
 
 /* ── Navigation ────────────────────────────────────────────────────── */
