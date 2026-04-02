@@ -3,7 +3,7 @@ layout: post
 title: "OpenClaw vs NanoClaw：从复杂到极简的 AI Agent 进化"
 subtitle: "深度对比两大开源框架，探索 NanoClaw 的企业级最佳实践"
 date: 2026-04-02 17:30:00 +0800
-author: zishaha
+author: 欧阳哲仁
 tags: [AI Agent, OpenClaw, NanoClaw, 企业应用, 最佳实践]
 ---
 

@@ -3,7 +3,7 @@ layout: post
 title: "Harness 工程：驯服 AI 的艺术"
 subtitle: "如何构建可靠的 AI 系统评估与测试框架"
 date: 2026-04-02 17:00:00 +0800
-author: zishaha
+author: 欧阳哲仁
 tags: [AI, Harness, 评估, 测试, LLM]
 ---
 

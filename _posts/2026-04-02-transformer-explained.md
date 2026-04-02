@@ -3,7 +3,7 @@ layout: post
 title: "Transformer：驱动现代 AI 的引擎"
 subtitle: "用生活中的例子，一文看懂 ChatGPT、Gemini 背后的核心原理"
 date: 2026-04-02 15:00:00 +0800
-author: zishaha
+author: 欧阳哲仁
 tags: [AI, Transformer, 深度学习, 科普]
 ---
 

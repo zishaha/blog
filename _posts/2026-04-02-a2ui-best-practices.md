@@ -3,7 +3,7 @@ layout: post
 title: "A2UI 最佳实践：让 AI Agent 真正理解用户意图"
 subtitle: "从协议设计到 Vue 3 渲染器实现，深度解析 Agent-to-User Interface 的工程落地"
 date: 2026-04-02
-author: zishaha
+author: 欧阳哲仁
 tags: [A2UI, AI, Vue3, 前端工程]
 ---
 

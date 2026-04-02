@@ -3,7 +3,7 @@ layout: post
 title: "Palantir Foundry 本体架构：从数据到决策的语义桥梁"
 subtitle: "深度解析基于本体驱动的企业应用构建方法论"
 date: 2026-04-02 18:30:00 +0800
-author: zishaha
+author: 欧阳哲仁
 tags: [Palantir, Foundry, Ontology, 企业架构, 数据建模]
 ---
 
