@@ -12,9 +12,9 @@
   --color-border: #E6E6E6;
   --color-accent: #1A8917;
   --color-hover: #F7F7F7;
-  --font-serif: 'Noto Serif SC', Georgia, serif;
-  --font-sans: 'Inter', -apple-system, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-serif: 'Microsoft YaHei', '微软雅黑', 'Segoe UI', Tahoma, sans-serif;
+  --font-sans: 'Microsoft YaHei', '微软雅黑', 'Inter', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Consolas', monospace;
   --max-width: 680px;
   --spacing-unit: 8px;
 }
