@@ -1,0 +1,149 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 650" font-family="'Microsoft YaHei', sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#666"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#1A8917"/>
+    </marker>
+    <marker id="arrow-red" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#d32f2f"/>
+    </marker>
+  </defs>
+
+  <rect width="900" height="650" fill="#fafafa" rx="12"/>
+
+  <!-- Title -->
+  <text x="450" y="35" text-anchor="middle" font-size="18" font-weight="bold" fill="#242424">AI Harness 工程完整流程</text>
+
+  <!-- Phase 1: Development -->
+  <rect x="40" y="70" width="820" height="120" rx="10" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+  <text x="60" y="95" font-size="14" font-weight="bold" fill="#1976d2">阶段 1：开发与评估</text>
+
+  <rect x="60" y="105" width="180" height="70" rx="8" fill="#fff" stroke="#1976d2"/>
+  <text x="150" y="128" text-anchor="middle" font-size="12" font-weight="bold" fill="#242424">模型训练</text>
+  <text x="150" y="145" text-anchor="middle" font-size="10" fill="#666">• 数据准备</text>
+  <text x="150" y="160" text-anchor="middle" font-size="10" fill="#666">• 预训练/微调</text>
+  <text x="150" y="175" text-anchor="middle" font-size="10" fill="#666">• 超参数调优</text>
+
+  <line x1="240" y1="140" x2="280" y2="140" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="280" y="105" width="180" height="70" rx="8" fill="#fff" stroke="#1976d2"/>
+  <text x="370" y="128" text-anchor="middle" font-size="12" font-weight="bold" fill="#242424">自动化评估</text>
+  <text x="370" y="145" text-anchor="middle" font-size="10" fill="#666">• 运行测试集</text>
+  <text x="370" y="160" text-anchor="middle" font-size="10" fill="#666">• 计算指标</text>
+  <text x="370" y="175" text-anchor="middle" font-size="10" fill="#666">• 生成报告</text>
+
+  <line x1="460" y1="140" x2="500" y2="140" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="500" y="105" width="180" height="70" rx="8" fill="#fff" stroke="#1976d2"/>
+  <text x="590" y="128" text-anchor="middle" font-size="12" font-weight="bold" fill="#242424">人工审核</text>
+  <text x="590" y="145" text-anchor="middle" font-size="10" fill="#666">• 专家评估</text>
+  <text x="590" y="160" text-anchor="middle" font-size="10" fill="#666">• 边界案例测试</text>
+  <text x="590" y="175" text-anchor="middle" font-size="10" fill="#666">• 质量把关</text>
+
+  <line x1="680" y1="140" x2="720" y2="140" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="720" y="120" width="120" height="40" rx="8" fill="#4caf50"/>
+  <text x="780" y="145" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff">通过 ✓</text>
+
+  <!-- Phase 2: Alignment -->
+  <rect x="40" y="210" width="820" height="120" rx="10" fill="#fff3e0" stroke="#f57c00" stroke-width="2"/>
+  <text x="60" y="235" font-size="14" font-weight="bold" fill="#f57c00">阶段 2：对齐与安全</text>
+
+  <rect x="60" y="245" width="180" height="70" rx="8" fill="#fff" stroke="#f57c00"/>
+  <text x="150" y="268" text-anchor="middle" font-size="12" font-weight="bold" fill="#242424">RLHF 对齐</text>
+  <text x="150" y="285" text-anchor="middle" font-size="10" fill="#666">• 收集人类反馈</text>
+  <text x="150" y="300" text-anchor="middle" font-size="10" fill="#666">• 训练奖励模型</text>
+  <text x="150" y="315" text-anchor="middle" font-size="10" fill="#666">• 强化学习微调</text>
+
+  <line x1="240" y1="280" x2="280" y2="280" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="280" y="245" width="180" height="70" rx="8" fill="#fff" stroke="#f57c00"/>
+  <text x="370" y="268" text-anchor="middle" font-size="12" font-weight="bold" fill="#242424">红队测试</text>
+  <text x="370" y="285" text-anchor="middle" font-size="10" fill="#666">• 提示注入攻击</text>
+  <text x="370" y="300" text-anchor="middle" font-size="10" fill="#666">• 越狱尝试</text>
+  <text x="370" y="315" text-anchor="middle" font-size="10" fill="#666">• 对抗性样本</text>
+
+  <line x1="460" y1="280" x2="500" y2="280" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="500" y="245" width="180" height="70" rx="8" fill="#fff" stroke="#f57c00"/>
+  <text x="590" y="268" text-anchor="middle" font-size="12" font-weight="bold" fill="#242424">安全加固</text>
+  <text x="590" y="285" text-anchor="middle" font-size="10" fill="#666">• 内容过滤</text>
+  <text x="590" y="300" text-anchor="middle" font-size="10" fill="#666">• 输出验证</text>
+  <text x="590" y="315" text-anchor="middle" font-size="10" fill="#666">• 防护规则</text>
+
+  <line x1="680" y1="280" x2="720" y2="280" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="720" y="260" width="120" height="40" rx="8" fill="#4caf50"/>
+  <text x="780" y="285" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff">安全 ✓</text>
+
+  <!-- Phase 3: Deployment -->
+  <rect x="40" y="350" width="820" height="120" rx="10" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="2"/>
+  <text x="60" y="375" font-size="14" font-weight="bold" fill="#7b1fa2">阶段 3：部署与监控</text>
+
+  <rect x="60" y="385" width="180" height="70" rx="8" fill="#fff" stroke="#7b1fa2"/>
+  <text x="150" y="408" text-anchor="middle" font-size="12" font-weight="bold" fill="#242424">灰度发布</text>
+  <text x="150" y="425" text-anchor="middle" font-size="10" fill="#666">• 5% 流量测试</text>
+  <text x="150" y="440" text-anchor="middle" font-size="10" fill="#666">• 监控指标</text>
+  <text x="150" y="455" text-anchor="middle" font-size="10" fill="#666">• 逐步放量</text>
+
+  <line x1="240" y1="420" x2="280" y2="420" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="280" y="385" width="180" height="70" rx="8" fill="#fff" stroke="#7b1fa2"/>
+  <text x="370" y="408" text-anchor="middle" font-size="12" font-weight="bold" fill="#242424">实时监控</text>
+  <text x="370" y="425" text-anchor="middle" font-size="10" fill="#666">• 响应时间</text>
+  <text x="370" y="440" text-anchor="middle" font-size="10" fill="#666">• 错误率</text>
+  <text x="370" y="455" text-anchor="middle" font-size="10" fill="#666">• 用户满意度</text>
+
+  <line x1="460" y1="420" x2="500" y2="420" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="500" y="385" width="180" height="70" rx="8" fill="#fff" stroke="#7b1fa2"/>
+  <text x="590" y="408" text-anchor="middle" font-size="12" font-weight="bold" fill="#242424">异常检测</text>
+  <text x="590" y="425" text-anchor="middle" font-size="10" fill="#666">• 性能下降</text>
+  <text x="590" y="440" text-anchor="middle" font-size="10" fill="#666">• 安全事件</text>
+  <text x="590" y="455" text-anchor="middle" font-size="10" fill="#666">• 质量劣化</text>
+
+  <!-- Decision point -->
+  <polygon points="780,390 820,420 780,450 740,420" fill="#fff" stroke="#7b1fa2" stroke-width="2"/>
+  <text x="780" y="425" text-anchor="middle" font-size="11" fill="#242424">正常?</text>
+
+  <line x1="680" y1="420" x2="740" y2="420" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Success path -->
+  <line x1="820" y1="420" x2="850" y2="420" stroke="#1A8917" stroke-width="2" marker-end="url(#arrow-green)"/>
+  <text x="835" y="410" text-anchor="middle" font-size="10" fill="#1A8917">是</text>
+  <rect x="850" y="405" width="30" height="30" rx="15" fill="#4caf50"/>
+  <text x="865" y="425" text-anchor="middle" font-size="16" fill="#fff">✓</text>
+
+  <!-- Failure path - rollback -->
+  <line x1="780" y1="450" x2="780" y2="490" stroke="#d32f2f" stroke-width="2" marker-end="url(#arrow-red)"/>
+  <text x="795" y="470" font-size="10" fill="#d32f2f">否</text>
+
+  <rect x="700" y="490" width="160" height="40" rx="8" fill="#ffebee" stroke="#d32f2f" stroke-width="2"/>
+  <text x="780" y="515" text-anchor="middle" font-size="12" font-weight="bold" fill="#d32f2f">自动回滚 + 告警</text>
+
+  <!-- Phase 4: Feedback Loop -->
+  <rect x="40" y="550" width="820" height="80" rx="10" fill="#e8f5e9" stroke="#1A8917" stroke-width="2"/>
+  <text x="60" y="575" font-size="14" font-weight="bold" fill="#1A8917">阶段 4：持续改进</text>
+
+  <rect x="60" y="585" width="240" height="35" rx="6" fill="#fff" stroke="#1A8917"/>
+  <text x="180" y="607" text-anchor="middle" font-size="11" fill="#242424">收集用户反馈（点赞/点踩）</text>
+
+  <line x1="300" y1="602" x2="340" y2="602" stroke="#1A8917" stroke-width="2" marker-end="url(#arrow-green)"/>
+
+  <rect x="340" y="585" width="240" height="35" rx="6" fill="#fff" stroke="#1A8917"/>
+  <text x="460" y="607" text-anchor="middle" font-size="11" fill="#242424">分析失败案例，补充测试集</text>
+
+  <line x1="580" y1="602" x2="620" y2="602" stroke="#1A8917" stroke-width="2" marker-end="url(#arrow-green)"/>
+
+  <rect x="620" y="585" width="220" height="35" rx="6" fill="#fff" stroke="#1A8917"/>
+  <text x="730" y="607" text-anchor="middle" font-size="11" fill="#242424">重新训练/微调模型</text>
+
+  <!-- Feedback arrow back to Phase 1 -->
+  <path d="M 730 585 L 730 540 L 30 540 L 30 140 L 60 140" fill="none" stroke="#1A8917" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrow-green)"/>
+  <text x="35" y="340" font-size="10" fill="#1A8917" transform="rotate(-90 35 340)">持续迭代</text>
+
+  <!-- Bottom note -->
+  <text x="450" y="645" text-anchor="middle" font-size="11" fill="#666">完整的 Harness 工程是一个持续循环的过程，每个阶段都不可或缺</text>
+</svg>
