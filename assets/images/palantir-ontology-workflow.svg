@@ -1,0 +1,278 @@
+<svg viewBox="0 0 1000 700" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="phaseGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#FF6B6B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#EE5A6F;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="phaseGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#4ECDC4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#44A08D;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="phaseGradient3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#95E1D3;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#38ADA9;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="phaseGradient4" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F38181;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FCE38A;stop-opacity:1" />
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#666" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="500" y="35" font-family="Arial, sans-serif" font-size="22" font-weight="bold" text-anchor="middle" fill="#333">
+    本体驱动的应用构建流程
+  </text>
+
+  <!-- Phase 1: Data Modeling -->
+  <g>
+    <rect x="50" y="80" width="200" height="550" rx="10" fill="url(#phaseGradient1)" stroke="#EE5A6F" stroke-width="2"/>
+    <text x="150" y="110" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">
+      阶段 1
+    </text>
+    <text x="150" y="135" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="white">
+      数据建模
+    </text>
+
+    <!-- Steps -->
+    <rect x="70" y="160" width="160" height="100" rx="5" fill="white" stroke="#EE5A6F" stroke-width="2"/>
+    <text x="150" y="185" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#EE5A6F">
+      1. 识别业务实体
+    </text>
+    <text x="150" y="205" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">
+      • 航班、飞机
+    </text>
+    <text x="150" y="222" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">
+      • 机场、乘客
+    </text>
+    <text x="150" y="239" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">
+      • 订单、产品
+    </text>
+
+    <rect x="70" y="280" width="160" height="80" rx="5" fill="white" stroke="#EE5A6F" stroke-width="2"/>
+    <text x="150" y="305" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#EE5A6F">
+      2. 定义对象类型
+    </text>
+    <text x="150" y="325" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">
+      • 属性和类型
+    </text>
+    <text x="150" y="342" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">
+      • 主键和索引
+    </text>
+
+    <rect x="70" y="380" width="160" height="80" rx="5" fill="white" stroke="#EE5A6F" stroke-width="2"/>
+    <text x="150" y="405" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#EE5A6F">
+      3. 建立关系
+    </text>
+    <text x="150" y="425" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">
+      • 创建链接类型
+    </text>
+    <text x="150" y="442" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">
+      • 定义基数
+    </text>
+
+    <rect x="70" y="480" width="160" height="80" rx="5" fill="white" stroke="#EE5A6F" stroke-width="2"/>
+    <text x="150" y="505" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#EE5A6F">
+      4. 映射数据源
+    </text>
+    <text x="150" y="525" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">
+      • 字段映射
+    </text>
+    <text x="150" y="542" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">
+      • 数据转换
+    </text>
+  </g>
+
+  <!-- Arrow 1 to 2 -->
+  <line x1="260" y1="355" x2="290" y2="355" stroke="#666" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <!-- Phase 2: Action Definition -->
+  <g>
+    <rect x="300" y="80" width="200" height="550" rx="10" fill="url(#phaseGradient2)" stroke="#44A08D" stroke-width="2"/>
+    <text x="400" y="110" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">
+      阶段 2
+    </text>
+    <text x="400" y="135" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="white">
+      操作定义
+    </text>
+
+    <!-- Steps -->
+    <rect x="320" y="160" width="160" height="100" rx="5" fill="white" stroke="#44A08D" stroke-width="2"/>
+    <text x="400" y="185" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#44A08D">
+      1. 识别业务流程
+    </text>
+    <text x="400" y="205" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">
+      • 重新调度
+    </text>
+    <text x="400" y="222" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">
+      • 取消航班
+    </text>
+    <text x="400" y="239" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">
+      • 分配资源
+    </text>
+
+    <rect x="320" y="280" width="160" height="80" rx="5" fill="white" stroke="#44A08D" stroke-width="2"/>
+    <text x="400" y="305" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#44A08D">
+      2. 定义输入输出
+    </text>
+    <text x="400" y="325" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">
+      • 参数类型
+    </text>
+    <text x="400" y="342" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">
+      • 返回值
+    </text>
+
+    <rect x="320" y="380" width="160" height="80" rx="5" fill="white" stroke="#44A08D" stroke-width="2"/>
+    <text x="400" y="405" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#44A08D">
+      3. 编写业务逻辑
+    </text>
+    <text x="400" y="425" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">
+      • TypeScript/Python
+    </text>
+    <text x="400" y="442" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">
+      • 调用外部 API
+    </text>
+
+    <rect x="320" y="480" width="160" height="80" rx="5" fill="white" stroke="#44A08D" stroke-width="2"/>
+    <text x="400" y="505" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#44A08D">
+      4. 配置权限
+    </text>
+    <text x="400" y="525" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">
+      • 角色授权
+    </text>
+    <text x="400" y="542" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">
+      • 审批流程
+    </text>
+  </g>
+
+  <!-- Arrow 2 to 3 -->
+  <line x1="510" y1="355" x2="540" y2="355" stroke="#666" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <!-- Phase 3: Application Development -->
+  <g>
+    <rect x="550" y="80" width="200" height="550" rx="10" fill="url(#phaseGradient3)" stroke="#38ADA9" stroke-width="2"/>
+    <text x="650" y="110" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">
+      阶段 3
+    </text>
+    <text x="650" y="135" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="white">
+      应用开发
+    </text>
+
+    <!-- Steps -->
+    <rect x="570" y="160" width="160" height="100" rx="5" fill="white" stroke="#38ADA9" stroke-width="2"/>
+    <text x="650" y="185" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#38ADA9">
+      方式 1: Workshop
+    </text>
+    <text x="650" y="205" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">
+      • 低代码构建
+    </text>
+    <text x="650" y="222" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">
+      • 拖拽式界面
+    </text>
+    <text x="650" y="239" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">
+      • 快速原型
+    </text>
+
+    <rect x="570" y="280" width="160" height="100" rx="5" fill="white" stroke="#38ADA9" stroke-width="2"/>
+    <text x="650" y="305" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#38ADA9">
+      方式 2: OSDK
+    </text>
+    <text x="650" y="325" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">
+      • TypeScript/Python
+    </text>
+    <text x="650" y="342" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">
+      • 完全控制
+    </text>
+    <text x="650" y="359" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">
+      • 专业开发
+    </text>
+
+    <rect x="570" y="400" width="160" height="80" rx="5" fill="white" stroke="#38ADA9" stroke-width="2"/>
+    <text x="650" y="425" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#38ADA9">
+      构建 UI 组件
+    </text>
+    <text x="650" y="445" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">
+      • 表格、图表
+    </text>
+    <text x="650" y="462" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">
+      • 表单、按钮
+    </text>
+
+    <rect x="570" y="500" width="160" height="60" rx="5" fill="white" stroke="#38ADA9" stroke-width="2"/>
+    <text x="650" y="525" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#38ADA9">
+      集成操作
+    </text>
+    <text x="650" y="545" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">
+      • 调用 Actions
+    </text>
+  </g>
+
+  <!-- Arrow 3 to 4 -->
+  <line x1="760" y1="355" x2="790" y2="355" stroke="#666" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <!-- Phase 4: Deployment -->
+  <g>
+    <rect x="800" y="80" width="180" height="550" rx="10" fill="url(#phaseGradient4)" stroke="#FCE38A" stroke-width="2"/>
+    <text x="890" y="110" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">
+      阶段 4
+    </text>
+    <text x="890" y="135" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="white">
+      部署运维
+    </text>
+
+    <!-- Steps -->
+    <rect x="820" y="160" width="140" height="100" rx="5" fill="white" stroke="#F38181" stroke-width="2"/>
+    <text x="890" y="185" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#F38181">
+      部署选项
+    </text>
+    <text x="890" y="205" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">
+      • Foundry 托管
+    </text>
+    <text x="890" y="222" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">
+      • 自托管
+    </text>
+    <text x="890" y="239" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">
+      • 混合部署
+    </text>
+
+    <rect x="820" y="280" width="140" height="80" rx="5" fill="white" stroke="#F38181" stroke-width="2"/>
+    <text x="890" y="305" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#F38181">
+      版本管理
+    </text>
+    <text x="890" y="325" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">
+      • Git 集成
+    </text>
+    <text x="890" y="342" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">
+      • 回滚能力
+    </text>
+
+    <rect x="820" y="380" width="140" height="80" rx="5" fill="white" stroke="#F38181" stroke-width="2"/>
+    <text x="890" y="405" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#F38181">
+      权限管理
+    </text>
+    <text x="890" y="425" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">
+      • RBAC
+    </text>
+    <text x="890" y="442" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">
+      • 审计日志
+    </text>
+
+    <rect x="820" y="480" width="140" height="80" rx="5" fill="white" stroke="#F38181" stroke-width="2"/>
+    <text x="890" y="505" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#F38181">
+      监控告警
+    </text>
+    <text x="890" y="525" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">
+      • 性能监控
+    </text>
+    <text x="890" y="542" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">
+      • 错误追踪
+    </text>
+  </g>
+
+  <!-- Bottom note -->
+  <text x="500" y="670" font-family="Arial, sans-serif" font-size="13" text-anchor="middle" fill="#666" font-style="italic">
+    从数据建模到应用部署的完整工作流，每个阶段都有明确的交付物和验收标准
+  </text>
+</svg>

@@ -1,0 +1,102 @@
+<svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="layerGradient1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4A90E2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#357ABD;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="layerGradient2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#7B68EE;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6A5ACD;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="layerGradient3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#50C878;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3CB371;stop-opacity:1" />
+    </linearGradient>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#666" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="450" y="30" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#333">
+    Palantir Foundry 三层架构
+  </text>
+
+  <!-- Layer 3: Application Layer -->
+  <rect x="100" y="80" width="700" height="120" rx="10" fill="url(#layerGradient3)" stroke="#2E8B57" stroke-width="2"/>
+  <text x="450" y="110" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="white">
+    应用层 (Application Layer)
+  </text>
+
+  <!-- Application components -->
+  <rect x="130" y="130" width="180" height="50" rx="5" fill="white" stroke="#2E8B57" stroke-width="2"/>
+  <text x="220" y="160" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#2E8B57">Workshop</text>
+  <text x="220" y="178" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">低代码应用构建</text>
+
+  <rect x="360" y="130" width="180" height="50" rx="5" fill="white" stroke="#2E8B57" stroke-width="2"/>
+  <text x="450" y="160" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#2E8B57">OSDK</text>
+  <text x="450" y="178" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">开发者 SDK</text>
+
+  <rect x="590" y="130" width="180" height="50" rx="5" fill="white" stroke="#2E8B57" stroke-width="2"/>
+  <text x="680" y="160" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#2E8B57">AIP</text>
+  <text x="680" y="178" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">AI 智能应用</text>
+
+  <!-- Arrow from App to Ontology -->
+  <line x1="450" y1="210" x2="450" y2="240" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Layer 2: Ontology Layer -->
+  <rect x="100" y="250" width="700" height="160" rx="10" fill="url(#layerGradient2)" stroke="#6A5ACD" stroke-width="2"/>
+  <text x="450" y="280" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="white">
+    本体层 (Ontology Layer)
+  </text>
+
+  <!-- Ontology components -->
+  <g>
+    <rect x="130" y="300" width="200" height="80" rx="5" fill="white" stroke="#6A5ACD" stroke-width="2"/>
+    <text x="230" y="325" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#6A5ACD">对象 (Objects)</text>
+    <text x="230" y="345" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">航班、飞机、客户</text>
+    <text x="230" y="360" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">订单、产品...</text>
+    <circle cx="150" cy="325" r="4" fill="#6A5ACD"/>
+    <circle cx="150" cy="345" r="4" fill="#6A5ACD"/>
+    <circle cx="150" cy="360" r="4" fill="#6A5ACD"/>
+  </g>
+
+  <g>
+    <rect x="360" y="300" width="180" height="80" rx="5" fill="white" stroke="#6A5ACD" stroke-width="2"/>
+    <text x="450" y="325" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#6A5ACD">链接 (Links)</text>
+    <text x="450" y="345" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">对象间的关系</text>
+    <line x1="380" y1="360" x2="420" y2="360" stroke="#6A5ACD" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <line x1="480" y1="360" x2="520" y2="360" stroke="#6A5ACD" stroke-width="2" marker-end="url(#arrowhead)"/>
+  </g>
+
+  <g>
+    <rect x="570" y="300" width="200" height="80" rx="5" fill="white" stroke="#6A5ACD" stroke-width="2"/>
+    <text x="670" y="325" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#6A5ACD">操作 (Actions)</text>
+    <text x="670" y="345" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">审批、调度、分配</text>
+    <text x="670" y="360" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">创建、更新、删除</text>
+    <path d="M 590 325 L 600 335 L 590 345" stroke="#6A5ACD" stroke-width="2" fill="none"/>
+    <path d="M 750 325 L 740 335 L 750 345" stroke="#6A5ACD" stroke-width="2" fill="none"/>
+  </g>
+
+  <!-- Arrow from Ontology to Data -->
+  <line x1="450" y1="420" x2="450" y2="450" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Layer 1: Data Layer -->
+  <rect x="100" y="460" width="700" height="120" rx="10" fill="url(#layerGradient1)" stroke="#357ABD" stroke-width="2"/>
+  <text x="450" y="490" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="white">
+    数据层 (Data Layer)
+  </text>
+
+  <!-- Data components -->
+  <rect x="130" y="510" width="180" height="50" rx="5" fill="white" stroke="#357ABD" stroke-width="2"/>
+  <text x="220" y="540" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#357ABD">数据集</text>
+  <text x="220" y="555" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">表格数据</text>
+
+  <rect x="360" y="510" width="180" height="50" rx="5" fill="white" stroke="#357ABD" stroke-width="2"/>
+  <text x="450" y="540" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#357ABD">数据沿袭</text>
+  <text x="450" y="555" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">来源追溯</text>
+
+  <rect x="590" y="510" width="180" height="50" rx="5" fill="white" stroke="#357ABD" stroke-width="2"/>
+  <text x="680" y="540" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#357ABD">管道</text>
+  <text x="680" y="555" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">ETL/ELT</text>
+</svg>

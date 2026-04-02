@@ -1,0 +1,302 @@
+<svg viewBox="0 0 1100 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="ontologyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#667EEA;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764BA2;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="appGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#F093FB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F5576C;stop-opacity:1" />
+    </linearGradient>
+    <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#667EEA" />
+    </marker>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#48BB78" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="550" y="35" font-family="Arial, sans-serif" font-size="22" font-weight="bold" text-anchor="middle" fill="#333">
+    航空公司运营管理系统 - 本体模型与应用架构
+  </text>
+
+  <!-- Ontology Model Section -->
+  <rect x="50" y="70" width="500" height="350" rx="10" fill="url(#ontologyGradient)" stroke="#764BA2" stroke-width="2"/>
+  <text x="300" y="100" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="white">
+    本体模型 (Ontology Model)
+  </text>
+
+  <!-- Object Types -->
+  <g>
+    <text x="80" y="135" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">
+      对象类型 (Object Types)
+    </text>
+
+    <!-- Flight Object -->
+    <rect x="80" y="150" width="180" height="110" rx="5" fill="white" stroke="#764BA2" stroke-width="2"/>
+    <text x="170" y="170" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#667EEA">
+      Flight (航班)
+    </text>
+    <text x="90" y="190" font-family="Arial, sans-serif" font-size="10" fill="#666">
+      • flightNumber: string
+    </text>
+    <text x="90" y="205" font-family="Arial, sans-serif" font-size="10" fill="#666">
+      • departureTime: timestamp
+    </text>
+    <text x="90" y="220" font-family="Arial, sans-serif" font-size="10" fill="#666">
+      • arrivalTime: timestamp
+    </text>
+    <text x="90" y="235" font-family="Arial, sans-serif" font-size="10" fill="#666">
+      • status: enum
+    </text>
+    <text x="90" y="250" font-family="Arial, sans-serif" font-size="10" fill="#666">
+      • delayMinutes: integer
+    </text>
+
+    <!-- Aircraft Object -->
+    <rect x="290" y="150" width="180" height="110" rx="5" fill="white" stroke="#764BA2" stroke-width="2"/>
+    <text x="380" y="170" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#667EEA">
+      Aircraft (飞机)
+    </text>
+    <text x="300" y="190" font-family="Arial, sans-serif" font-size="10" fill="#666">
+      • tailNumber: string
+    </text>
+    <text x="300" y="205" font-family="Arial, sans-serif" font-size="10" fill="#666">
+      • model: string
+    </text>
+    <text x="300" y="220" font-family="Arial, sans-serif" font-size="10" fill="#666">
+      • capacity: integer
+    </text>
+    <text x="300" y="235" font-family="Arial, sans-serif" font-size="10" fill="#666">
+      • lastMaintenance: date
+    </text>
+    <text x="300" y="250" font-family="Arial, sans-serif" font-size="10" fill="#666">
+      • status: enum
+    </text>
+
+    <!-- Airport Object -->
+    <rect x="80" y="280" width="180" height="95" rx="5" fill="white" stroke="#764BA2" stroke-width="2"/>
+    <text x="170" y="300" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#667EEA">
+      Airport (机场)
+    </text>
+    <text x="90" y="320" font-family="Arial, sans-serif" font-size="10" fill="#666">
+      • code: string (IATA)
+    </text>
+    <text x="90" y="335" font-family="Arial, sans-serif" font-size="10" fill="#666">
+      • name: string
+    </text>
+    <text x="90" y="350" font-family="Arial, sans-serif" font-size="10" fill="#666">
+      • timezone: string
+    </text>
+    <text x="90" y="365" font-family="Arial, sans-serif" font-size="10" fill="#666">
+      • weatherCondition: string
+    </text>
+
+    <!-- Crew Object -->
+    <rect x="290" y="280" width="180" height="95" rx="5" fill="white" stroke="#764BA2" stroke-width="2"/>
+    <text x="380" y="300" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#667EEA">
+      Crew (机组)
+    </text>
+    <text x="300" y="320" font-family="Arial, sans-serif" font-size="10" fill="#666">
+      • employeeId: string
+    </text>
+    <text x="300" y="335" font-family="Arial, sans-serif" font-size="10" fill="#666">
+      • name: string
+    </text>
+    <text x="300" y="350" font-family="Arial, sans-serif" font-size="10" fill="#666">
+      • role: enum
+    </text>
+    <text x="300" y="365" font-family="Arial, sans-serif" font-size="10" fill="#666">
+      • hoursFlown: integer
+    </text>
+  </g>
+
+  <!-- Links -->
+  <line x1="260" y1="205" x2="290" y2="205" stroke="#48BB78" stroke-width="3" marker-end="url(#arrowGreen)"/>
+  <text x="275" y="195" font-family="Arial, sans-serif" font-size="10" fill="#48BB78" text-anchor="middle">operates</text>
+
+  <line x1="170" y1="260" x2="170" y2="280" stroke="#48BB78" stroke-width="3" marker-end="url(#arrowGreen)"/>
+  <text x="200" y="272" font-family="Arial, sans-serif" font-size="10" fill="#48BB78">departs_from</text>
+
+  <line x1="380" y1="260" x2="380" y2="280" stroke="#48BB78" stroke-width="3" marker-end="url(#arrowGreen)"/>
+  <text x="410" y="272" font-family="Arial, sans-serif" font-size="10" fill="#48BB78">assigned_to</text>
+
+  <!-- Applications Section -->
+  <rect x="600" y="70" width="450" height="350" rx="10" fill="url(#appGradient)" stroke="#F5576C" stroke-width="2"/>
+  <text x="825" y="100" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="white">
+    应用层 (Applications)
+  </text>
+
+  <!-- App 1: Operations Dashboard -->
+  <rect x="620" y="120" width="200" height="90" rx="5" fill="white" stroke="#F5576C" stroke-width="2"/>
+  <text x="720" y="145" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#F5576C">
+    运营监控大屏
+  </text>
+  <text x="630" y="165" font-family="Arial, sans-serif" font-size="10" fill="#666">
+    • 实时航班状态
+  </text>
+  <text x="630" y="180" font-family="Arial, sans-serif" font-size="10" fill="#666">
+    • 延误统计分析
+  </text>
+  <text x="630" y="195" font-family="Arial, sans-serif" font-size="10" fill="#666">
+    • 飞机调度可视化
+  </text>
+
+  <!-- App 2: Scheduling Assistant -->
+  <rect x="840" y="120" width="200" height="90" rx="5" fill="white" stroke="#F5576C" stroke-width="2"/>
+  <text x="940" y="145" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#F5576C">
+    智能调度助手
+  </text>
+  <text x="850" y="165" font-family="Arial, sans-serif" font-size="10" fill="#666">
+    • AI 延误预测
+  </text>
+  <text x="850" y="180" font-family="Arial, sans-serif" font-size="10" fill="#666">
+    • 自动调度建议
+  </text>
+  <text x="850" y="195" font-family="Arial, sans-serif" font-size="10" fill="#666">
+    • 资源优化分配
+  </text>
+
+  <!-- App 3: Crew Mobile -->
+  <rect x="620" y="230" width="200" height="90" rx="5" fill="white" stroke="#F5576C" stroke-width="2"/>
+  <text x="720" y="255" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#F5576C">
+    机组移动端
+  </text>
+  <text x="630" y="275" font-family="Arial, sans-serif" font-size="10" fill="#666">
+    • 我的航班查询
+  </text>
+  <text x="630" y="290" font-family="Arial, sans-serif" font-size="10" fill="#666">
+    • 签到打卡
+  </text>
+  <text x="630" y="305" font-family="Arial, sans-serif" font-size="10" fill="#666">
+    • 问题报告
+  </text>
+
+  <!-- App 4: Passenger Portal -->
+  <rect x="840" y="230" width="200" height="90" rx="5" fill="white" stroke="#F5576C" stroke-width="2"/>
+  <text x="940" y="255" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#F5576C">
+    乘客服务门户
+  </text>
+  <text x="850" y="275" font-family="Arial, sans-serif" font-size="10" fill="#666">
+    • 航班状态查询
+  </text>
+  <text x="850" y="290" font-family="Arial, sans-serif" font-size="10" fill="#666">
+    • 改签申请
+  </text>
+  <text x="850" y="305" font-family="Arial, sans-serif" font-size="10" fill="#666">
+    • 实时通知
+  </text>
+
+  <!-- Actions -->
+  <text x="620" y="350" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">
+    操作 (Actions)
+  </text>
+  <rect x="620" y="360" width="420" height="50" rx="5" fill="white" stroke="#F5576C" stroke-width="2"/>
+  <text x="630" y="380" font-family="Arial, sans-serif" font-size="11" fill="#666">
+    • reschedule_flight (重新调度)  • assign_aircraft (分配飞机)
+  </text>
+  <text x="630" y="397" font-family="Arial, sans-serif" font-size="11" fill="#666">
+    • cancel_flight (取消航班)  • request_maintenance (申请维护)
+  </text>
+
+  <!-- Connection arrow from Ontology to Apps -->
+  <line x1="550" y1="245" x2="600" y2="245" stroke="#666" stroke-width="3" marker-end="url(#arrowBlue)"/>
+  <text x="575" y="235" font-family="Arial, sans-serif" font-size="11" fill="#666" text-anchor="middle">OSDK</text>
+
+  <!-- Data Sources Section -->
+  <rect x="50" y="460" width="1000" height="300" rx="10" fill="#F7FAFC" stroke="#CBD5E0" stroke-width="2"/>
+  <text x="550" y="490" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#2D3748">
+    数据源集成 (Data Sources Integration)
+  </text>
+
+  <!-- Data Source 1 -->
+  <rect x="80" y="520" width="220" height="110" rx="5" fill="white" stroke="#4299E1" stroke-width="2"/>
+  <text x="190" y="545" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#4299E1">
+    航班调度系统
+  </text>
+  <text x="90" y="565" font-family="Arial, sans-serif" font-size="10" fill="#666">
+    Oracle Database
+  </text>
+  <text x="90" y="585" font-family="Arial, sans-serif" font-size="10" fill="#666">
+    → flights_raw dataset
+  </text>
+  <text x="90" y="600" font-family="Arial, sans-serif" font-size="10" fill="#666">
+    → 映射到 Flight 对象
+  </text>
+  <text x="90" y="615" font-family="Arial, sans-serif" font-size="10" fill="#666">
+    实时同步: 每 5 分钟
+  </text>
+
+  <!-- Data Source 2 -->
+  <rect x="330" y="520" width="220" height="110" rx="5" fill="white" stroke="#48BB78" stroke-width="2"/>
+  <text x="440" y="545" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#48BB78">
+    飞机维护系统
+  </text>
+  <text x="340" y="565" font-family="Arial, sans-serif" font-size="10" fill="#666">
+    SAP ERP
+  </text>
+  <text x="340" y="585" font-family="Arial, sans-serif" font-size="10" fill="#666">
+    → maintenance_raw dataset
+  </text>
+  <text x="340" y="600" font-family="Arial, sans-serif" font-size="10" fill="#666">
+    → 映射到 Aircraft 对象
+  </text>
+  <text x="340" y="615" font-family="Arial, sans-serif" font-size="10" fill="#666">
+    批量同步: 每小时
+  </text>
+
+  <!-- Data Source 3 -->
+  <rect x="580" y="520" width="220" height="110" rx="5" fill="white" stroke="#ED8936" stroke-width="2"/>
+  <text x="690" y="545" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#ED8936">
+    乘客预订系统
+  </text>
+  <text x="590" y="565" font-family="Arial, sans-serif" font-size="10" fill="#666">
+    Amadeus API
+  </text>
+  <text x="590" y="585" font-family="Arial, sans-serif" font-size="10" fill="#666">
+    → bookings_raw dataset
+  </text>
+  <text x="590" y="600" font-family="Arial, sans-serif" font-size="10" fill="#666">
+    → 关联到 Flight 对象
+  </text>
+  <text x="590" y="615" font-family="Arial, sans-serif" font-size="10" fill="#666">
+    实时 API 调用
+  </text>
+
+  <!-- Data Source 4 -->
+  <rect x="830" y="520" width="220" height="110" rx="5" fill="white" stroke="#9F7AEA" stroke-width="2"/>
+  <text x="940" y="545" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#9F7AEA">
+    天气数据
+  </text>
+  <text x="840" y="565" font-family="Arial, sans-serif" font-size="10" fill="#666">
+    External Weather API
+  </text>
+  <text x="840" y="585" font-family="Arial, sans-serif" font-size="10" fill="#666">
+    → weather_stream
+  </text>
+  <text x="840" y="600" font-family="Arial, sans-serif" font-size="10" fill="#666">
+    → 更新 Airport 对象
+  </text>
+  <text x="840" y="615" font-family="Arial, sans-serif" font-size="10" fill="#666">
+    实时流式数据
+  </text>
+
+  <!-- Data Pipeline -->
+  <rect x="80" y="660" width="970" height="80" rx="5" fill="#EDF2F7" stroke="#A0AEC0" stroke-width="2"/>
+  <text x="565" y="685" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#2D3748">
+    数据管道 (Data Pipeline)
+  </text>
+  <text x="90" y="710" font-family="Arial, sans-serif" font-size="11" fill="#4A5568">
+    1. 数据提取 (Extract) → 2. 数据转换 (Transform) → 3. 数据验证 (Validate) → 4. 本体映射 (Map to Ontology) → 5. 索引构建 (Build Index)
+  </text>
+  <text x="565" y="730" font-family="Arial, sans-serif" font-size="10" fill="#718096" text-anchor="middle" font-style="italic">
+    完整的数据沿袭追踪 • 自动化质量检查 • 增量更新支持
+  </text>
+
+  <!-- Arrows from data sources to ontology -->
+  <line x1="190" y1="460" x2="190" y2="420" stroke="#4299E1" stroke-width="2" marker-end="url(#arrowBlue)" stroke-dasharray="5,5"/>
+  <line x1="440" y1="460" x2="380" y2="420" stroke="#48BB78" stroke-width="2" marker-end="url(#arrowGreen)" stroke-dasharray="5,5"/>
+  <line x1="690" y1="460" x2="300" y2="420" stroke="#ED8936" stroke-width="2" stroke-dasharray="5,5"/>
+  <line x1="940" y1="460" x2="250" y2="420" stroke="#9F7AEA" stroke-width="2" stroke-dasharray="5,5"/>
+</svg>
