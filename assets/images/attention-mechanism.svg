@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 900" font-family="'Microsoft YaHei', sans-serif">
-  <rect width="800" height="900" fill="#fafafa" rx="12"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 790" font-family="'Microsoft YaHei', sans-serif">
+  <rect width="800" height="790" fill="#fafafa" rx="12"/>
 
   <!-- Title -->
   <text x="400" y="34" text-anchor="middle" font-size="16" font-weight="bold" fill="#242424">注意力机制：同一个词，不同语境，不同理解</text>
