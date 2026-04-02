@@ -146,7 +146,7 @@ tools: {
 所有操作都有完整记录：
 
 ```
-[2026-04-02 17:30:15] User: carlos.ling
+[2026-04-02 17:30:15] User: zishaha
 [2026-04-02 17:30:15] Action: read_file
 [2026-04-02 17:30:15] Path: /workspace/project/config.json
 [2026-04-02 17:30:15] Result: success
