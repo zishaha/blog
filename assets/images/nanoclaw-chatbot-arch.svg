@@ -1,0 +1,274 @@
+<svg viewBox="0 0 1000 680" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans SC', 'PingFang SC', sans-serif">
+  <defs>
+    <linearGradient id="gHeader" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="gClient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f3460;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#0a2744;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="gBFF" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#533483;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#3d2665;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="gNano" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#065143;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#043d32;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="gInfra" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#111120;stop-opacity:1"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#64748b"/>
+    </marker>
+    <marker id="arrowW" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="1000" height="680" fill="#0d1117"/>
+
+  <!-- 标题 -->
+  <rect x="0" y="0" width="1000" height="44" fill="url(#gHeader)"/>
+  <text x="500" y="27" text-anchor="middle" fill="white" font-size="15" font-weight="bold" letter-spacing="2">NanoClaw Chatbot · 多端架构设计</text>
+
+  <!-- ===== 层一：多端客户端层 ===== -->
+  <rect x="18" y="60" width="964" height="148" rx="10" fill="url(#gClient)" filter="url(#shadow)"/>
+  <text x="38" y="82" fill="#60a5fa" font-size="11" font-weight="bold" letter-spacing="1">LAYER 1 · CLIENT</text>
+  <text x="38" y="96" fill="#93c5fd" font-size="9">多端客户端层</text>
+  <!-- 分隔线 -->
+  <line x1="18" x2="982" y1="103" y2="103" stroke="#1e3a5f" stroke-width="1"/>
+
+  <!-- 微信小程序 -->
+  <rect x="34" y="112" width="152" height="84" rx="8" fill="#0c2d50" stroke="#1d4ed8" stroke-width="1"/>
+  <text x="110" y="132" text-anchor="middle" fill="#93c5fd" font-size="10" font-weight="bold">微信小程序</text>
+  <text x="110" y="148" text-anchor="middle" fill="#60a5fa" font-size="8">Taro / UniApp</text>
+  <rect x="44" y="154" width="63" height="16" rx="3" fill="#1e3a5f"/>
+  <text x="75" y="165" text-anchor="middle" fill="#93c5fd" font-size="7">Chat UI组件</text>
+  <rect x="113" y="154" width="63" height="16" rx="3" fill="#1e3a5f"/>
+  <text x="144" y="165" text-anchor="middle" fill="#93c5fd" font-size="7">WebSocket</text>
+  <text x="110" y="188" text-anchor="middle" fill="#3b82f6" font-size="7">wx.connectSocket</text>
+
+  <!-- 原生 App -->
+  <rect x="202" y="112" width="152" height="84" rx="8" fill="#0c2d50" stroke="#1d4ed8" stroke-width="1"/>
+  <text x="278" y="132" text-anchor="middle" fill="#93c5fd" font-size="10" font-weight="bold">原生 App</text>
+  <text x="278" y="148" text-anchor="middle" fill="#60a5fa" font-size="8">React Native / Flutter</text>
+  <rect x="212" y="154" width="63" height="16" rx="3" fill="#1e3a5f"/>
+  <text x="243" y="165" text-anchor="middle" fill="#93c5fd" font-size="7">原生渲染</text>
+  <rect x="281" y="154" width="63" height="16" rx="3" fill="#1e3a5f"/>
+  <text x="312" y="165" text-anchor="middle" fill="#93c5fd" font-size="7">Push 通知</text>
+  <text x="278" y="188" text-anchor="middle" fill="#3b82f6" font-size="7">iOS / Android</text>
+
+  <!-- H5 -->
+  <rect x="370" y="112" width="152" height="84" rx="8" fill="#0c2d50" stroke="#1d4ed8" stroke-width="1"/>
+  <text x="446" y="132" text-anchor="middle" fill="#93c5fd" font-size="10" font-weight="bold">H5 移动端</text>
+  <text x="446" y="148" text-anchor="middle" fill="#60a5fa" font-size="8">Vue3 + Vite</text>
+  <rect x="380" y="154" width="63" height="16" rx="3" fill="#1e3a5f"/>
+  <text x="411" y="165" text-anchor="middle" fill="#93c5fd" font-size="7">PWA 离线</text>
+  <rect x="449" y="154" width="63" height="16" rx="3" fill="#1e3a5f"/>
+  <text x="480" y="165" text-anchor="middle" fill="#93c5fd" font-size="7">SSE 流式</text>
+  <text x="446" y="188" text-anchor="middle" fill="#3b82f6" font-size="7">响应式布局</text>
+
+  <!-- PC 客户端 -->
+  <rect x="538" y="112" width="152" height="84" rx="8" fill="#0c2d50" stroke="#1d4ed8" stroke-width="1"/>
+  <text x="614" y="132" text-anchor="middle" fill="#93c5fd" font-size="10" font-weight="bold">PC 客户端</text>
+  <text x="614" y="148" text-anchor="middle" fill="#60a5fa" font-size="8">Electron + Vue3</text>
+  <rect x="548" y="154" width="63" height="16" rx="3" fill="#1e3a5f"/>
+  <text x="579" y="165" text-anchor="middle" fill="#93c5fd" font-size="7">本地文件访问</text>
+  <rect x="617" y="154" width="63" height="16" rx="3" fill="#1e3a5f"/>
+  <text x="648" y="165" text-anchor="middle" fill="#93c5fd" font-size="7">系统托盘</text>
+  <text x="614" y="188" text-anchor="middle" fill="#3b82f6" font-size="7">Win / macOS / Linux</text>
+
+  <!-- Web 浏览器 -->
+  <rect x="706" y="112" width="152" height="84" rx="8" fill="#0c2d50" stroke="#1d4ed8" stroke-width="1"/>
+  <text x="782" y="132" text-anchor="middle" fill="#93c5fd" font-size="10" font-weight="bold">Web 浏览器</text>
+  <text x="782" y="148" text-anchor="middle" fill="#60a5fa" font-size="8">Vue3 + Nuxt</text>
+  <rect x="716" y="154" width="63" height="16" rx="3" fill="#1e3a5f"/>
+  <text x="747" y="165" text-anchor="middle" fill="#93c5fd" font-size="7">SSR/CSR</text>
+  <rect x="785" y="154" width="63" height="16" rx="3" fill="#1e3a5f"/>
+  <text x="816" y="165" text-anchor="middle" fill="#93c5fd" font-size="7">WebSocket</text>
+  <text x="782" y="188" text-anchor="middle" fill="#3b82f6" font-size="7">Chrome/Safari/Firefox</text>
+
+  <!-- Shared Core 标签 -->
+  <rect x="868" y="112" width="96" height="84" rx="8" fill="#0a1f3d" stroke="#1e40af" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="916" y="148" text-anchor="middle" fill="#60a5fa" font-size="9" font-weight="bold">Shared</text>
+  <text x="916" y="162" text-anchor="middle" fill="#60a5fa" font-size="9" font-weight="bold">Core SDK</text>
+  <text x="916" y="178" text-anchor="middle" fill="#3b82f6" font-size="7">统一 API 封装</text>
+  <text x="916" y="190" text-anchor="middle" fill="#3b82f6" font-size="7">状态管理复用</text>
+
+  <!-- ===== 层二：BFF 网关层 ===== -->
+  <rect x="18" y="224" width="964" height="136" rx="10" fill="url(#gBFF)" filter="url(#shadow)"/>
+  <text x="38" y="246" fill="#c084fc" font-size="11" font-weight="bold" letter-spacing="1">LAYER 2 · BFF GATEWAY</text>
+  <text x="38" y="260" fill="#d8b4fe" font-size="9">BFF 网关层（Backend for Frontend）</text>
+  <line x1="18" x2="982" y1="267" y2="267" stroke="#4a1d96" stroke-width="1"/>
+
+  <!-- API Gateway -->
+  <rect x="34" y="276" width="130" height="72" rx="7" fill="#2e1065" stroke="#7c3aed" stroke-width="1"/>
+  <text x="99" y="295" text-anchor="middle" fill="#d8b4fe" font-size="9.5" font-weight="bold">API Gateway</text>
+  <text x="99" y="310" text-anchor="middle" fill="#a78bfa" font-size="7.5">Nginx / Kong</text>
+  <text x="99" y="323" text-anchor="middle" fill="#8b5cf6" font-size="7">限流 · 鉴权 · 路由</text>
+  <text x="99" y="336" text-anchor="middle" fill="#8b5cf6" font-size="7">SSL 终止 · 负载均衡</text>
+
+  <!-- WebSocket 服务 -->
+  <rect x="180" y="276" width="130" height="72" rx="7" fill="#2e1065" stroke="#7c3aed" stroke-width="1"/>
+  <text x="245" y="295" text-anchor="middle" fill="#d8b4fe" font-size="9.5" font-weight="bold">WS 服务</text>
+  <text x="245" y="310" text-anchor="middle" fill="#a78bfa" font-size="7.5">Socket.io / ws</text>
+  <text x="245" y="323" text-anchor="middle" fill="#8b5cf6" font-size="7">双向实时通信</text>
+  <text x="245" y="336" text-anchor="middle" fill="#8b5cf6" font-size="7">房间管理 · 心跳检测</text>
+
+  <!-- SSE 流式服务 -->
+  <rect x="326" y="276" width="130" height="72" rx="7" fill="#2e1065" stroke="#7c3aed" stroke-width="1"/>
+  <text x="391" y="295" text-anchor="middle" fill="#d8b4fe" font-size="9.5" font-weight="bold">SSE 流式服务</text>
+  <text x="391" y="310" text-anchor="middle" fill="#a78bfa" font-size="7.5">Server-Sent Events</text>
+  <text x="391" y="323" text-anchor="middle" fill="#8b5cf6" font-size="7">AI 回复流式推送</text>
+  <text x="391" y="336" text-anchor="middle" fill="#8b5cf6" font-size="7">Token by Token 输出</text>
+
+  <!-- 会话管理 -->
+  <rect x="472" y="276" width="130" height="72" rx="7" fill="#2e1065" stroke="#7c3aed" stroke-width="1"/>
+  <text x="537" y="295" text-anchor="middle" fill="#d8b4fe" font-size="9.5" font-weight="bold">会话管理</text>
+  <text x="537" y="310" text-anchor="middle" fill="#a78bfa" font-size="7.5">Session Service</text>
+  <text x="537" y="323" text-anchor="middle" fill="#8b5cf6" font-size="7">多端会话同步</text>
+  <text x="537" y="336" text-anchor="middle" fill="#8b5cf6" font-size="7">历史记录 · 上下文</text>
+
+  <!-- 文件服务 -->
+  <rect x="618" y="276" width="130" height="72" rx="7" fill="#2e1065" stroke="#7c3aed" stroke-width="1"/>
+  <text x="683" y="295" text-anchor="middle" fill="#d8b4fe" font-size="9.5" font-weight="bold">文件服务</text>
+  <text x="683" y="310" text-anchor="middle" fill="#a78bfa" font-size="7.5">File Service</text>
+  <text x="683" y="323" text-anchor="middle" fill="#8b5cf6" font-size="7">图片 · 文件上传</text>
+  <text x="683" y="336" text-anchor="middle" fill="#8b5cf6" font-size="7">OSS 存储 · 转码</text>
+
+  <!-- 推送服务 -->
+  <rect x="764" y="276" width="130" height="72" rx="7" fill="#2e1065" stroke="#7c3aed" stroke-width="1"/>
+  <text x="829" y="295" text-anchor="middle" fill="#d8b4fe" font-size="9.5" font-weight="bold">推送服务</text>
+  <text x="829" y="310" text-anchor="middle" fill="#a78bfa" font-size="7.5">Push Service</text>
+  <text x="829" y="323" text-anchor="middle" fill="#8b5cf6" font-size="7">APNs · FCM</text>
+  <text x="829" y="336" text-anchor="middle" fill="#8b5cf6" font-size="7">微信模板消息</text>
+
+  <!-- 认证服务独立小块 -->
+  <rect x="910" y="276" width="54" height="34" rx="5" fill="#1e0050" stroke="#6d28d9" stroke-width="1"/>
+  <text x="937" y="290" text-anchor="middle" fill="#c4b5fd" font-size="7.5" font-weight="bold">Auth</text>
+  <text x="937" y="302" text-anchor="middle" fill="#8b5cf6" font-size="6.5">JWT/OAuth</text>
+  <rect x="910" y="316" width="54" height="32" rx="5" fill="#1e0050" stroke="#6d28d9" stroke-width="1"/>
+  <text x="937" y="329" text-anchor="middle" fill="#c4b5fd" font-size="7.5" font-weight="bold">Log</text>
+  <text x="937" y="341" text-anchor="middle" fill="#8b5cf6" font-size="6.5">链路追踪</text>
+
+  <!-- ===== 层三：NanoClaw 服务层 ===== -->
+  <rect x="18" y="376" width="964" height="138" rx="10" fill="url(#gNano)" filter="url(#shadow)"/>
+  <text x="38" y="398" fill="#34d399" font-size="11" font-weight="bold" letter-spacing="1">LAYER 3 · NANOCLAW ENGINE</text>
+  <text x="38" y="412" fill="#6ee7b7" font-size="9">NanoClaw 核心引擎层</text>
+  <line x1="18" x2="982" y1="419" y2="419" stroke="#065f46" stroke-width="1"/>
+
+  <!-- Claude Agent SDK -->
+  <rect x="34" y="428" width="180" height="74" rx="7" fill="#022c22" stroke="#059669" stroke-width="1.5"/>
+  <text x="124" y="447" text-anchor="middle" fill="#6ee7b7" font-size="9.5" font-weight="bold">Claude Agent SDK</text>
+  <text x="124" y="462" text-anchor="middle" fill="#34d399" font-size="7.5">Anthropic claude-3.7-sonnet</text>
+  <text x="124" y="475" text-anchor="middle" fill="#10b981" font-size="7">流式对话 · 工具调用 · 多轮上下文</text>
+  <text x="124" y="489" text-anchor="middle" fill="#10b981" font-size="7">思维链 · 函数调用 · Vision</text>
+
+  <!-- MCP 工具层 -->
+  <rect x="230" y="428" width="200" height="74" rx="7" fill="#022c22" stroke="#059669" stroke-width="1.5"/>
+  <text x="330" y="447" text-anchor="middle" fill="#6ee7b7" font-size="9.5" font-weight="bold">MCP 工具层</text>
+  <text x="330" y="462" text-anchor="middle" fill="#34d399" font-size="7.5">Model Context Protocol</text>
+  <rect x="238" y="468" width="55" height="14" rx="3" fill="#064e3b"/>
+  <text x="265" y="478" text-anchor="middle" fill="#34d399" font-size="6.5">Web 搜索</text>
+  <rect x="299" y="468" width="55" height="14" rx="3" fill="#064e3b"/>
+  <text x="326" y="478" text-anchor="middle" fill="#34d399" font-size="6.5">代码执行</text>
+  <rect x="360" y="468" width="62" height="14" rx="3" fill="#064e3b"/>
+  <text x="391" y="478" text-anchor="middle" fill="#34d399" font-size="6.5">知识库检索</text>
+  <text x="330" y="495" text-anchor="middle" fill="#10b981" font-size="7">自定义工具 · 标准化协议扩展</text>
+
+  <!-- 消息管道 -->
+  <rect x="446" y="428" width="160" height="74" rx="7" fill="#022c22" stroke="#059669" stroke-width="1.5"/>
+  <text x="526" y="447" text-anchor="middle" fill="#6ee7b7" font-size="9.5" font-weight="bold">消息管道</text>
+  <text x="526" y="462" text-anchor="middle" fill="#34d399" font-size="7.5">Message Pipeline</text>
+  <text x="526" y="476" text-anchor="middle" fill="#10b981" font-size="7">输入预处理 · 敏感词过滤</text>
+  <text x="526" y="489" text-anchor="middle" fill="#10b981" font-size="7">上下文注入 · Prompt 模板</text>
+
+  <!-- 记忆系统 -->
+  <rect x="622" y="428" width="160" height="74" rx="7" fill="#022c22" stroke="#059669" stroke-width="1.5"/>
+  <text x="702" y="447" text-anchor="middle" fill="#6ee7b7" font-size="9.5" font-weight="bold">记忆系统</text>
+  <text x="702" y="462" text-anchor="middle" fill="#34d399" font-size="7.5">Memory System</text>
+  <text x="702" y="476" text-anchor="middle" fill="#10b981" font-size="7">短期记忆 · 长期记忆</text>
+  <text x="702" y="489" text-anchor="middle" fill="#10b981" font-size="7">对话摘要 · 用户画像</text>
+
+  <!-- 沙箱隔离 -->
+  <rect x="798" y="428" width="166" height="74" rx="7" fill="#022c22" stroke="#059669" stroke-width="1.5"/>
+  <text x="881" y="447" text-anchor="middle" fill="#6ee7b7" font-size="9.5" font-weight="bold">Docker 沙箱</text>
+  <text x="881" y="462" text-anchor="middle" fill="#34d399" font-size="7.5">安全隔离执行环境</text>
+  <text x="881" y="476" text-anchor="middle" fill="#10b981" font-size="7">最小权限 · 审计日志</text>
+  <text x="881" y="489" text-anchor="middle" fill="#10b981" font-size="7">资源限制 · 网络隔离</text>
+
+  <!-- ===== 层四：基础设施层 ===== -->
+  <rect x="18" y="530" width="964" height="134" rx="10" fill="url(#gInfra)" filter="url(#shadow)"/>
+  <text x="38" y="552" fill="#94a3b8" font-size="11" font-weight="bold" letter-spacing="1">LAYER 4 · INFRASTRUCTURE</text>
+  <text x="38" y="566" fill="#cbd5e1" font-size="9">基础设施层</text>
+  <line x1="18" x2="982" y1="573" y2="573" stroke="#1e293b" stroke-width="1"/>
+
+  <!-- PostgreSQL -->
+  <rect x="34" y="581" width="118" height="66" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="93" y="598" text-anchor="middle" fill="#94a3b8" font-size="9" font-weight="bold">PostgreSQL</text>
+  <text x="93" y="612" text-anchor="middle" fill="#64748b" font-size="7">会话 · 用户 · 配置</text>
+  <text x="93" y="625" text-anchor="middle" fill="#64748b" font-size="7">消息历史存储</text>
+  <text x="93" y="638" text-anchor="middle" fill="#475569" font-size="7">pgvector 向量扩展</text>
+
+  <!-- Redis -->
+  <rect x="164" y="581" width="118" height="66" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="223" y="598" text-anchor="middle" fill="#94a3b8" font-size="9" font-weight="bold">Redis Cluster</text>
+  <text x="223" y="612" text-anchor="middle" fill="#64748b" font-size="7">会话缓存 · 限流</text>
+  <text x="223" y="625" text-anchor="middle" fill="#64748b" font-size="7">Pub/Sub 消息广播</text>
+  <text x="223" y="638" text-anchor="middle" fill="#475569" font-size="7">多端同步状态</text>
+
+  <!-- 向量数据库 -->
+  <rect x="294" y="581" width="118" height="66" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="353" y="598" text-anchor="middle" fill="#94a3b8" font-size="9" font-weight="bold">Qdrant</text>
+  <text x="353" y="612" text-anchor="middle" fill="#64748b" font-size="7">向量数据库</text>
+  <text x="353" y="625" text-anchor="middle" fill="#64748b" font-size="7">RAG 知识检索</text>
+  <text x="353" y="638" text-anchor="middle" fill="#475569" font-size="7">语义相似度搜索</text>
+
+  <!-- MQ -->
+  <rect x="424" y="581" width="118" height="66" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="483" y="598" text-anchor="middle" fill="#94a3b8" font-size="9" font-weight="bold">Kafka / RabbitMQ</text>
+  <text x="483" y="612" text-anchor="middle" fill="#64748b" font-size="7">消息队列</text>
+  <text x="483" y="625" text-anchor="middle" fill="#64748b" font-size="7">异步任务处理</text>
+  <text x="483" y="638" text-anchor="middle" fill="#475569" font-size="7">削峰填谷</text>
+
+  <!-- OSS -->
+  <rect x="554" y="581" width="118" height="66" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="613" y="598" text-anchor="middle" fill="#94a3b8" font-size="9" font-weight="bold">OSS / S3</text>
+  <text x="613" y="612" text-anchor="middle" fill="#64748b" font-size="7">对象存储</text>
+  <text x="613" y="625" text-anchor="middle" fill="#64748b" font-size="7">文件 · 图片 · 附件</text>
+  <text x="613" y="638" text-anchor="middle" fill="#475569" font-size="7">CDN 加速</text>
+
+  <!-- 监控 -->
+  <rect x="684" y="581" width="118" height="66" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="743" y="598" text-anchor="middle" fill="#94a3b8" font-size="9" font-weight="bold">Prometheus</text>
+  <text x="743" y="612" text-anchor="middle" fill="#64748b" font-size="7">Grafana 监控</text>
+  <text x="743" y="625" text-anchor="middle" fill="#64748b" font-size="7">性能 · 告警 · 日志</text>
+  <text x="743" y="638" text-anchor="middle" fill="#475569" font-size="7">OpenTelemetry 链路</text>
+
+  <!-- K8s -->
+  <rect x="814" y="581" width="150" height="66" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="889" y="598" text-anchor="middle" fill="#94a3b8" font-size="9" font-weight="bold">Kubernetes</text>
+  <text x="889" y="612" text-anchor="middle" fill="#64748b" font-size="7">容器编排</text>
+  <text x="889" y="625" text-anchor="middle" fill="#64748b" font-size="7">自动扩缩容 · 滚动发布</text>
+  <text x="889" y="638" text-anchor="middle" fill="#475569" font-size="7">Helm · ArgoCD</text>
+
+  <!-- ===== 连接箭头 ===== -->
+  <!-- 客户端 → BFF -->
+  <line x1="500" y1="208" x2="500" y2="224" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <!-- BFF → NanoClaw -->
+  <line x1="500" y1="360" x2="500" y2="376" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <!-- NanoClaw → Infra -->
+  <line x1="500" y1="514" x2="500" y2="530" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- 左侧标签 -->
+  <text x="508" y="219" fill="#64748b" font-size="7.5">HTTP/WS/SSE</text>
+  <text x="508" y="373" fill="#64748b" font-size="7.5">内部 RPC / gRPC</text>
+  <text x="508" y="527" fill="#64748b" font-size="7.5">读写</text>
+</svg>

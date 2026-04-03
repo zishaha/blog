@@ -1,0 +1,144 @@
+<svg viewBox="0 0 960 540" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans SC', 'PingFang SC', sans-serif">
+  <defs>
+    <marker id="a" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#60a5fa"/>
+    </marker>
+    <marker id="ag" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#34d399"/>
+    </marker>
+    <marker id="ar" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#f87171"/>
+    </marker>
+    <marker id="ay" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#fbbf24"/>
+    </marker>
+  </defs>
+
+  <rect width="960" height="540" fill="#0d1117"/>
+  <rect x="0" y="0" width="960" height="38" fill="#161b22"/>
+  <text x="480" y="24" text-anchor="middle" fill="white" font-size="13" font-weight="bold" letter-spacing="1">NanoClaw Chatbot · 流式对话核心通信时序</text>
+
+  <!-- 参与者 -->
+  <!-- Client -->
+  <rect x="30" y="50" width="100" height="28" rx="6" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="80" y="68" text-anchor="middle" fill="#93c5fd" font-size="10" font-weight="bold">Client 客户端</text>
+  <line x1="80" x2="80" y1="78" y2="530" stroke="#1e3a5f" stroke-width="1" stroke-dasharray="4,3"/>
+
+  <!-- WS Server -->
+  <rect x="195" y="50" width="110" height="28" rx="6" fill="#2e1065" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="250" y="68" text-anchor="middle" fill="#c4b5fd" font-size="10" font-weight="bold">BFF Gateway</text>
+  <line x1="250" x2="250" y1="78" y2="530" stroke="#2e1065" stroke-width="1" stroke-dasharray="4,3"/>
+
+  <!-- Session -->
+  <rect x="360" y="50" width="110" height="28" rx="6" fill="#1c2b1c" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="415" y="68" text-anchor="middle" fill="#86efac" font-size="10" font-weight="bold">Session Service</text>
+  <line x1="415" x2="415" y1="78" y2="530" stroke="#1c2b1c" stroke-width="1" stroke-dasharray="4,3"/>
+
+  <!-- NanoClaw -->
+  <rect x="525" y="50" width="120" height="28" rx="6" fill="#022c22" stroke="#059669" stroke-width="2"/>
+  <text x="585" y="68" text-anchor="middle" fill="#34d399" font-size="10" font-weight="bold">NanoClaw Engine</text>
+  <line x1="585" x2="585" y1="78" y2="530" stroke="#022c22" stroke-width="1" stroke-dasharray="4,3"/>
+
+  <!-- Claude API -->
+  <rect x="700" y="50" width="110" height="28" rx="6" fill="#1a1a0a" stroke="#d97706" stroke-width="1.5"/>
+  <text x="755" y="62" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="bold">Claude API</text>
+  <text x="755" y="74" text-anchor="middle" fill="#f59e0b" font-size="7.5">Anthropic</text>
+  <line x1="755" x2="755" y1="78" y2="530" stroke="#1a1a0a" stroke-width="1" stroke-dasharray="4,3"/>
+
+  <!-- Redis -->
+  <rect x="860" y="50" width="80" height="28" rx="6" fill="#1a0a0a" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="900" y="68" text-anchor="middle" fill="#fca5a5" font-size="10" font-weight="bold">Redis</text>
+  <line x1="900" x2="900" y1="78" y2="530" stroke="#1a0a0a" stroke-width="1" stroke-dasharray="4,3"/>
+
+  <!-- ===== 流程步骤 ===== -->
+  <!-- Step 1: WS 建立连接 -->
+  <rect x="20" y="95" width="60" height="16" rx="3" fill="#1e3a5f"/>
+  <text x="50" y="106" text-anchor="middle" fill="#60a5fa" font-size="7">① 建立连接</text>
+  <line x1="80" x2="244" y1="104" y2="104" stroke="#60a5fa" stroke-width="1.5" marker-end="url(#a)"/>
+  <text x="162" y="100" text-anchor="middle" fill="#3b82f6" font-size="7.5">WebSocket Connect + JWT Token</text>
+
+  <!-- Step 2: 验证 Token -->
+  <line x1="250" x2="409" y1="118" y2="118" stroke="#60a5fa" stroke-width="1.5" marker-end="url(#a)"/>
+  <text x="330" y="114" text-anchor="middle" fill="#8b5cf6" font-size="7.5">验证 JWT · 获取会话</text>
+
+  <!-- Step 3: Redis 检查 -->
+  <line x1="415" x2="893" y1="132" y2="132" stroke="#f87171" stroke-width="1.5" marker-end="url(#ar)"/>
+  <text x="655" y="128" text-anchor="middle" fill="#ef4444" font-size="7.5">GET session:{userId} · 历史上下文</text>
+  <line x1="900" x2="422" y1="146" y2="146" stroke="#f87171" stroke-width="1" stroke-dasharray="3,2" marker-end="url(#ar)"/>
+  <text x="660" y="142" text-anchor="middle" fill="#6b7280" font-size="7">返回历史消息 (最近 N 轮)</text>
+
+  <!-- Step 4: 握手成功 -->
+  <line x1="250" x2="86" y1="160" y2="160" stroke="#34d399" stroke-width="1.5" stroke-dasharray="3,2" marker-end="url(#ag)"/>
+  <text x="168" y="156" text-anchor="middle" fill="#10b981" font-size="7.5">✓ connected · sessionId 返回</text>
+
+  <!-- 分隔区域：发消息 -->
+  <rect x="20" y="172" width="920" height="14" rx="3" fill="#0f2d0f" opacity="0.7"/>
+  <text x="480" y="182" text-anchor="middle" fill="#22c55e" font-size="7.5" font-weight="bold">发送消息 &amp; AI 流式回复</text>
+
+  <!-- Step 5: 用户发消息 -->
+  <rect x="20" y="194" width="60" height="16" rx="3" fill="#1e3a5f"/>
+  <text x="50" y="205" text-anchor="middle" fill="#60a5fa" font-size="7">② 发消息</text>
+  <line x1="80" x2="244" y1="204" y2="204" stroke="#60a5fa" stroke-width="1.5" marker-end="url(#a)"/>
+  <text x="162" y="200" text-anchor="middle" fill="#3b82f6" font-size="7.5">WS send: {msgId, content, type}</text>
+
+  <!-- Step 6: 消息预处理 -->
+  <line x1="250" x2="409" y1="218" y2="218" stroke="#a78bfa" stroke-width="1.5" marker-end="url(#a)"/>
+  <text x="330" y="214" text-anchor="middle" fill="#8b5cf6" font-size="7.5">存储消息 · 注入系统 Prompt</text>
+
+  <!-- Step 7: 发给 NanoClaw -->
+  <line x1="415" x2="579" y1="232" y2="232" stroke="#34d399" stroke-width="1.5" marker-end="url(#ag)"/>
+  <text x="497" y="228" text-anchor="middle" fill="#10b981" font-size="7.5">消息 + 上下文 + 工具列表</text>
+
+  <!-- Step 8: NanoClaw 调 Claude -->
+  <line x1="585" x2="749" y1="246" y2="246" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#ay)"/>
+  <text x="667" y="242" text-anchor="middle" fill="#f59e0b" font-size="7.5">stream: true · messages[]</text>
+
+  <!-- Step 9: Claude 流式返回 -->
+  <rect x="700" y="258" width="110" height="14" rx="3" fill="#1a1a0a" stroke="#d97706" stroke-width="1"/>
+  <text x="755" y="268" text-anchor="middle" fill="#fcd34d" font-size="7">开始流式输出 token...</text>
+
+  <line x1="749" x2="591" y1="276" y2="276" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="3,2" marker-end="url(#ay)"/>
+  <text x="670" y="272" text-anchor="middle" fill="#d97706" font-size="7.5">stream chunk: delta.text</text>
+  <line x1="749" x2="591" y1="290" y2="290" stroke="#fbbf24" stroke-width="1" stroke-dasharray="3,2" marker-end="url(#ay)"/>
+  <text x="670" y="286" text-anchor="middle" fill="#d97706" font-size="7.5">stream chunk: delta.text</text>
+  <text x="670" y="302" fill="#6b7280" font-size="7" text-anchor="middle">... (持续数十毫秒)</text>
+
+  <!-- Step 10: 工具调用（可选）-->
+  <rect x="20" y="308" width="920" height="14" rx="3" fill="#1a1a0a" opacity="0.7"/>
+  <text x="480" y="318" text-anchor="middle" fill="#fbbf24" font-size="7.5" font-weight="bold">（可选）工具调用 Tool Use</text>
+
+  <line x1="585" x2="749" y1="330" y2="330" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="3,2" marker-end="url(#ay)"/>
+  <text x="667" y="326" text-anchor="middle" fill="#d97706" font-size="7.5">tool_call: search_web({query})</text>
+  <line x1="585" x2="421" y1="344" y2="344" stroke="#34d399" stroke-width="1.5" stroke-dasharray="3,2" marker-end="url(#ag)"/>
+  <text x="503" y="340" text-anchor="middle" fill="#10b981" font-size="7.5">执行 MCP 工具 · 返回结果</text>
+  <line x1="421" x2="579" y1="358" y2="358" stroke="#34d399" stroke-width="1" stroke-dasharray="2,2" marker-end="url(#ag)"/>
+  <text x="503" y="354" text-anchor="middle" fill="#10b981" font-size="7">tool_result 注入 → 继续生成</text>
+
+  <!-- Step 11: 流式推送给客户端 -->
+  <rect x="20" y="370" width="920" height="14" rx="3" fill="#0f2d0f" opacity="0.7"/>
+  <text x="480" y="380" text-anchor="middle" fill="#22c55e" font-size="7.5" font-weight="bold">实时推送 Token 给客户端</text>
+
+  <line x1="579" x2="256" y1="392" y2="392" stroke="#34d399" stroke-width="1.5" stroke-dasharray="3,2" marker-end="url(#ag)"/>
+  <text x="420" y="388" text-anchor="middle" fill="#10b981" font-size="7.5">SSE / WS: {type:chunk, content:"你"}</text>
+  <line x1="244" x2="86" y1="406" y2="406" stroke="#34d399" stroke-width="1.5" stroke-dasharray="3,2" marker-end="url(#ag)"/>
+  <text x="165" y="402" text-anchor="middle" fill="#10b981" font-size="7.5">实时渲染 token 到聊天气泡</text>
+
+  <line x1="579" x2="256" y1="420" y2="420" stroke="#34d399" stroke-width="1" stroke-dasharray="2,2" marker-end="url(#ag)"/>
+  <text x="420" y="416" text-anchor="middle" fill="#059669" font-size="7">... 持续推送 tokens ...</text>
+
+  <!-- Step 12: 完成 -->
+  <line x1="579" x2="256" y1="436" y2="436" stroke="#60a5fa" stroke-width="1.5" marker-end="url(#a)"/>
+  <text x="420" y="432" text-anchor="middle" fill="#3b82f6" font-size="7.5">{type: done, usage: {input,output}}</text>
+  <line x1="244" x2="86" y1="450" y2="450" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="3,2" marker-end="url(#a)"/>
+  <text x="165" y="446" text-anchor="middle" fill="#3b82f6" font-size="7.5">完成渲染 · 显示操作按钮</text>
+
+  <!-- Step 13: 持久化 -->
+  <line x1="415" x2="893" y1="465" y2="465" stroke="#f87171" stroke-width="1.5" marker-end="url(#ar)"/>
+  <text x="655" y="461" text-anchor="middle" fill="#ef4444" font-size="7.5">SET session:{userId} 追加对话轮次</text>
+  <text x="655" y="478" text-anchor="middle" fill="#6b7280" font-size="7">TTL 续期 · 同步到 PostgreSQL</text>
+
+  <!-- 底部说明 -->
+  <rect x="20" y="494" width="920" height="36" rx="6" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+  <text x="40" y="508" fill="#475569" font-size="7.5" font-weight="bold">关键技术点：</text>
+  <text x="40" y="522" fill="#334155" font-size="7">① WebSocket 保持长连接，心跳检测 30s · ② SSE 作为降级方案（小程序/HTTP2） · ③ 流式 token 前端逐字渲染，延迟 &lt; 100ms · ④ Redis 缓存 N 轮上下文，超出时摘要压缩</text>
+</svg>
