@@ -24,104 +24,183 @@
   <p style="color: #7a9cbd; font-size: 12px; margin: 0;">含完整附录：早期肺癌治疗方案患者家属版（2026）</p>
 </section>
 
-<!-- 导读 -->
-<section style="background: #f0f7ff; border-left: 4px solid #1677ff; border-radius: 0 8px 8px 0; padding: 16px 20px; margin-bottom: 28px;">
-  <p style="margin: 0; color: #444; font-size: 15px; line-height: 1.8;">几天前，欧阳哲仁让 AI 助手 Andy 分析了一份《早期肺癌治疗方案患者家属版（2026）》医学报告，最终交付了结构完整、引用 NCCN·CSCO·IASLC 权威指南的深度研究文档。</p>
-  <p style="margin: 10px 0 0 0; color: #444; font-size: 15px; line-height: 1.8;">整个过程对用户来说只是「发一条消息、等几分钟、拿到报告」。但在这背后，一套精心设计的系统正在运转。本文拆解完整机制，并附上 AI 实际生成的完整医学报告供读者参考。</p>
-</section>
-
-<!-- ===== 一 ===== -->
-<section style="margin-bottom: 32px;">
-  <h2 style="font-size: 20px; font-weight: 700; color: #1a1a1a; border-bottom: 2px solid #1677ff; padding-bottom: 8px; margin-bottom: 16px;">一、从用户视角看：一条消息引发了什么</h2>
+<!-- ===== 开篇：一个真实时刻 ===== -->
+<section style="margin-bottom: 36px;">
+  <p style="margin: 0 0 14px 0; font-size: 16px; line-height: 1.9;">假设你刚刚拿到一份肺癌病理报告。</p>
+  <p style="margin: 0 0 14px 0; font-size: 16px; line-height: 1.9;">报告上写着「非小细胞肺癌，IA2 期，EGFR 外显子 19 缺失突变阳性」。你不是医生，看不懂这意味着什么，不知道接下来该做什么，也不知道该问主治医生哪些问题。</p>
+  <p style="margin: 0 0 14px 0; font-size: 16px; line-height: 1.9;">去搜索引擎查？信息碎片、广告混杂，越搜越焦虑。去问 ChatGPT？它能给出一些解释，但不知道最新指南是什么，也不会帮你整理成一份可以带去医院的文档。</p>
+  <p style="margin: 0 0 14px 0; font-size: 16px; line-height: 1.9;">这就是欧阳哲仁让 AI 助手 Andy 做的事情：</p>
   <section style="background: #1e1e2e; border-radius: 8px; padding: 16px 20px; margin-bottom: 16px;">
     <p style="margin: 0; font-family: 'Menlo', 'Monaco', monospace; font-size: 13px; color: #cdd6f4; line-height: 1.7;">
       <span style="color: #89b4fa;">欧阳哲仁：</span> 帮我深度研究下肺癌早期的治疗方案，需要一篇简体中文报告，专业，准确
     </p>
   </section>
-  <p style="margin: 0 0 12px 0;">Andy 收到这条消息，几分钟后交付了：</p>
-  <ul style="margin: 0 0 12px 0; padding-left: 20px;">
-    <li style="margin-bottom: 6px;">一份深度研究报告（专业版，约 8000 字）</li>
-    <li style="margin-bottom: 6px;">一份为患者家属改写的通俗版（含表格、问答、决策流程图）</li>
-    <li style="margin-bottom: 6px;">一份 PDF 版本（排版规范，可直接打印）</li>
+  <p style="margin: 0 0 14px 0; font-size: 16px; line-height: 1.9;">几分钟后，Andy 交付了三份文档：</p>
+  <ul style="margin: 0 0 14px 0; padding-left: 20px;">
+    <li style="margin-bottom: 8px;">一份深度研究报告（专业版，约 8000 字，引用 NCCN·CSCO·IASLC 权威指南）</li>
+    <li style="margin-bottom: 8px;">一份为患者家属改写的通俗版（含治疗决策流程图、Q&amp;A、家属须知）</li>
+    <li style="margin-bottom: 8px;">一份 PDF 版本（排版规范，可直接打印带去医院）</li>
   </ul>
-  <p style="margin: 0;">用户看到的是「结果」。系统内部发生的，是一条完整的调度链。</p>
+  <p style="margin: 0; font-size: 16px; line-height: 1.9;">这篇文章讲的是：这件事是怎么发生的。</p>
 </section>
 
-<!-- ===== 二 ===== -->
-<section style="margin-bottom: 32px;">
-  <h2 style="font-size: 20px; font-weight: 700; color: #1a1a1a; border-bottom: 2px solid #1677ff; padding-bottom: 8px; margin-bottom: 16px;">二、NanoClaw 整体架构</h2>
-  <p style="margin: 0 0 16px 0;"><strong>NanoClaw</strong> 是基于 Claude Code SDK 构建的个人 AI 助手平台。<strong>Claude 不只是聊天机器人，而是一个有工具调用能力、有持久记忆、有专业技能包的 Agent</strong>。</p>
-  <section style="background: #fafafa; border: 1px solid #e8e8e8; border-radius: 8px; padding: 20px; margin-bottom: 16px; text-align: center;">
-    <div style="display: inline-flex; flex-direction: column; align-items: center; gap: 0; text-align: center;">
-      <div style="background: #1677ff; color: white; border-radius: 6px; padding: 8px 20px; font-size: 14px; font-weight: 600;">用户（WhatsApp / Discord / Telegram）</div>
-      <div style="color: #999; font-size: 20px; line-height: 1.2; padding: 2px 0;">↓</div>
-      <div style="background: #f0f7ff; border: 1px solid #91caff; border-radius: 6px; padding: 8px 20px; font-size: 14px;">NanoClaw 消息路由层</div>
-      <div style="color: #999; font-size: 20px; line-height: 1.2; padding: 2px 0;">↓</div>
-      <div style="background: #fff7e6; border: 1px solid #ffd591; border-radius: 6px; padding: 8px 20px; font-size: 14px; font-weight: 600;">Claude Code Agent（Andy）</div>
-      <div style="color: #999; font-size: 20px; line-height: 1.2; padding: 2px 0;">↓</div>
-      <div style="background: #f6ffed; border: 1px solid #b7eb8f; border-radius: 6px; padding: 8px 20px; font-size: 14px;">技能系统（150+ Skills）</div>
-      <div style="color: #999; font-size: 20px; line-height: 1.2; padding: 2px 0;">↓</div>
-      <div style="background: #f9f0ff; border: 1px solid #d3adf7; border-radius: 6px; padding: 8px 20px; font-size: 14px;">结构化文档（Markdown / PDF）</div>
-    </div>
+<!-- 分割线 -->
+<section style="text-align: center; margin: 28px 0;">
+  <div style="display: inline-block; width: 40px; height: 1px; background: #d9d9d9; vertical-align: middle; margin: 0 8px;"></div>
+  <span style="font-size: 13px; color: #bbb;">◆</span>
+  <div style="display: inline-block; width: 40px; height: 1px; background: #d9d9d9; vertical-align: middle; margin: 0 8px;"></div>
+</section>
+
+<!-- ===== 第一层：表象——用户看到了什么 ===== -->
+<section style="margin-bottom: 36px;">
+  <h2 style="font-size: 21px; font-weight: 700; color: #1a1a1a; margin: 0 0 6px 0;">第一层：表象</h2>
+  <p style="font-size: 13px; color: #999; margin: 0 0 18px 0; letter-spacing: 1px;">用户感知层——发了一条消息，拿到了报告</p>
+
+  <p style="margin: 0 0 14px 0;">对用户来说，整个过程极其简单：一条消息，等几分钟，拿到文档。</p>
+  <p style="margin: 0 0 14px 0;">但「简单」是设计出来的。它背后有一套完整的调度链在运作——就像你按下电梯按钮，感受到的只是门开了，而不是电机、钢缆、配重系统的协作。</p>
+
+  <section style="background: #f0f7ff; border-left: 4px solid #1677ff; border-radius: 0 8px 8px 0; padding: 16px 20px; margin-bottom: 0;">
+    <p style="margin: 0; font-size: 14px; color: #003a8c; line-height: 1.8;">💡 这不是「AI 做了什么」的问题，而是「一个系统如何被设计成让 AI 能做到这件事」的问题。</p>
   </section>
 </section>
 
-<!-- ===== 三 ===== -->
-<section style="margin-bottom: 32px;">
-  <h2 style="font-size: 20px; font-weight: 700; color: #1a1a1a; border-bottom: 2px solid #1677ff; padding-bottom: 8px; margin-bottom: 16px;">三、技能系统：Claude Code 的「专家插件」</h2>
-  <p style="margin: 0 0 12px 0;">每个技能（Skill）是一个独立知识包，核心是 <code style="background: #f5f5f5; padding: 2px 6px; border-radius: 4px; font-size: 13px; color: #e83e8c;">SKILL.md</code>，定义<strong>触发条件和执行规范</strong>。Claude 通过语义匹配自动激活最相关的技能组合。</p>
-  <p style="margin: 0 0 14px 0;">分析「肺癌报告」这个任务，实际激活了：</p>
-  <table style="width: 100%; border-collapse: collapse; font-size: 14px; margin-bottom: 14px;">
+<!-- ===== 第二层：黑盒——NanoClaw 是什么 ===== -->
+<section style="margin-bottom: 36px;">
+  <h2 style="font-size: 21px; font-weight: 700; color: #1a1a1a; margin: 0 0 6px 0;">第二层：黑盒</h2>
+  <p style="font-size: 13px; color: #999; margin: 0 0 18px 0; letter-spacing: 1px;">产品层——NanoClaw 是什么</p>
+
+  <p style="margin: 0 0 14px 0;"><strong>NanoClaw</strong> 是基于 Claude Code SDK 构建的个人 AI 助手平台。它和普通 AI 聊天产品的根本区别在于：</p>
+
+  <table style="width: 100%; border-collapse: collapse; font-size: 14px; margin-bottom: 18px;">
+    <thead><tr style="background: #f5f5f5;">
+      <th style="padding: 10px 14px; text-align: left; border-bottom: 2px solid #e8e8e8;">普通 AI 助手</th>
+      <th style="padding: 10px 14px; text-align: left; border-bottom: 2px solid #e8e8e8; color: #1677ff;">NanoClaw / Andy</th>
+    </tr></thead>
+    <tbody>
+      <tr><td style="padding: 8px 14px; border-bottom: 1px solid #f0f0f0; color: #666;">回答问题</td><td style="padding: 8px 14px; border-bottom: 1px solid #f0f0f0;">回答问题 + <strong>执行任务</strong></td></tr>
+      <tr style="background: #fafafa;"><td style="padding: 8px 14px; border-bottom: 1px solid #f0f0f0; color: #666;">依赖训练数据，无法获取最新信息</td><td style="padding: 8px 14px; border-bottom: 1px solid #f0f0f0;"><strong>实时检索</strong> PubMed、NCCN 等权威来源</td></tr>
+      <tr><td style="padding: 8px 14px; border-bottom: 1px solid #f0f0f0; color: #666;">每次对话独立，没有记忆</td><td style="padding: 8px 14px; border-bottom: 1px solid #f0f0f0;"><strong>持久记忆</strong>，知道你是谁、做过什么</td></tr>
+      <tr style="background: #fafafa;"><td style="padding: 8px 14px; color: #666;">输出聊天文字</td><td style="padding: 8px 14px;">输出 <strong>Markdown + PDF 等结构化文档</strong></td></tr>
+    </tbody>
+  </table>
+
+  <p style="margin: 0 0 14px 0;">简单说：普通 AI 是「回答问题的」，Andy 是「完成工作的」。</p>
+  <p style="margin: 0;">这个区别不来自模型本身更聪明，而来自系统的设计方式——尤其是<strong>技能系统</strong>。</p>
+</section>
+
+<!-- ===== 第三层：拆开盒子——技能系统 ===== -->
+<section style="margin-bottom: 36px;">
+  <h2 style="font-size: 21px; font-weight: 700; color: #1a1a1a; margin: 0 0 6px 0;">第三层：拆开盒子</h2>
+  <p style="font-size: 13px; color: #999; margin: 0 0 18px 0; letter-spacing: 1px;">技术层——技能系统是什么，怎么工作</p>
+
+  <p style="margin: 0 0 14px 0;">这是核心机制，也是让这个系统区别于「大模型套壳」的关键。</p>
+
+  <p style="margin: 0 0 10px 0; font-size: 15px; font-weight: 600;">技能（Skill）= 领域知识的容器</p>
+  <p style="margin: 0 0 14px 0;">NanoClaw 有 150+ 个技能，每个技能是一个独立目录，核心是一份 <code style="background: #f5f5f5; padding: 2px 6px; border-radius: 4px; font-size: 13px; color: #e83e8c;">SKILL.md</code> 文件——它告诉 Claude 这个技能是做什么的、怎么做、有哪些规范要遵守。</p>
+
+  <section style="background: #1e1e2e; border-radius: 8px; padding: 16px 20px; margin-bottom: 16px; font-family: 'Menlo', 'Monaco', monospace; font-size: 12px; line-height: 1.8; color: #cdd6f4;">
+    <span style="color: #6c7086;"># treatment-plans/SKILL.md（片段）</span><br>
+    <span style="color: #89dceb;">---</span><br>
+    <span style="color: #a6e3a1;">name:</span> treatment-plans<br>
+    <span style="color: #a6e3a1;">description:</span> Generate concise medical treatment plans for clinical specialties...<br>
+    <span style="color: #a6e3a1;">allowed-tools:</span> Read Write Edit Bash<br>
+    <span style="color: #89dceb;">---</span><br><br>
+    <span style="color: #6c7086;"># 正文：输出结构、SMART 目标框架、引用格式规范……</span>
+  </section>
+
+  <p style="margin: 0 0 14px 0;">当 Claude 收到「肺癌治疗方案研究报告」这个任务，它会扫描所有技能的 description，<strong>语义匹配</strong>出最相关的组合，然后把对应的 SKILL.md 读进来，等于临时变成了一个「懂这件事的专家」。</p>
+
+  <p style="margin: 0 0 10px 0; font-size: 15px; font-weight: 600;">这次任务激活了 5 个技能</p>
+  <table style="width: 100%; border-collapse: collapse; font-size: 14px; margin-bottom: 16px;">
     <thead><tr style="background: #1677ff; color: white;">
       <th style="padding: 10px 12px; text-align: left;">阶段</th>
       <th style="padding: 10px 12px; text-align: left;">技能</th>
       <th style="padding: 10px 12px; text-align: left;">作用</th>
     </tr></thead>
     <tbody>
-      <tr style="background: #fafafa;"><td style="padding: 8px 12px; border-bottom: 1px solid #f0f0f0;">文献检索</td><td style="padding: 8px 12px; border-bottom: 1px solid #f0f0f0;"><code style="background:#f0f0f0;padding:1px 5px;border-radius:3px;font-size:12px;">literature-review</code> + <code style="background:#f0f0f0;padding:1px 5px;border-radius:3px;font-size:12px;">parallel-web</code></td><td style="padding: 8px 12px; border-bottom: 1px solid #f0f0f0;">PubMed / arXiv</td></tr>
-      <tr><td style="padding: 8px 12px; border-bottom: 1px solid #f0f0f0;">指南查询</td><td style="padding: 8px 12px; border-bottom: 1px solid #f0f0f0;"><code style="background:#f0f0f0;padding:1px 5px;border-radius:3px;font-size:12px;">research-lookup</code></td><td style="padding: 8px 12px; border-bottom: 1px solid #f0f0f0;">NCCN / CSCO / IASLC</td></tr>
-      <tr style="background: #fafafa;"><td style="padding: 8px 12px; border-bottom: 1px solid #f0f0f0;">PDF 处理</td><td style="padding: 8px 12px; border-bottom: 1px solid #f0f0f0;"><code style="background:#f0f0f0;padding:1px 5px;border-radius:3px;font-size:12px;">pdf</code></td><td style="padding: 8px 12px; border-bottom: 1px solid #f0f0f0;">文本提取</td></tr>
-      <tr><td style="padding: 8px 12px; border-bottom: 1px solid #f0f0f0;">报告撰写</td><td style="padding: 8px 12px; border-bottom: 1px solid #f0f0f0;"><code style="background:#f0f0f0;padding:1px 5px;border-radius:3px;font-size:12px;">clinical-reports</code></td><td style="padding: 8px 12px; border-bottom: 1px solid #f0f0f0;">CARE 临床规范</td></tr>
-      <tr style="background: #fafafa;"><td style="padding: 8px 12px;">患者版改写</td><td style="padding: 8px 12px;"><code style="background:#f0f0f0;padding:1px 5px;border-radius:3px;font-size:12px;">treatment-plans</code></td><td style="padding: 8px 12px;">SMART 框架</td></tr>
+      <tr style="background: #fafafa;"><td style="padding: 8px 12px; border-bottom: 1px solid #f0f0f0;">① 文献检索</td><td style="padding: 8px 12px; border-bottom: 1px solid #f0f0f0;"><code style="background:#f0f0f0;padding:1px 5px;border-radius:3px;font-size:12px;">literature-review</code> <code style="background:#f0f0f0;padding:1px 5px;border-radius:3px;font-size:12px;">parallel-web</code></td><td style="padding: 8px 12px; border-bottom: 1px solid #f0f0f0;">全网实时搜索</td></tr>
+      <tr><td style="padding: 8px 12px; border-bottom: 1px solid #f0f0f0;">② 学术查询</td><td style="padding: 8px 12px; border-bottom: 1px solid #f0f0f0;"><code style="background:#f0f0f0;padding:1px 5px;border-radius:3px;font-size:12px;">research-lookup</code></td><td style="padding: 8px 12px; border-bottom: 1px solid #f0f0f0;">PubMed / NCCN 指南</td></tr>
+      <tr style="background: #fafafa;"><td style="padding: 8px 12px; border-bottom: 1px solid #f0f0f0;">③ 报告撰写</td><td style="padding: 8px 12px; border-bottom: 1px solid #f0f0f0;"><code style="background:#f0f0f0;padding:1px 5px;border-radius:3px;font-size:12px;">clinical-reports</code></td><td style="padding: 8px 12px; border-bottom: 1px solid #f0f0f0;">CARE 临床规范结构</td></tr>
+      <tr><td style="padding: 8px 12px; border-bottom: 1px solid #f0f0f0;">④ 通俗改写</td><td style="padding: 8px 12px; border-bottom: 1px solid #f0f0f0;"><code style="background:#f0f0f0;padding:1px 5px;border-radius:3px;font-size:12px;">treatment-plans</code></td><td style="padding: 8px 12px; border-bottom: 1px solid #f0f0f0;">SMART 框架，面向家属</td></tr>
+      <tr style="background: #fafafa;"><td style="padding: 8px 12px;">⑤ PDF 输出</td><td style="padding: 8px 12px;"><code style="background:#f0f0f0;padding:1px 5px;border-radius:3px;font-size:12px;">pdf</code></td><td style="padding: 8px 12px;">LaTeX 排版，可打印</td></tr>
     </tbody>
   </table>
+
   <section style="background: #fff7e6; border: 1px solid #ffd591; border-radius: 8px; padding: 12px 16px;">
-    <p style="margin: 0; font-size: 14px; color: #7c4a00;">💡 这不是预设工作流，而是 Claude 理解任务后<strong>动态规划</strong>的调用顺序。每次任务不同，技能组合也不同。</p>
+    <p style="margin: 0; font-size: 14px; color: #7c4a00;">💡 <strong>关键点：</strong>这不是预设的固定工作流。每次任务不同，Claude 动态规划的技能组合也不同。技能系统让「领域专业知识」和「通用推理能力」分离——前者可以随时替换升级，后者由 Claude 模型本体负责。</p>
   </section>
 </section>
 
-<!-- ===== 四 ===== -->
-<section style="margin-bottom: 32px;">
-  <h2 style="font-size: 20px; font-weight: 700; color: #1a1a1a; border-bottom: 2px solid #1677ff; padding-bottom: 8px; margin-bottom: 16px;">四、文献检索：两级引擎协同</h2>
-  <p style="margin: 0 0 10px 0;"><strong>parallel-web</strong> 返回带引用的综合摘要（而非蓝色链接列表），<strong>research-lookup</strong> 路由到 Perplexity 接入 PubMed / Semantic Scholar。两级结果合并后，Claude 去重、核实、归纳——这就是为什么报告里能看到「JCOG0802 + CALGB 140503 双试验验证」这类具体引用。</p>
-  <section style="background: #f0f7ff; border: 1px solid #91caff; border-radius: 8px; padding: 14px 16px;">
-    <p style="margin: 0; font-size: 14px; color: #003a8c; line-height: 1.8;">「根据 NCCN 2025 指南（V2.2025），IA 期 NSCLC 首选亚肺叶切除术（基于 JCOG0802 试验，5 年总生存率 94.3%）……[1][2][3]」</p>
+<!-- ===== 第四层：引擎室——检索与生成 ===== -->
+<section style="margin-bottom: 36px;">
+  <h2 style="font-size: 21px; font-weight: 700; color: #1a1a1a; margin: 0 0 6px 0;">第四层：引擎室</h2>
+  <p style="font-size: 13px; color: #999; margin: 0 0 18px 0; letter-spacing: 1px;">执行层——检索是怎么做的，报告是怎么生成的</p>
+
+  <p style="margin: 0 0 12px 0; font-size: 15px; font-weight: 600;">为什么不让 AI 直接「凭记忆」回答？</p>
+  <p style="margin: 0 0 14px 0;">医学领域的信息更新极快。NCCN 指南每年更新多版，2025 年新增的试验数据（ADAURA 最终结果、ALINA 数据）是模型训练截止日期后发布的——模型根本不知道。</p>
+  <p style="margin: 0 0 14px 0;">靠训练数据「背诵」医学知识，是高风险的做法。所以 Andy 的做法是：<strong>先查，再写</strong>。</p>
+
+  <p style="margin: 0 0 10px 0; font-size: 15px; font-weight: 600;">两级检索引擎</p>
+
+  <section style="background: #f6ffed; border: 1px solid #b7eb8f; border-radius: 8px; padding: 14px 16px; margin-bottom: 10px;">
+    <p style="margin: 0 0 6px 0; font-size: 14px; font-weight: 600; color: #135200;">parallel-web → 综合网络检索</p>
+    <p style="margin: 0; font-size: 14px; color: #333; line-height: 1.8;">返回的不是 10 个蓝色链接，而是带引用的综合摘要：<br>「根据 NCCN 2025 指南（V2.2025），IA 期 NSCLC 首选亚肺叶切除术（基于 JCOG0802 试验，5 年总生存率 94.3%）……[1][2][3]」</p>
+  </section>
+  <section style="background: #f0f7ff; border: 1px solid #91caff; border-radius: 8px; padding: 14px 16px; margin-bottom: 16px;">
+    <p style="margin: 0 0 6px 0; font-size: 14px; font-weight: 600; color: #003a8c;">research-lookup → 学术论文精确查询</p>
+    <p style="margin: 0; font-size: 14px; color: #333; line-height: 1.8;">路由到 Perplexity，接入 PubMed、Semantic Scholar、bioRxiv，专攻学术数据库。两级结果合并，Claude 去重、核实、归纳——这就是报告里能出现「JCOG0802 + CALGB 140503 双试验验证」的原因。</p>
+  </section>
+
+  <p style="margin: 0 0 10px 0; font-size: 15px; font-weight: 600;">两个版本的分工</p>
+  <p style="margin: 0 0 14px 0;">检索完成后，<code style="background: #f5f5f5; padding: 2px 6px; border-radius: 4px; font-size: 13px; color: #e83e8c;">clinical-reports</code> 技能负责生成专业版报告，<code style="background: #f5f5f5; padding: 2px 6px; border-radius: 4px; font-size: 13px; color: #e83e8c;">treatment-plans</code> 技能随后将它改写成家属版。改写不是「简化」，而是换了框架：</p>
+  <table style="width: 100%; border-collapse: collapse; font-size: 14px; margin-bottom: 0;">
+    <thead><tr style="background: #f5f5f5;">
+      <th style="padding: 9px 12px; border-bottom: 2px solid #e8e8e8; text-align: left;">专业版（医生视角）</th>
+      <th style="padding: 9px 12px; border-bottom: 2px solid #e8e8e8; text-align: left; color: #1677ff;">家属版（SMART 框架）</th>
+    </tr></thead>
+    <tbody>
+      <tr><td style="padding: 8px 12px; border-bottom: 1px solid #f0f0f0; color: #666;">「建议亚肺叶切除术」</td><td style="padding: 8px 12px; border-bottom: 1px solid #f0f0f0; color: #135200;">「IA 期：2 周内与胸外科会诊，评估 VATS 肺段切除适应症，住院约 3–5 天」</td></tr>
+      <tr style="background: #fafafa;"><td style="padding: 8px 12px; color: #666;">「EGFR 突变阳性者推荐奥希替尼辅助治疗」</td><td style="padding: 8px 12px; color: #135200;">「如果基因检测显示 EGFR 阳性，请告诉医生：我了解奥希替尼辅助治疗」</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ===== 第五层：设计哲学——为什么这样设计 ===== -->
+<section style="margin-bottom: 36px;">
+  <h2 style="font-size: 21px; font-weight: 700; color: #1a1a1a; margin: 0 0 6px 0;">第五层：设计哲学</h2>
+  <p style="font-size: 13px; color: #999; margin: 0 0 18px 0; letter-spacing: 1px;">架构层——为什么这样设计，局限是什么</p>
+
+  <p style="margin: 0 0 12px 0; font-size: 15px; font-weight: 600;">为什么用「技能系统」而不是「一个超长的系统提示」？</p>
+  <p style="margin: 0 0 14px 0;">传统做法是把所有知识都塞进系统提示（System Prompt）。问题是：塞进去的知识不能更新、不能组合、不能独立维护。技能系统是「插件架构」——医学领域的知识升级不需要动 Claude 本体，只需要更新对应的 SKILL.md。这让系统有了真正的可扩展性。</p>
+
+  <p style="margin: 0 0 12px 0; font-size: 15px; font-weight: 600;">记忆让 AI 产生复利</p>
+  <p style="margin: 0 0 14px 0;">NanoClaw 把对话和生成的文档持久化存储。这意味着：</p>
+  <ul style="margin: 0 0 16px 0; padding-left: 20px; font-size: 14px;">
+    <li style="margin-bottom: 6px;">第一次：「帮我研究肺癌」→ 检索 + 分析 + 生成（5–8 分钟）</li>
+    <li style="margin-bottom: 6px;">第二次：「把报告再发我一遍」→ 直接读文件（5 秒）</li>
+    <li style="margin-bottom: 6px;">第三次：「加入 KRAS 突变的最新进展」→ 增量检索 + 局部更新</li>
+  </ul>
+  <p style="margin: 0 0 16px 0;">每次对话不是从零开始，而是在已有基础上叠加——知识复利增长。</p>
+
+  <p style="margin: 0 0 10px 0; font-size: 15px; font-weight: 600;">这个系统的边界</p>
+  <section style="background: #fff2f0; border: 1px solid #ffccc7; border-radius: 8px; padding: 14px 16px;">
+    <p style="margin: 0 0 8px 0; font-size: 14px; font-weight: 600; color: #a8071a;">⚠️ 必须说清楚的局限</p>
+    <ul style="margin: 0; padding-left: 18px; font-size: 14px; color: #555; line-height: 1.9;">
+      <li>模型仍然可能误读文献或综合出错误结论</li>
+      <li>生成的报告<strong>不能替代医生诊断</strong>，仅供参考和辅助理解</li>
+      <li>检索依赖 API，无网络或 key 失效时会降级为纯模型能力</li>
+    </ul>
   </section>
 </section>
 
-<!-- ===== 五 ===== -->
-<section style="margin-bottom: 32px;">
-  <h2 style="font-size: 20px; font-weight: 700; color: #1a1a1a; border-bottom: 2px solid #1677ff; padding-bottom: 8px; margin-bottom: 16px;">五、为什么这个架构有效？</h2>
-  <section style="background: #f6ffed; border: 1px solid #b7eb8f; border-radius: 8px; padding: 12px 16px; margin-bottom: 10px;">
-    <p style="margin: 0 0 4px 0; font-weight: 600; color: #135200;">专业知识与通用推理分离</p>
-    <p style="margin: 0; font-size: 14px; color: #444;">技能系统让领域知识<strong>可组合、可替换、可独立更新</strong>，就像软件的插件架构。</p>
-  </section>
-  <section style="background: #f0f7ff; border: 1px solid #91caff; border-radius: 8px; padding: 12px 16px; margin-bottom: 10px;">
-    <p style="margin: 0 0 4px 0; font-weight: 600; color: #003a8c;">工具调用 vs 幻觉</p>
-    <p style="margin: 0; font-size: 14px; color: #444;">实时检索提供带来源的信息，比让模型凭训练数据「背诵」医学知识可靠得多。</p>
-  </section>
-  <section style="background: #fff7e6; border: 1px solid #ffd591; border-radius: 8px; padding: 12px 16px; margin-bottom: 10px;">
-    <p style="margin: 0 0 4px 0; font-weight: 600; color: #7c4a00;">记忆与复利增长</p>
-    <p style="margin: 0; font-size: 14px; color: #444;">对话和文档持久化存储，第二次问同一主题时直接读文件（5 秒），第三次可增量更新——知识复利增长。</p>
-  </section>
-  <section style="background: #fff2f0; border: 1px solid #ffccc7; border-radius: 8px; padding: 12px 16px;">
-    <p style="margin: 0 0 4px 0; font-weight: 600; color: #a8071a;">局限：医学准确性</p>
-    <p style="margin: 0; font-size: 14px; color: #444;">模型仍可能误读文献，生成的报告<strong>不能替代医生诊断</strong>，仅供参考。</p>
-  </section>
+<!-- 结语 -->
+<section style="background: #fafafa; border: 1px solid #e8e8e8; border-radius: 10px; padding: 22px 24px; margin-bottom: 32px;">
+  <p style="margin: 0 0 12px 0; font-size: 15px; line-height: 1.9;">「AI 分析医学报告」这件事，表面上是大模型的语言能力，内核是一套工程化的 Agent 架构：<strong>技能系统负责领域专业化，检索引擎负责信息准确性，记忆系统负责知识积累，文档生成负责可用性</strong>。</p>
+  <p style="margin: 0; font-size: 15px; line-height: 1.9; color: #666;">这让 AI 不只是「回答问题」，而是在每次对话中构建可复用的知识产出。</p>
 </section>
 
-<!-- ===== 分割线 ===== -->
-<section style="text-align: center; margin: 40px 0;">
+<!-- 分割线：进入附录 -->
+<section style="text-align: center; margin: 40px 0 32px 0;">
   <div style="display: inline-block; background: linear-gradient(90deg, #1677ff, #52c41a); height: 3px; width: 60px; border-radius: 2px; margin: 0 8px; vertical-align: middle;"></div>
   <span style="font-size: 13px; color: #999; letter-spacing: 3px;">完整报告附录</span>
   <div style="display: inline-block; background: linear-gradient(90deg, #52c41a, #1677ff); height: 3px; width: 60px; border-radius: 2px; margin: 0 8px; vertical-align: middle;"></div>
@@ -191,12 +270,10 @@
   <!-- 三、手术治疗 -->
   <section style="margin-bottom: 28px;">
     <h3 style="font-size: 18px; font-weight: 700; color: #003a8c; background: #f0f7ff; padding: 10px 16px; border-radius: 6px; margin: 0 0 16px 0; border-left: 4px solid #1677ff;">三、手术治疗——最重要的根治手段</h3>
-
     <p style="margin: 0 0 10px 0; font-size: 15px;">对于可以手术的早期肺癌患者，<strong>手术切除是最主要的根治手段</strong>。</p>
     <section style="background: #f6ffed; border: 1px solid #b7eb8f; border-radius: 6px; padding: 10px 14px; margin-bottom: 16px;">
       <p style="margin: 0; font-size: 14px; color: #135200;">✅ <strong>手术后 5 年生存率：</strong>IA 期约 90%~97%，IB 期约 82%~87%，IIA 期约 72%~78%</p>
     </section>
-
     <p style="margin: 0 0 8px 0; font-size: 15px; font-weight: 600;">🔬 重大研究发现：切多少肺？（JCOG0802 + CALGB 140503）</p>
     <section style="background: #fff7e6; border: 1px solid #ffd591; border-radius: 8px; padding: 14px 16px; margin-bottom: 14px;">
       <p style="margin: 0 0 8px 0; font-size: 14px;"><strong>以前：</strong>必须切掉一整个"肺叶"才算根治</p>
@@ -221,7 +298,6 @@
     <section style="background: #f6ffed; border-left: 4px solid #52c41a; border-radius: 0 6px 6px 0; padding: 12px 16px; margin-bottom: 14px;">
       <p style="margin: 0; font-size: 14px; color: #135200;">💡 <strong>打个比方：</strong>手术是"拔草"，辅助治疗是"除草剂"——确保草根也清干净。是否需要，取决于分期 + 基因检测结果 + 高危因素。</p>
     </section>
-
     <p style="margin: 0 0 8px 0; font-size: 15px; font-weight: 600; color: #531dab;">⭐ EGFR 突变阳性 → 奥希替尼（最重要）</p>
     <p style="margin: 0 0 10px 0; font-size: 14px;">EGFR 突变是中国肺癌患者中最常见的基因突变，腺癌患者中约 <strong>40%~50%</strong> 携带。</p>
     <section style="background: #f9f0ff; border: 1px solid #d3adf7; border-radius: 8px; padding: 14px 16px; margin-bottom: 10px;">
@@ -234,7 +310,6 @@
     <section style="background: #fff7e6; border: 1px solid #ffd591; border-radius: 6px; padding: 10px 14px; margin-bottom: 16px;">
       <p style="margin: 0; font-size: 13.5px; color: #7c4a00;">💡 <strong>家属提示：</strong>如果报告显示"EGFR 突变阳性"，请一定询问医生是否适合使用奥希替尼辅助治疗！</p>
     </section>
-
     <p style="margin: 0 0 8px 0; font-size: 15px; font-weight: 600; color: #531dab;">⭐ ALK 融合阳性 → 阿来替尼</p>
     <section style="background: #f9f0ff; border: 1px solid #d3adf7; border-radius: 8px; padding: 14px 16px; margin-bottom: 10px;">
       <p style="margin: 0 0 6px 0; font-size: 13.5px; font-weight: 600; color: #531dab;">🔬 ALINA 试验（2025 年 ESMO 最新数据）</p>
@@ -242,7 +317,6 @@
       • <strong>4 年无复发生存率：75.5%</strong> vs 化疗组 47.0%<br>
       • 脑转移发生率接近于零</p>
     </section>
-
     <p style="margin: 0 0 8px 0; font-size: 15px; font-weight: 600;">辅助化疗（适用于 EGFR/ALK 均阴性患者）</p>
     <table style="width: 100%; border-collapse: collapse; font-size: 13.5px; margin-bottom: 14px;">
       <thead><tr style="background: #f0f7ff;"><th style="padding: 8px 10px; border: 1px solid #d6e4ff;">分期</th><th style="padding: 8px 10px; border: 1px solid #d6e4ff;">化疗建议</th><th style="padding: 8px 10px; border: 1px solid #d6e4ff;">常用方案</th></tr></thead>
@@ -253,7 +327,6 @@
         <tr style="background: #fafafa;"><td style="padding: 7px 10px; border: 1px solid #f0f0f0;"><strong>IIA 期</strong></td><td style="padding: 7px 10px; border: 1px solid #f0f0f0; color: #389e0d;">✅ 建议</td><td style="padding: 7px 10px; border: 1px solid #f0f0f0;">顺铂+长春瑞滨</td></tr>
       </tbody>
     </table>
-
     <p style="margin: 0 0 8px 0; font-size: 14px; font-weight: 600;">围手术期全程管理（IIB–IIIA 期）</p>
     <section style="background: #f9f0ff; border: 1px solid #d3adf7; border-radius: 6px; padding: 10px 14px;">
       <p style="margin: 0; font-size: 13.5px; color: #333; line-height: 1.8;">🔬 <strong>CheckMate 77T（2025 年最新数据）：</strong>手术前后全程使用纳武利尤单抗（O 药）+ 化疗，比单纯化疗将复发风险降低了 <strong>42%</strong>，总生存获益已得到证实。</p>
