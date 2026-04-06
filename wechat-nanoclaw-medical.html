@@ -8,7 +8,7 @@
 
 <!--
   ============================================================
-  微信公众号富文本编辑器格式
+  微信公众号富文本编辑器格式（含完整医学报告）
   使用说明：在微信公众号后台「新建图文」→ 点右上角「</>」切换到 HTML 源码模式
   → 将下方 <body> 内容完整粘贴进去即可
   ============================================================
@@ -18,30 +18,29 @@
 
 <!-- 题图区 -->
 <section style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); border-radius: 12px; padding: 40px 32px; margin-bottom: 32px; text-align: center;">
-  <p style="color: #e0e0e0; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; margin: 0 0 12px 0;">NanoClaw 技术解析</p>
+  <p style="color: #e0e0e0; font-size: 13px; letter-spacing: 3px; margin: 0 0 12px 0;">NanoClaw 技术解析</p>
   <h1 style="color: #ffffff; font-size: 26px; font-weight: 700; line-height: 1.4; margin: 0 0 12px 0; letter-spacing: -0.5px;">AI 是怎么读懂<br>一份医学报告的？</h1>
-  <p style="color: #a0b4cc; font-size: 14px; margin: 0;">从「帮我分析这份肺癌报告」到交付全过程</p>
+  <p style="color: #a0b4cc; font-size: 14px; margin: 0 0 16px 0;">从「帮我分析这份肺癌报告」到交付全过程</p>
+  <p style="color: #7a9cbd; font-size: 12px; margin: 0;">含完整附录：早期肺癌治疗方案患者家属版（2026）</p>
 </section>
 
 <!-- 导读 -->
 <section style="background: #f0f7ff; border-left: 4px solid #1677ff; border-radius: 0 8px 8px 0; padding: 16px 20px; margin-bottom: 28px;">
   <p style="margin: 0; color: #444; font-size: 15px; line-height: 1.8;">几天前，欧阳哲仁让 AI 助手 Andy 分析了一份《早期肺癌治疗方案患者家属版（2026）》医学报告，最终交付了结构完整、引用 NCCN·CSCO·IASLC 权威指南的深度研究文档。</p>
-  <p style="margin: 10px 0 0 0; color: #444; font-size: 15px; line-height: 1.8;">整个过程对用户来说只是「发一条消息、等几分钟、拿到报告」。但在这背后，一套精心设计的系统正在运转。这篇文章拆解它内部的完整机制。</p>
+  <p style="margin: 10px 0 0 0; color: #444; font-size: 15px; line-height: 1.8;">整个过程对用户来说只是「发一条消息、等几分钟、拿到报告」。但在这背后，一套精心设计的系统正在运转。本文拆解完整机制，并附上 AI 实际生成的完整医学报告供读者参考。</p>
 </section>
 
 <!-- ===== 一 ===== -->
 <section style="margin-bottom: 32px;">
   <h2 style="font-size: 20px; font-weight: 700; color: #1a1a1a; border-bottom: 2px solid #1677ff; padding-bottom: 8px; margin-bottom: 16px;">一、从用户视角看：一条消息引发了什么</h2>
-
   <section style="background: #1e1e2e; border-radius: 8px; padding: 16px 20px; margin-bottom: 16px;">
     <p style="margin: 0; font-family: 'Menlo', 'Monaco', monospace; font-size: 13px; color: #cdd6f4; line-height: 1.7;">
       <span style="color: #89b4fa;">欧阳哲仁：</span> 帮我深度研究下肺癌早期的治疗方案，需要一篇简体中文报告，专业，准确
     </p>
   </section>
-
   <p style="margin: 0 0 12px 0;">Andy 收到这条消息，几分钟后交付了：</p>
   <ul style="margin: 0 0 12px 0; padding-left: 20px;">
-    <li style="margin-bottom: 6px;">一份 Markdown 格式的深度研究报告（专业版，约 8000 字）</li>
+    <li style="margin-bottom: 6px;">一份深度研究报告（专业版，约 8000 字）</li>
     <li style="margin-bottom: 6px;">一份为患者家属改写的通俗版（含表格、问答、决策流程图）</li>
     <li style="margin-bottom: 6px;">一份 PDF 版本（排版规范，可直接打印）</li>
   </ul>
@@ -50,307 +49,375 @@
 
 <!-- ===== 二 ===== -->
 <section style="margin-bottom: 32px;">
-  <h2 style="font-size: 20px; font-weight: 700; color: #1a1a1a; border-bottom: 2px solid #1677ff; padding-bottom: 8px; margin-bottom: 16px;">二、NanoClaw 是什么？整体架构</h2>
-
-  <p style="margin: 0 0 16px 0;"><strong>NanoClaw</strong> 是基于 Claude Code SDK 构建的个人 AI 助手平台。它的特别之处在于：<strong>Claude 不只是聊天机器人，而是一个有工具调用能力、有持久记忆、有专业技能包的 Agent</strong>。</p>
-
-  <!-- 架构图 -->
-  <section style="background: #fafafa; border: 1px solid #e8e8e8; border-radius: 8px; padding: 20px; margin-bottom: 16px;">
-    <div style="display: flex; flex-direction: column; align-items: center; gap: 0;">
-      <div style="background: #1677ff; color: white; border-radius: 6px; padding: 8px 24px; font-size: 14px; font-weight: 600;">用户（WhatsApp / Discord / Telegram）</div>
-      <div style="color: #999; font-size: 18px; line-height: 1; padding: 4px 0;">↓</div>
-      <div style="background: #f0f7ff; border: 1px solid #91caff; border-radius: 6px; padding: 8px 24px; font-size: 14px;">NanoClaw 消息路由层</div>
-      <div style="color: #999; font-size: 18px; line-height: 1; padding: 4px 0;">↓</div>
-      <div style="background: #fff7e6; border: 1px solid #ffd591; border-radius: 6px; padding: 8px 24px; font-size: 14px; font-weight: 600;">Claude Code Agent（「Andy」）</div>
-      <div style="color: #999; font-size: 18px; line-height: 1; padding: 4px 0;">↓</div>
-      <div style="background: #f6ffed; border: 1px solid #b7eb8f; border-radius: 6px; padding: 8px 24px; font-size: 14px;">技能系统（Skills）</div>
-      <div style="color: #999; font-size: 18px; line-height: 1; padding: 4px 0;">↓</div>
-      <div style="background: #fafafa; border: 1px solid #d9d9d9; border-radius: 6px; padding: 8px 24px; font-size: 14px;">工具链（Web Search / Bash / File I/O / API）</div>
-      <div style="color: #999; font-size: 18px; line-height: 1; padding: 4px 0;">↓</div>
-      <div style="background: #f9f0ff; border: 1px solid #d3adf7; border-radius: 6px; padding: 8px 24px; font-size: 14px;">结构化文档（Markdown / PDF / HTML）</div>
+  <h2 style="font-size: 20px; font-weight: 700; color: #1a1a1a; border-bottom: 2px solid #1677ff; padding-bottom: 8px; margin-bottom: 16px;">二、NanoClaw 整体架构</h2>
+  <p style="margin: 0 0 16px 0;"><strong>NanoClaw</strong> 是基于 Claude Code SDK 构建的个人 AI 助手平台。<strong>Claude 不只是聊天机器人，而是一个有工具调用能力、有持久记忆、有专业技能包的 Agent</strong>。</p>
+  <section style="background: #fafafa; border: 1px solid #e8e8e8; border-radius: 8px; padding: 20px; margin-bottom: 16px; text-align: center;">
+    <div style="display: inline-flex; flex-direction: column; align-items: center; gap: 0; text-align: center;">
+      <div style="background: #1677ff; color: white; border-radius: 6px; padding: 8px 20px; font-size: 14px; font-weight: 600;">用户（WhatsApp / Discord / Telegram）</div>
+      <div style="color: #999; font-size: 20px; line-height: 1.2; padding: 2px 0;">↓</div>
+      <div style="background: #f0f7ff; border: 1px solid #91caff; border-radius: 6px; padding: 8px 20px; font-size: 14px;">NanoClaw 消息路由层</div>
+      <div style="color: #999; font-size: 20px; line-height: 1.2; padding: 2px 0;">↓</div>
+      <div style="background: #fff7e6; border: 1px solid #ffd591; border-radius: 6px; padding: 8px 20px; font-size: 14px; font-weight: 600;">Claude Code Agent（Andy）</div>
+      <div style="color: #999; font-size: 20px; line-height: 1.2; padding: 2px 0;">↓</div>
+      <div style="background: #f6ffed; border: 1px solid #b7eb8f; border-radius: 6px; padding: 8px 20px; font-size: 14px;">技能系统（150+ Skills）</div>
+      <div style="color: #999; font-size: 20px; line-height: 1.2; padding: 2px 0;">↓</div>
+      <div style="background: #f9f0ff; border: 1px solid #d3adf7; border-radius: 6px; padding: 8px 20px; font-size: 14px;">结构化文档（Markdown / PDF）</div>
     </div>
   </section>
-
-  <p style="margin: 0;">其中<strong>技能系统</strong>是整个流程的核心。</p>
 </section>
 
 <!-- ===== 三 ===== -->
 <section style="margin-bottom: 32px;">
   <h2 style="font-size: 20px; font-weight: 700; color: #1a1a1a; border-bottom: 2px solid #1677ff; padding-bottom: 8px; margin-bottom: 16px;">三、技能系统：Claude Code 的「专家插件」</h2>
-
-  <h3 style="font-size: 17px; font-weight: 600; color: #333; margin: 0 0 12px 0;">3.1 技能是什么</h3>
-  <p style="margin: 0 0 12px 0;">在 NanoClaw 里，每个技能（Skill）是一个独立的知识包，核心是一个 <code style="background: #f5f5f5; padding: 2px 6px; border-radius: 4px; font-size: 13px; color: #e83e8c;">SKILL.md</code> 文件，它的开头是一段 YAML，定义了技能的<strong>触发条件</strong>：</p>
-
-  <section style="background: #1e1e2e; border-radius: 8px; padding: 16px 20px; margin-bottom: 16px;">
-    <p style="margin: 0; font-family: 'Menlo', 'Monaco', monospace; font-size: 12.5px; line-height: 1.8; color: #cdd6f4;">
-      <span style="color: #6c7086;">---</span><br>
-      <span style="color: #89b4fa;">name</span><span style="color: #cdd6f4;">: </span><span style="color: #a6e3a1;">treatment-plans</span><br>
-      <span style="color: #89b4fa;">description</span><span style="color: #cdd6f4;">: </span><span style="color: #a6e3a1;">Generate concise medical treatment plans</span><br>
-      <span style="color: #89b4fa;">&nbsp;&nbsp;&nbsp;&nbsp;in LaTeX/PDF format for all clinical specialties...</span><br>
-      <span style="color: #89b4fa;">allowed-tools</span><span style="color: #cdd6f4;">: </span><span style="color: #a6e3a1;">Read Write Edit Bash</span><br>
-      <span style="color: #6c7086;">---</span>
-    </p>
-  </section>
-
-  <p style="margin: 0 0 20px 0;">当 Claude 收到任务，它会扫描技能列表，<strong>通过 description 字段语义匹配</strong>最相关的技能，然后读取 SKILL.md 作为上下文，按其中的指引执行——等于被「塑形」成了一个领域专家。</p>
-
-  <h3 style="font-size: 17px; font-weight: 600; color: #333; margin: 0 0 12px 0;">3.2 这次分析肺癌报告，激活了哪些技能？</h3>
-
-  <!-- 技能表格 -->
-  <table style="width: 100%; border-collapse: collapse; font-size: 14px; margin-bottom: 12px;">
-    <thead>
-      <tr style="background: #1677ff; color: white;">
-        <th style="padding: 10px 12px; text-align: left; border-radius: 6px 0 0 0;">阶段</th>
-        <th style="padding: 10px 12px; text-align: left;">激活技能</th>
-        <th style="padding: 10px 12px; text-align: left; border-radius: 0 6px 0 0;">作用</th>
-      </tr>
-    </thead>
+  <p style="margin: 0 0 12px 0;">每个技能（Skill）是一个独立知识包，核心是 <code style="background: #f5f5f5; padding: 2px 6px; border-radius: 4px; font-size: 13px; color: #e83e8c;">SKILL.md</code>，定义<strong>触发条件和执行规范</strong>。Claude 通过语义匹配自动激活最相关的技能组合。</p>
+  <p style="margin: 0 0 14px 0;">分析「肺癌报告」这个任务，实际激活了：</p>
+  <table style="width: 100%; border-collapse: collapse; font-size: 14px; margin-bottom: 14px;">
+    <thead><tr style="background: #1677ff; color: white;">
+      <th style="padding: 10px 12px; text-align: left;">阶段</th>
+      <th style="padding: 10px 12px; text-align: left;">技能</th>
+      <th style="padding: 10px 12px; text-align: left;">作用</th>
+    </tr></thead>
     <tbody>
-      <tr style="background: #fafafa;">
-        <td style="padding: 9px 12px; border-bottom: 1px solid #f0f0f0;">文献检索</td>
-        <td style="padding: 9px 12px; border-bottom: 1px solid #f0f0f0;"><code style="background: #f0f0f0; padding: 1px 5px; border-radius: 3px; font-size: 12px;">literature-review</code><br><code style="background: #f0f0f0; padding: 1px 5px; border-radius: 3px; font-size: 12px;">parallel-web</code></td>
-        <td style="padding: 9px 12px; border-bottom: 1px solid #f0f0f0;">搜索 PubMed、arXiv</td>
-      </tr>
-      <tr style="background: white;">
-        <td style="padding: 9px 12px; border-bottom: 1px solid #f0f0f0;">指南查询</td>
-        <td style="padding: 9px 12px; border-bottom: 1px solid #f0f0f0;"><code style="background: #f0f0f0; padding: 1px 5px; border-radius: 3px; font-size: 12px;">research-lookup</code></td>
-        <td style="padding: 9px 12px; border-bottom: 1px solid #f0f0f0;">NCCN/CSCO/IASLC 指南</td>
-      </tr>
-      <tr style="background: #fafafa;">
-        <td style="padding: 9px 12px; border-bottom: 1px solid #f0f0f0;">PDF 处理</td>
-        <td style="padding: 9px 12px; border-bottom: 1px solid #f0f0f0;"><code style="background: #f0f0f0; padding: 1px 5px; border-radius: 3px; font-size: 12px;">pdf</code></td>
-        <td style="padding: 9px 12px; border-bottom: 1px solid #f0f0f0;">读取已有 PDF，提取文本</td>
-      </tr>
-      <tr style="background: white;">
-        <td style="padding: 9px 12px; border-bottom: 1px solid #f0f0f0;">报告撰写</td>
-        <td style="padding: 9px 12px; border-bottom: 1px solid #f0f0f0;"><code style="background: #f0f0f0; padding: 1px 5px; border-radius: 3px; font-size: 12px;">clinical-reports</code></td>
-        <td style="padding: 9px 12px; border-bottom: 1px solid #f0f0f0;">按临床报告规范组织</td>
-      </tr>
-      <tr style="background: #fafafa;">
-        <td style="padding: 9px 12px;">患者版改写</td>
-        <td style="padding: 9px 12px;"><code style="background: #f0f0f0; padding: 1px 5px; border-radius: 3px; font-size: 12px;">treatment-plans</code></td>
-        <td style="padding: 9px 12px;">SMART 框架，大白话版本</td>
-      </tr>
+      <tr style="background: #fafafa;"><td style="padding: 8px 12px; border-bottom: 1px solid #f0f0f0;">文献检索</td><td style="padding: 8px 12px; border-bottom: 1px solid #f0f0f0;"><code style="background:#f0f0f0;padding:1px 5px;border-radius:3px;font-size:12px;">literature-review</code> + <code style="background:#f0f0f0;padding:1px 5px;border-radius:3px;font-size:12px;">parallel-web</code></td><td style="padding: 8px 12px; border-bottom: 1px solid #f0f0f0;">PubMed / arXiv</td></tr>
+      <tr><td style="padding: 8px 12px; border-bottom: 1px solid #f0f0f0;">指南查询</td><td style="padding: 8px 12px; border-bottom: 1px solid #f0f0f0;"><code style="background:#f0f0f0;padding:1px 5px;border-radius:3px;font-size:12px;">research-lookup</code></td><td style="padding: 8px 12px; border-bottom: 1px solid #f0f0f0;">NCCN / CSCO / IASLC</td></tr>
+      <tr style="background: #fafafa;"><td style="padding: 8px 12px; border-bottom: 1px solid #f0f0f0;">PDF 处理</td><td style="padding: 8px 12px; border-bottom: 1px solid #f0f0f0;"><code style="background:#f0f0f0;padding:1px 5px;border-radius:3px;font-size:12px;">pdf</code></td><td style="padding: 8px 12px; border-bottom: 1px solid #f0f0f0;">文本提取</td></tr>
+      <tr><td style="padding: 8px 12px; border-bottom: 1px solid #f0f0f0;">报告撰写</td><td style="padding: 8px 12px; border-bottom: 1px solid #f0f0f0;"><code style="background:#f0f0f0;padding:1px 5px;border-radius:3px;font-size:12px;">clinical-reports</code></td><td style="padding: 8px 12px; border-bottom: 1px solid #f0f0f0;">CARE 临床规范</td></tr>
+      <tr style="background: #fafafa;"><td style="padding: 8px 12px;">患者版改写</td><td style="padding: 8px 12px;"><code style="background:#f0f0f0;padding:1px 5px;border-radius:3px;font-size:12px;">treatment-plans</code></td><td style="padding: 8px 12px;">SMART 框架</td></tr>
     </tbody>
   </table>
-
-  <section style="background: #fff7e6; border: 1px solid #ffd591; border-radius: 8px; padding: 14px 16px;">
-    <p style="margin: 0; font-size: 14px; color: #7c4a00;">💡 <strong>关键点：</strong>这不是预设的工作流，而是 Claude 在理解任务后<strong>动态规划</strong>的调用顺序。每次任务不同，技能组合也会不同。</p>
+  <section style="background: #fff7e6; border: 1px solid #ffd591; border-radius: 8px; padding: 12px 16px;">
+    <p style="margin: 0; font-size: 14px; color: #7c4a00;">💡 这不是预设工作流，而是 Claude 理解任务后<strong>动态规划</strong>的调用顺序。每次任务不同，技能组合也不同。</p>
   </section>
 </section>
 
 <!-- ===== 四 ===== -->
 <section style="margin-bottom: 32px;">
-  <h2 style="font-size: 20px; font-weight: 700; color: #1a1a1a; border-bottom: 2px solid #1677ff; padding-bottom: 8px; margin-bottom: 16px;">四、文献检索层：两级引擎协同</h2>
-
-  <h3 style="font-size: 17px; font-weight: 600; color: #333; margin: 0 0 10px 0;">parallel-web：全网实时检索</h3>
-  <p style="margin: 0 0 12px 0;"><code style="background: #f5f5f5; padding: 2px 6px; border-radius: 4px; font-size: 13px; color: #e83e8c;">parallel-web</code> 调用 Parallel Web Systems API，这是专为 AI Agent 设计的搜索接口，返回的不是 10 个蓝色链接，而是<strong>带引用的综合摘要</strong>：</p>
-
-  <section style="background: #f0f7ff; border: 1px solid #91caff; border-radius: 8px; padding: 14px 16px; margin-bottom: 16px;">
+  <h2 style="font-size: 20px; font-weight: 700; color: #1a1a1a; border-bottom: 2px solid #1677ff; padding-bottom: 8px; margin-bottom: 16px;">四、文献检索：两级引擎协同</h2>
+  <p style="margin: 0 0 10px 0;"><strong>parallel-web</strong> 返回带引用的综合摘要（而非蓝色链接列表），<strong>research-lookup</strong> 路由到 Perplexity 接入 PubMed / Semantic Scholar。两级结果合并后，Claude 去重、核实、归纳——这就是为什么报告里能看到「JCOG0802 + CALGB 140503 双试验验证」这类具体引用。</p>
+  <section style="background: #f0f7ff; border: 1px solid #91caff; border-radius: 8px; padding: 14px 16px;">
     <p style="margin: 0; font-size: 14px; color: #003a8c; line-height: 1.8;">「根据 NCCN 2025 指南（V2.2025），IA 期 NSCLC 首选亚肺叶切除术（基于 JCOG0802 试验，5 年总生存率 94.3%）……[1][2][3]」</p>
   </section>
-
-  <h3 style="font-size: 17px; font-weight: 600; color: #333; margin: 0 0 10px 0;">research-lookup：学术论文精确查询</h3>
-  <p style="margin: 0 0 12px 0;">对于需要论文级证据的部分，<code style="background: #f5f5f5; padding: 2px 6px; border-radius: 4px; font-size: 13px; color: #e83e8c;">research-lookup</code> 会路由到 <strong>Perplexity sonar-pro-search</strong>，接入 PubMed、Semantic Scholar、bioRxiv，专攻学术数据库。</p>
-  <p style="margin: 0;">两级检索结果合并后，Claude 负责去重、核实、归纳——这就是为什么最终报告里能看到「JCOG0802 + CALGB 140503 双试验验证」这类具体引用，而不是模糊描述。</p>
 </section>
 
 <!-- ===== 五 ===== -->
 <section style="margin-bottom: 32px;">
-  <h2 style="font-size: 20px; font-weight: 700; color: #1a1a1a; border-bottom: 2px solid #1677ff; padding-bottom: 8px; margin-bottom: 16px;">五、文档生成：从原始内容到结构化报告</h2>
-
-  <h3 style="font-size: 17px; font-weight: 600; color: #333; margin: 0 0 10px 0;">professional 版 → 患者家属版：降维改写</h3>
-  <p style="margin: 0 0 12px 0;"><code style="background: #f5f5f5; padding: 2px 6px; border-radius: 4px; font-size: 13px; color: #e83e8c;">treatment-plans</code> 技能的核心是 <strong>SMART 目标框架</strong>（Specific / Measurable / Achievable / Relevant / Time-bound），它确保每个建议都是「可操作的」：</p>
-
-  <section style="background: #fafafa; border: 1px solid #e8e8e8; border-radius: 8px; padding: 16px 20px; margin-bottom: 12px;">
-    <p style="margin: 0 0 8px 0; font-size: 14px; color: #cf1322;">❌ 「建议手术治疗」</p>
-    <p style="margin: 0; font-size: 14px; color: #389e0d;">✅ 「IA 期患者：2 周内与胸外科会诊，评估 VATS 亚肺叶切除术适应症，预计住院 3–5 天」</p>
-  </section>
-
-  <p style="margin: 0;">对于医学报告，最终 PDF 优先使用 <strong>LaTeX 模板</strong>路径——LaTeX 能精确控制医学文档排版规范（字号、行距、表格、脚注格式），比纯 Markdown→PDF 转换质量高一个数量级。</p>
-</section>
-
-<!-- ===== 六 ===== -->
-<section style="margin-bottom: 32px;">
-  <h2 style="font-size: 20px; font-weight: 700; color: #1a1a1a; border-bottom: 2px solid #1677ff; padding-bottom: 8px; margin-bottom: 16px;">六、记忆系统：知识复利增长</h2>
-  <p style="margin: 0 0 12px 0;">NanoClaw 在文件系统里维护对话归档和生成文档，这意味着：</p>
-
-  <section style="background: #fafafa; border: 1px solid #e8e8e8; border-radius: 8px; padding: 16px 20px; margin-bottom: 12px;">
-    <p style="margin: 0 0 8px 0; font-size: 14px; line-height: 1.8;"><strong>第一次：</strong>「帮我研究肺癌早期治疗方案」→ 检索 + 分析 + 生成（5–8 分钟）</p>
-    <p style="margin: 0 0 8px 0; font-size: 14px; line-height: 1.8;"><strong>第二次：</strong>「把患者版报告发给我」→ 直接读文件（5 秒）</p>
-    <p style="margin: 0; font-size: 14px; line-height: 1.8;"><strong>第三次：</strong>「基于上次的报告，加入 KRAS 突变的最新进展」→ 增量检索 + 局部更新</p>
-  </section>
-
-  <p style="margin: 0;">这正是 Karpathy 在 LLM Wiki 里描述的「持久知识库」模式：不是每次从零重新分析，而是在已有基础上<strong>复利增长</strong>。</p>
-</section>
-
-<!-- ===== 七 完整链路 ===== -->
-<section style="margin-bottom: 32px;">
-  <h2 style="font-size: 20px; font-weight: 700; color: #1a1a1a; border-bottom: 2px solid #1677ff; padding-bottom: 8px; margin-bottom: 16px;">七、完整调用链路</h2>
-
-  <section style="background: #fafafa; border: 1px solid #e8e8e8; border-radius: 10px; padding: 20px;">
-    <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13.5px;">
-      <div style="background: #1677ff; color: white; border-radius: 6px; padding: 8px 14px; font-weight: 600;">用户发送消息</div>
-      <div style="padding-left: 16px; color: #999;">↓ 意图理解："深度医学研究报告"</div>
-      <div style="background: #fff7e6; border: 1px solid #ffd591; border-radius: 6px; padding: 8px 14px;">技能匹配（语义扫描 SKILL.md）
-        <span style="display: block; color: #52c41a; margin-top: 4px; font-size: 12px;">✓ literature-review &nbsp; ✓ parallel-web &nbsp; ✓ research-lookup &nbsp; ✓ clinical-reports &nbsp; ✓ treatment-plans &nbsp; ✓ pdf</span>
-      </div>
-      <div style="padding-left: 16px; color: #999;">↓ 执行阶段 1</div>
-      <div style="background: #f0f7ff; border: 1px solid #91caff; border-radius: 6px; padding: 8px 14px;">文献检索
-        <span style="display: block; color: #666; margin-top: 2px; font-size: 12px;">parallel-web → Parallel Chat API → 综合网络资料<br>research-lookup → Perplexity → PubMed / Semantic Scholar</span>
-      </div>
-      <div style="padding-left: 16px; color: #999;">↓ 执行阶段 2</div>
-      <div style="background: #f6ffed; border: 1px solid #b7eb8f; border-radius: 6px; padding: 8px 14px;">内容生成
-        <span style="display: block; color: #666; margin-top: 2px; font-size: 12px;">clinical-reports → 专业版报告（Markdown）<br>treatment-plans → 患者家属版（Markdown）</span>
-      </div>
-      <div style="padding-left: 16px; color: #999;">↓ 执行阶段 3</div>
-      <div style="background: #f9f0ff; border: 1px solid #d3adf7; border-radius: 6px; padding: 8px 14px;">格式化输出
-        <span style="display: block; color: #666; margin-top: 2px; font-size: 12px;">pdf → LaTeX → 排版规范的 PDF 文档</span>
-      </div>
-      <div style="padding-left: 16px; color: #999;">↓ 持久化</div>
-      <div style="background: #fff2f0; border: 1px solid #ffccc7; border-radius: 6px; padding: 8px 14px; font-size: 12.5px; color: #666;">写入文件系统 /sources/<br>📄 深度研究报告_2026.md &nbsp;&nbsp; 📄 患者家属版_2026.md &nbsp;&nbsp; 📄 研究报告_2026.pdf</div>
-    </div>
-  </section>
-</section>
-
-<!-- ===== 八 架构优势 ===== -->
-<section style="margin-bottom: 32px;">
-  <h2 style="font-size: 20px; font-weight: 700; color: #1a1a1a; border-bottom: 2px solid #1677ff; padding-bottom: 8px; margin-bottom: 16px;">八、为什么这个架构有效？</h2>
-
-  <section style="background: #f6ffed; border: 1px solid #b7eb8f; border-radius: 8px; padding: 14px 16px; margin-bottom: 12px;">
+  <h2 style="font-size: 20px; font-weight: 700; color: #1a1a1a; border-bottom: 2px solid #1677ff; padding-bottom: 8px; margin-bottom: 16px;">五、为什么这个架构有效？</h2>
+  <section style="background: #f6ffed; border: 1px solid #b7eb8f; border-radius: 8px; padding: 12px 16px; margin-bottom: 10px;">
     <p style="margin: 0 0 4px 0; font-weight: 600; color: #135200;">专业知识与通用推理分离</p>
-    <p style="margin: 0; font-size: 14px; color: #444;">Claude 本体擅长推理和语言，但不应该把「如何写临床报告」硬编码在系统提示里。技能系统让这部分<strong>可组合、可替换、可独立更新</strong>——就像软件的插件架构。</p>
+    <p style="margin: 0; font-size: 14px; color: #444;">技能系统让领域知识<strong>可组合、可替换、可独立更新</strong>，就像软件的插件架构。</p>
   </section>
-
-  <section style="background: #f0f7ff; border: 1px solid #91caff; border-radius: 8px; padding: 14px 16px; margin-bottom: 12px;">
+  <section style="background: #f0f7ff; border: 1px solid #91caff; border-radius: 8px; padding: 12px 16px; margin-bottom: 10px;">
     <p style="margin: 0 0 4px 0; font-weight: 600; color: #003a8c;">工具调用 vs 幻觉</p>
-    <p style="margin: 0; font-size: 14px; color: #444;">医学领域容错率极低。实时检索提供带来源的信息，配合 Claude 的推理能力做筛选和综合，比让模型凭训练数据「背诵」医学知识可靠得多。</p>
+    <p style="margin: 0; font-size: 14px; color: #444;">实时检索提供带来源的信息，比让模型凭训练数据「背诵」医学知识可靠得多。</p>
   </section>
-
-  <section style="background: #fff7e6; border: 1px solid #ffd591; border-radius: 8px; padding: 14px 16px;">
-    <p style="margin: 0 0 4px 0; font-weight: 600; color: #7c4a00;">输出格式的约束力</p>
-    <p style="margin: 0; font-size: 14px; color: #444;">这些约束不是提示词里的「请做到……」，而是内嵌在技能文档里的<strong>结构性约束</strong>，模型读了 SKILL.md 之后，等于被「塑形」成了一个临床报告专家。</p>
+  <section style="background: #fff7e6; border: 1px solid #ffd591; border-radius: 8px; padding: 12px 16px; margin-bottom: 10px;">
+    <p style="margin: 0 0 4px 0; font-weight: 600; color: #7c4a00;">记忆与复利增长</p>
+    <p style="margin: 0; font-size: 14px; color: #444;">对话和文档持久化存储，第二次问同一主题时直接读文件（5 秒），第三次可增量更新——知识复利增长。</p>
+  </section>
+  <section style="background: #fff2f0; border: 1px solid #ffccc7; border-radius: 8px; padding: 12px 16px;">
+    <p style="margin: 0 0 4px 0; font-weight: 600; color: #a8071a;">局限：医学准确性</p>
+    <p style="margin: 0; font-size: 14px; color: #444;">模型仍可能误读文献，生成的报告<strong>不能替代医生诊断</strong>，仅供参考。</p>
   </section>
 </section>
 
-<!-- ===== 九 边界 ===== -->
-<section style="margin-bottom: 32px;">
-  <h2 style="font-size: 20px; font-weight: 700; color: #1a1a1a; border-bottom: 2px solid #1677ff; padding-bottom: 8px; margin-bottom: 16px;">九、这个模式的边界</h2>
-  <ul style="margin: 0; padding-left: 20px;">
-    <li style="margin-bottom: 10px; font-size: 15px;"><strong>API 依赖：</strong>断网或 key 失效时降级为纯模型能力</li>
-    <li style="margin-bottom: 10px; font-size: 15px;"><strong>技能质量参差：</strong>150+ 个技能由不同团队维护，部分指引过于笼统</li>
-    <li style="margin-bottom: 10px; font-size: 15px; color: #cf1322;"><strong>医学准确性：</strong>模型仍然可能误读文献，生成的报告<strong>不能替代医生诊断</strong></li>
-    <li style="margin-bottom: 0; font-size: 15px;"><strong>上下文限制：</strong>当报告超过 10 万字，需要分块处理</li>
-  </ul>
+<!-- ===== 分割线 ===== -->
+<section style="text-align: center; margin: 40px 0;">
+  <div style="display: inline-block; background: linear-gradient(90deg, #1677ff, #52c41a); height: 3px; width: 60px; border-radius: 2px; margin: 0 8px; vertical-align: middle;"></div>
+  <span style="font-size: 13px; color: #999; letter-spacing: 3px;">完整报告附录</span>
+  <div style="display: inline-block; background: linear-gradient(90deg, #52c41a, #1677ff); height: 3px; width: 60px; border-radius: 2px; margin: 0 8px; vertical-align: middle;"></div>
 </section>
 
-<!-- ===== 附录：医学报告节选 ===== -->
-<section style="margin-bottom: 32px;">
-  <h2 style="font-size: 20px; font-weight: 700; color: #1a1a1a; border-bottom: 2px solid #52c41a; padding-bottom: 8px; margin-bottom: 16px;">附录：AI 生成的医学报告节选</h2>
-  <p style="margin: 0 0 16px 0; font-size: 14px; color: #666;">以下是 Andy 实际交付的《早期肺癌治疗方案患者家属版（2026）》节选，供读者参考 AI 输出质量。</p>
+<!-- ===== 附录：完整医学报告 ===== -->
+<section style="margin-bottom: 40px;">
 
   <!-- 报告封面 -->
-  <section style="background: linear-gradient(135deg, #002766 0%, #003a8c 100%); border-radius: 10px; padding: 24px; margin-bottom: 16px; text-align: center;">
-    <p style="color: #91caff; font-size: 12px; letter-spacing: 2px; margin: 0 0 8px 0;">AI 生成 · 基于 NCCN · CSCO · IASLC 2025–2026 指南</p>
-    <h3 style="color: white; font-size: 20px; font-weight: 700; margin: 0 0 6px 0;">早期肺癌治疗方案</h3>
-    <p style="color: #bdd7f5; font-size: 14px; margin: 0;">患者与家属指南（2026 年版）</p>
+  <section style="background: linear-gradient(135deg, #002766 0%, #003a8c 100%); border-radius: 12px; padding: 32px; margin-bottom: 20px; text-align: center;">
+    <p style="color: #91caff; font-size: 11px; letter-spacing: 3px; margin: 0 0 10px 0;">AI 生成 · 附录全文</p>
+    <h2 style="color: white; font-size: 22px; font-weight: 700; margin: 0 0 8px 0;">早期肺癌治疗方案</h2>
+    <h3 style="color: #bdd7f5; font-size: 16px; font-weight: 400; margin: 0 0 14px 0;">患者与家属指南（2026 年版）</h3>
+    <div style="background: rgba(255,255,255,0.1); border-radius: 6px; padding: 10px 16px; display: inline-block;">
+      <p style="color: #e0eeff; font-size: 12px; margin: 0; line-height: 1.7;">基于 NCCN 2025–2026 · CSCO 2025 · ASCO/ESMO 2024–2025<br>本指南仅供参考，请以主治医生建议为准</p>
+    </div>
   </section>
 
-  <!-- 什么是早期肺癌 -->
-  <section style="border: 1px solid #e8e8e8; border-radius: 8px; padding: 20px; margin-bottom: 14px;">
-    <h4 style="font-size: 16px; color: #003a8c; margin: 0 0 12px 0; font-weight: 700;">🫁 什么是早期肺癌？</h4>
-    <section style="background: #f0f7ff; border-left: 4px solid #1677ff; padding: 12px 16px; border-radius: 0 6px 6px 0; margin-bottom: 12px;">
+  <!-- 说明框 -->
+  <section style="background: #f0f7ff; border: 1px solid #91caff; border-radius: 8px; padding: 14px 16px; margin-bottom: 24px;">
+    <p style="margin: 0; font-size: 14px; color: #003a8c; line-height: 1.8;">📋 本指南由 AI 基于医学研究报告改编，目的是让患者和家属<strong>看得懂、用得上</strong>。所有医学建议均基于 2025–2026 年最新权威指南，内容专业准确。<strong>重要：具体治疗方案请务必遵医嘱，由主治医生综合判断。</strong></p>
+  </section>
+
+  <!-- 一、什么是早期肺癌 -->
+  <section style="margin-bottom: 28px;">
+    <h3 style="font-size: 18px; font-weight: 700; color: #003a8c; background: #f0f7ff; padding: 10px 16px; border-radius: 6px; margin: 0 0 16px 0; border-left: 4px solid #1677ff;">一、什么是早期肺癌？</h3>
+    <section style="background: #e6f4ff; border-left: 4px solid #1677ff; border-radius: 0 8px 8px 0; padding: 14px 18px; margin-bottom: 14px;">
       <p style="margin: 0; font-size: 15px; font-weight: 600; color: #003a8c;">早期肺癌 = 癌细胞还"老老实实"待在肺里，没有扩散到其他地方。这个阶段治愈率很高，请充满信心！</p>
     </section>
-    <p style="margin: 0 0 10px 0; font-size: 14px;">早期肺癌的特点：</p>
+    <p style="margin: 0 0 10px 0; font-size: 15px;">早期肺癌的特点：</p>
     <p style="margin: 0 0 6px 0; font-size: 14px; color: #389e0d;">✅ 肿瘤还在肺内，比较小（通常小于 5 厘米）</p>
     <p style="margin: 0 0 6px 0; font-size: 14px; color: #389e0d;">✅ <strong>没有</strong>扩散到身体其他部位（没有远处转移）</p>
-    <p style="margin: 0 0 12px 0; font-size: 14px; color: #389e0d;">✅ 通常可以通过手术完整切除</p>
-    <section style="background: #f6ffed; border: 1px solid #b7eb8f; border-radius: 6px; padding: 10px 14px;">
+    <p style="margin: 0 0 6px 0; font-size: 14px; color: #389e0d;">✅ <strong>没有</strong>或只有少量淋巴结受累</p>
+    <p style="margin: 0 0 14px 0; font-size: 14px; color: #389e0d;">✅ 通常可以通过手术完整切除</p>
+    <section style="background: #f6ffed; border: 1px solid #b7eb8f; border-radius: 8px; padding: 12px 16px; margin-bottom: 14px;">
       <p style="margin: 0; font-size: 14px; color: #135200;">🌟 <strong>好消息：</strong>早期肺癌（IA 期）经过规范治疗，5 年生存率可以达到 <strong>85%~97%</strong>。越早发现，效果越好。</p>
     </section>
-  </section>
-
-  <!-- 手术节选 -->
-  <section style="border: 1px solid #e8e8e8; border-radius: 8px; padding: 20px; margin-bottom: 14px;">
-    <h4 style="font-size: 16px; color: #003a8c; margin: 0 0 12px 0; font-weight: 700;">🔬 重大研究发现：切多少肺？</h4>
-    <section style="background: #fff7e6; border: 1px solid #ffd591; border-radius: 6px; padding: 12px 14px; margin-bottom: 12px;">
-      <p style="margin: 0 0 6px 0; font-size: 13.5px;"><strong>以前：</strong>医生认为必须切掉一整个"肺叶"（约占一侧肺的 1/3~1/2）才算根治</p>
-      <p style="margin: 0; font-size: 13.5px; color: #389e0d;"><strong>现在：</strong>对于小肿瘤（≤2 厘米），只切一个"肺段"，效果与切整叶一样好，<strong>甚至生存率更高，肺功能保留更好！</strong>（JCOG0802 + CALGB 140503 双试验验证）</p>
-    </section>
-    <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
-      <thead>
-        <tr style="background: #f0f7ff;">
-          <th style="padding: 8px 10px; text-align: left; border: 1px solid #d6e4ff;">手术方式</th>
-          <th style="padding: 8px 10px; text-align: left; border: 1px solid #d6e4ff;">适合人群</th>
-          <th style="padding: 8px 10px; text-align: left; border: 1px solid #d6e4ff;">术后肺功能</th>
-        </tr>
-      </thead>
+    <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+      <thead><tr style="background: #1677ff; color: white;"><th style="padding: 9px 12px; text-align: left;">类型</th><th style="padding: 9px 12px; text-align: left;">发病比例</th><th style="padding: 9px 12px; text-align: left;">特点</th></tr></thead>
       <tbody>
-        <tr>
-          <td style="padding: 7px 10px; border: 1px solid #f0f0f0;">楔形切除</td>
-          <td style="padding: 7px 10px; border: 1px solid #f0f0f0;">极小肿瘤（≤1cm）</td>
-          <td style="padding: 7px 10px; border: 1px solid #f0f0f0;">保留最好</td>
-        </tr>
-        <tr style="background: #f6ffed;">
-          <td style="padding: 7px 10px; border: 1px solid #f0f0f0;"><strong>肺段切除 ⭐</strong></td>
-          <td style="padding: 7px 10px; border: 1px solid #f0f0f0;">1-2cm 周围型（推荐首选）</td>
-          <td style="padding: 7px 10px; border: 1px solid #f0f0f0;">明显优于肺叶切除</td>
-        </tr>
-        <tr>
-          <td style="padding: 7px 10px; border: 1px solid #f0f0f0;">肺叶切除</td>
-          <td style="padding: 7px 10px; border: 1px solid #f0f0f0;">肿瘤 &gt;2cm 或靠近中央</td>
-          <td style="padding: 7px 10px; border: 1px solid #f0f0f0;">标准水平</td>
-        </tr>
+        <tr style="background: #fafafa;"><td style="padding: 8px 12px; border-bottom: 1px solid #f0f0f0;"><strong>非小细胞肺癌（NSCLC）</strong></td><td style="padding: 8px 12px; border-bottom: 1px solid #f0f0f0;">约 85%</td><td style="padding: 8px 12px; border-bottom: 1px solid #f0f0f0;">本指南主要讨论这类</td></tr>
+        <tr><td style="padding: 8px 12px;">小细胞肺癌</td><td style="padding: 8px 12px;">约 15%</td><td style="padding: 8px 12px;">治疗策略不同，本指南暂不涉及</td></tr>
       </tbody>
     </table>
   </section>
 
-  <!-- 靶向治疗节选 -->
-  <section style="border: 1px solid #e8e8e8; border-radius: 8px; padding: 20px; margin-bottom: 14px;">
-    <h4 style="font-size: 16px; color: #003a8c; margin: 0 0 12px 0; font-weight: 700;">💊 靶向治疗：EGFR 突变 → 奥希替尼</h4>
-    <p style="margin: 0 0 10px 0; font-size: 14px;"><strong>EGFR 突变</strong>是中国肺癌患者中最常见的基因突变，腺癌患者中约 <strong>40%~50%</strong> 携带。</p>
-    <section style="background: #f9f0ff; border: 1px solid #d3adf7; border-radius: 6px; padding: 12px 14px; margin-bottom: 12px;">
-      <p style="margin: 0 0 4px 0; font-size: 13.5px; font-weight: 600; color: #531dab;">🔬 ADAURA 试验（2024 年最终数据）</p>
-      <p style="margin: 0; font-size: 13.5px; color: #444; line-height: 1.7;">手术后每天口服一粒奥希替尼，连服 3 年：<br>
-      • <strong>5 年生存率：88% vs 78%</strong>（降低死亡风险 51%！）<br>
-      • 脑转移发生率显著降低<br>
-      • 目前早期肺癌辅助治疗中最强的生存获益数据</p>
+  <!-- 二、分期 -->
+  <section style="margin-bottom: 28px;">
+    <h3 style="font-size: 18px; font-weight: 700; color: #003a8c; background: #f0f7ff; padding: 10px 16px; border-radius: 6px; margin: 0 0 16px 0; border-left: 4px solid #1677ff;">二、早期肺癌是怎么分期的？</h3>
+    <p style="margin: 0 0 12px 0; font-size: 15px;">医生通过"分期"来决定：<strong>切多少？手术后要不要再治疗？用什么药？</strong></p>
+    <p style="margin: 0 0 10px 0; font-size: 14px;">用大白话理解分期（把肿瘤想象成一棵树苗）：</p>
+    <section style="background: #1e1e2e; border-radius: 8px; padding: 16px 20px; margin-bottom: 12px;">
+      <p style="margin: 0; font-family: 'Menlo', 'Monaco', monospace; font-size: 13px; color: #cdd6f4; line-height: 2;">
+        🌱 <span style="color: #a6e3a1;">0期（原位癌）</span>　→ 刚刚发芽，还没破土，极早期<br>
+        🌿 <span style="color: #a6e3a1;">IA1期</span>　　　　→ 小苗（≤1厘米），几乎无需辅助治疗<br>
+        🌿 <span style="color: #a6e3a1;">IA2期</span>　　　　→ 稍大（1-2厘米），手术切除即可<br>
+        🌾 <span style="color: #f9e2af;">IA3期</span>　　　　→ 进一步生长（2-3厘米）<br>
+        🌳 <span style="color: #f9e2af;">IB期</span>　　　　 → 较大（3-4厘米），手术后可能需要药物<br>
+        🌲 <span style="color: #f38ba8;">IIA期</span>　　　　→ 更大（4-5厘米），建议手术后药物治疗
+      </p>
     </section>
     <section style="background: #fff7e6; border: 1px solid #ffd591; border-radius: 6px; padding: 10px 14px;">
-      <p style="margin: 0; font-size: 13.5px; color: #7c4a00;">💡 <strong>家属提示：</strong>如果报告显示"EGFR 突变阳性"，请一定询问医生是否适合使用奥希替尼辅助治疗。国内已纳入医保（2023 年起）。</p>
+      <p style="margin: 0; font-size: 13.5px; color: #7c4a00;">💡 <strong>家属提示：</strong>如果医生说"IA期"，这是最好的情况；"IIA期"也属于早期，规范治疗后预后良好。以上所有分期，淋巴结没有转移，且没有远处扩散。</p>
     </section>
   </section>
 
-  <section style="background: #fff2f0; border: 1px solid #ffccc7; border-radius: 8px; padding: 12px 16px;">
-    <p style="margin: 0; font-size: 13px; color: #a8071a; line-height: 1.7;">⚠️ <strong>重要声明：</strong>以上医学报告内容由 AI 基于 2025–2026 年公开医学文献生成，仅供参考，不构成医疗建议。具体治疗方案请务必遵从主治医生的专业判断。</p>
+  <!-- 三、手术治疗 -->
+  <section style="margin-bottom: 28px;">
+    <h3 style="font-size: 18px; font-weight: 700; color: #003a8c; background: #f0f7ff; padding: 10px 16px; border-radius: 6px; margin: 0 0 16px 0; border-left: 4px solid #1677ff;">三、手术治疗——最重要的根治手段</h3>
+
+    <p style="margin: 0 0 10px 0; font-size: 15px;">对于可以手术的早期肺癌患者，<strong>手术切除是最主要的根治手段</strong>。</p>
+    <section style="background: #f6ffed; border: 1px solid #b7eb8f; border-radius: 6px; padding: 10px 14px; margin-bottom: 16px;">
+      <p style="margin: 0; font-size: 14px; color: #135200;">✅ <strong>手术后 5 年生存率：</strong>IA 期约 90%~97%，IB 期约 82%~87%，IIA 期约 72%~78%</p>
+    </section>
+
+    <p style="margin: 0 0 8px 0; font-size: 15px; font-weight: 600;">🔬 重大研究发现：切多少肺？（JCOG0802 + CALGB 140503）</p>
+    <section style="background: #fff7e6; border: 1px solid #ffd591; border-radius: 8px; padding: 14px 16px; margin-bottom: 14px;">
+      <p style="margin: 0 0 8px 0; font-size: 14px;"><strong>以前：</strong>必须切掉一整个"肺叶"才算根治</p>
+      <p style="margin: 0; font-size: 14px; color: #389e0d;"><strong>现在：</strong>小肿瘤（≤2厘米）只切一个"肺段"，效果与切整叶一样好，<strong>甚至生存率更高，肺功能保留更好！</strong></p>
+    </section>
+    <table style="width: 100%; border-collapse: collapse; font-size: 13.5px; margin-bottom: 14px;">
+      <thead><tr style="background: #f0f7ff;"><th style="padding: 8px 10px; border: 1px solid #d6e4ff;">手术方式</th><th style="padding: 8px 10px; border: 1px solid #d6e4ff;">适合人群</th><th style="padding: 8px 10px; border: 1px solid #d6e4ff;">肺功能</th><th style="padding: 8px 10px; border: 1px solid #d6e4ff;">住院</th></tr></thead>
+      <tbody>
+        <tr><td style="padding: 7px 10px; border: 1px solid #f0f0f0;">楔形切除</td><td style="padding: 7px 10px; border: 1px solid #f0f0f0;">极小肿瘤（≤1cm）</td><td style="padding: 7px 10px; border: 1px solid #f0f0f0;">保留最好</td><td style="padding: 7px 10px; border: 1px solid #f0f0f0;">3~4 天</td></tr>
+        <tr style="background: #f6ffed;"><td style="padding: 7px 10px; border: 1px solid #f0f0f0;"><strong>肺段切除 ⭐</strong></td><td style="padding: 7px 10px; border: 1px solid #f0f0f0;">1-2cm 周围型（<strong>推荐首选</strong>）</td><td style="padding: 7px 10px; border: 1px solid #f0f0f0;">明显优于肺叶</td><td style="padding: 7px 10px; border: 1px solid #f0f0f0;">3~5 天</td></tr>
+        <tr><td style="padding: 7px 10px; border: 1px solid #f0f0f0;">肺叶切除</td><td style="padding: 7px 10px; border: 1px solid #f0f0f0;">肿瘤 &gt;2cm 或靠近中央</td><td style="padding: 7px 10px; border: 1px solid #f0f0f0;">标准水平</td><td style="padding: 7px 10px; border: 1px solid #f0f0f0;">3~5 天</td></tr>
+      </tbody>
+    </table>
+    <section style="background: #f9f0ff; border: 1px solid #d3adf7; border-radius: 6px; padding: 10px 14px;">
+      <p style="margin: 0; font-size: 13.5px; color: #531dab;">💡 <strong>家属提示：</strong>如果医生建议"肺段切除"，这不是在"偷懒"——这是目前<strong>最先进的精准手术</strong>方式，有大量证据支持的科学选择。现在绝大多数手术都是微创（VATS），不需要开大刀，切口 2~3cm，恢复快。</p>
+    </section>
   </section>
-</section>
 
-<!-- ===== 小结 ===== -->
-<section style="margin-bottom: 32px;">
-  <h2 style="font-size: 20px; font-weight: 700; color: #1a1a1a; border-bottom: 2px solid #1677ff; padding-bottom: 8px; margin-bottom: 16px;">小结</h2>
-  <p style="margin: 0 0 16px 0;">「AI 分析医学报告」这件事，表面上是大模型的语言能力，内核是一套<strong>工程化的 Agent 架构</strong>：</p>
+  <!-- 四、辅助治疗 -->
+  <section style="margin-bottom: 28px;">
+    <h3 style="font-size: 18px; font-weight: 700; color: #003a8c; background: #f0f7ff; padding: 10px 16px; border-radius: 6px; margin: 0 0 16px 0; border-left: 4px solid #1677ff;">四、辅助治疗——手术后还需要做什么？</h3>
+    <section style="background: #f6ffed; border-left: 4px solid #52c41a; border-radius: 0 6px 6px 0; padding: 12px 16px; margin-bottom: 14px;">
+      <p style="margin: 0; font-size: 14px; color: #135200;">💡 <strong>打个比方：</strong>手术是"拔草"，辅助治疗是"除草剂"——确保草根也清干净。是否需要，取决于分期 + 基因检测结果 + 高危因素。</p>
+    </section>
 
-  <table style="width: 100%; border-collapse: collapse; font-size: 14px; margin-bottom: 16px;">
-    <thead>
-      <tr style="background: #1677ff; color: white;">
-        <th style="padding: 10px 12px; text-align: left;">层次</th>
-        <th style="padding: 10px 12px; text-align: left;">组件</th>
-        <th style="padding: 10px 12px; text-align: left;">职责</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr style="background: #fafafa;"><td style="padding: 9px 12px; border-bottom: 1px solid #f0f0f0;">调度层</td><td style="padding: 9px 12px; border-bottom: 1px solid #f0f0f0;">Claude Code Agent</td><td style="padding: 9px 12px; border-bottom: 1px solid #f0f0f0;">任务拆解、技能规划</td></tr>
-      <tr><td style="padding: 9px 12px; border-bottom: 1px solid #f0f0f0;">技能层</td><td style="padding: 9px 12px; border-bottom: 1px solid #f0f0f0;">Skills（SKILL.md）</td><td style="padding: 9px 12px; border-bottom: 1px solid #f0f0f0;">领域知识注入、执行约束</td></tr>
-      <tr style="background: #fafafa;"><td style="padding: 9px 12px; border-bottom: 1px solid #f0f0f0;">检索层</td><td style="padding: 9px 12px; border-bottom: 1px solid #f0f0f0;">parallel-web + research-lookup</td><td style="padding: 9px 12px; border-bottom: 1px solid #f0f0f0;">实时信息获取、引用溯源</td></tr>
-      <tr><td style="padding: 9px 12px; border-bottom: 1px solid #f0f0f0;">生成层</td><td style="padding: 9px 12px; border-bottom: 1px solid #f0f0f0;">clinical-reports + treatment-plans</td><td style="padding: 9px 12px; border-bottom: 1px solid #f0f0f0;">结构化文档生成</td></tr>
-      <tr style="background: #fafafa;"><td style="padding: 9px 12px; border-bottom: 1px solid #f0f0f0;">输出层</td><td style="padding: 9px 12px; border-bottom: 1px solid #f0f0f0;">pdf（LaTeX 模板）</td><td style="padding: 9px 12px; border-bottom: 1px solid #f0f0f0;">格式规范化</td></tr>
-      <tr><td style="padding: 9px 12px;">记忆层</td><td style="padding: 9px 12px;">文件系统</td><td style="padding: 9px 12px;">持久化知识积累</td></tr>
-    </tbody>
-  </table>
+    <p style="margin: 0 0 8px 0; font-size: 15px; font-weight: 600; color: #531dab;">⭐ EGFR 突变阳性 → 奥希替尼（最重要）</p>
+    <p style="margin: 0 0 10px 0; font-size: 14px;">EGFR 突变是中国肺癌患者中最常见的基因突变，腺癌患者中约 <strong>40%~50%</strong> 携带。</p>
+    <section style="background: #f9f0ff; border: 1px solid #d3adf7; border-radius: 8px; padding: 14px 16px; margin-bottom: 10px;">
+      <p style="margin: 0 0 6px 0; font-size: 13.5px; font-weight: 600; color: #531dab;">🔬 ADAURA 试验（2024 年最终数据）</p>
+      <p style="margin: 0; font-size: 13.5px; line-height: 1.8; color: #333;">手术后每天口服一粒奥希替尼，连服 3 年：<br>
+      • <strong>5 年生存率：88% vs 78%</strong>（降低死亡风险 51%）<br>
+      • 脑转移发生率显著降低<br>
+      • 国内已纳入医保（2023 年起）</p>
+    </section>
+    <section style="background: #fff7e6; border: 1px solid #ffd591; border-radius: 6px; padding: 10px 14px; margin-bottom: 16px;">
+      <p style="margin: 0; font-size: 13.5px; color: #7c4a00;">💡 <strong>家属提示：</strong>如果报告显示"EGFR 突变阳性"，请一定询问医生是否适合使用奥希替尼辅助治疗！</p>
+    </section>
 
-  <p style="margin: 0;">这让 AI 不只是「回答问题」，而是在每次对话中<strong>构建可复用的知识产出</strong>。下一篇，我会深入讲 NanoClaw 的记忆系统设计——以及为什么「把对话存进文件」比向量数据库更适合个人助手场景。</p>
+    <p style="margin: 0 0 8px 0; font-size: 15px; font-weight: 600; color: #531dab;">⭐ ALK 融合阳性 → 阿来替尼</p>
+    <section style="background: #f9f0ff; border: 1px solid #d3adf7; border-radius: 8px; padding: 14px 16px; margin-bottom: 10px;">
+      <p style="margin: 0 0 6px 0; font-size: 13.5px; font-weight: 600; color: #531dab;">🔬 ALINA 试验（2025 年 ESMO 最新数据）</p>
+      <p style="margin: 0; font-size: 13.5px; line-height: 1.8; color: #333;">• <strong>4 年总生存率：98.4%</strong>（对比化疗组 92.4%）<br>
+      • <strong>4 年无复发生存率：75.5%</strong> vs 化疗组 47.0%<br>
+      • 脑转移发生率接近于零</p>
+    </section>
+
+    <p style="margin: 0 0 8px 0; font-size: 15px; font-weight: 600;">辅助化疗（适用于 EGFR/ALK 均阴性患者）</p>
+    <table style="width: 100%; border-collapse: collapse; font-size: 13.5px; margin-bottom: 14px;">
+      <thead><tr style="background: #f0f7ff;"><th style="padding: 8px 10px; border: 1px solid #d6e4ff;">分期</th><th style="padding: 8px 10px; border: 1px solid #d6e4ff;">化疗建议</th><th style="padding: 8px 10px; border: 1px solid #d6e4ff;">常用方案</th></tr></thead>
+      <tbody>
+        <tr><td style="padding: 7px 10px; border: 1px solid #f0f0f0;"><strong>IA 期</strong></td><td style="padding: 7px 10px; border: 1px solid #f0f0f0; color: #cf1322;">❌ 不建议</td><td style="padding: 7px 10px; border: 1px solid #f0f0f0;">—</td></tr>
+        <tr style="background: #fafafa;"><td style="padding: 7px 10px; border: 1px solid #f0f0f0;">IB 期（无高危）</td><td style="padding: 7px 10px; border: 1px solid #f0f0f0; color: #d48806;">⚠️ 通常不建议</td><td style="padding: 7px 10px; border: 1px solid #f0f0f0;">—</td></tr>
+        <tr><td style="padding: 7px 10px; border: 1px solid #f0f0f0;">IB 期（有高危）</td><td style="padding: 7px 10px; border: 1px solid #f0f0f0;">可以考虑</td><td style="padding: 7px 10px; border: 1px solid #f0f0f0;">顺铂+长春瑞滨</td></tr>
+        <tr style="background: #fafafa;"><td style="padding: 7px 10px; border: 1px solid #f0f0f0;"><strong>IIA 期</strong></td><td style="padding: 7px 10px; border: 1px solid #f0f0f0; color: #389e0d;">✅ 建议</td><td style="padding: 7px 10px; border: 1px solid #f0f0f0;">顺铂+长春瑞滨</td></tr>
+      </tbody>
+    </table>
+
+    <p style="margin: 0 0 8px 0; font-size: 14px; font-weight: 600;">围手术期全程管理（IIB–IIIA 期）</p>
+    <section style="background: #f9f0ff; border: 1px solid #d3adf7; border-radius: 6px; padding: 10px 14px;">
+      <p style="margin: 0; font-size: 13.5px; color: #333; line-height: 1.8;">🔬 <strong>CheckMate 77T（2025 年最新数据）：</strong>手术前后全程使用纳武利尤单抗（O 药）+ 化疗，比单纯化疗将复发风险降低了 <strong>42%</strong>，总生存获益已得到证实。</p>
+    </section>
+  </section>
+
+  <!-- 五、SBRT -->
+  <section style="margin-bottom: 28px;">
+    <h3 style="font-size: 18px; font-weight: 700; color: #003a8c; background: #f0f7ff; padding: 10px 16px; border-radius: 6px; margin: 0 0 16px 0; border-left: 4px solid #1677ff;">五、不能手术怎么办？——立体定向放疗（SBRT）</h3>
+    <section style="background: #f6ffed; border-left: 4px solid #52c41a; border-radius: 0 6px 6px 0; padding: 12px 16px; margin-bottom: 14px;">
+      <p style="margin: 0; font-size: 14px; color: #135200;"><strong>通俗解释：</strong>SBRT 就像用很多束激光，从不同角度精准瞄准肿瘤，达到"消融"效果，而周围正常组织几乎不受影响。</p>
+    </section>
+    <table style="width: 100%; border-collapse: collapse; font-size: 13.5px; margin-bottom: 12px;">
+      <thead><tr style="background: #f0f7ff;"><th style="padding: 8px 10px; border: 1px solid #d6e4ff;">项目</th><th style="padding: 8px 10px; border: 1px solid #d6e4ff;">数据</th></tr></thead>
+      <tbody>
+        <tr><td style="padding: 7px 10px; border: 1px solid #f0f0f0;">治疗次数</td><td style="padding: 7px 10px; border: 1px solid #f0f0f0;">通常 3~10 次（非 25~30 次传统放疗）</td></tr>
+        <tr style="background: #fafafa;"><td style="padding: 7px 10px; border: 1px solid #f0f0f0;"><strong>局部控制率（3年）</strong></td><td style="padding: 7px 10px; border: 1px solid #f0f0f0; color: #135200;"><strong>88%~96%</strong></td></tr>
+        <tr><td style="padding: 7px 10px; border: 1px solid #f0f0f0;">治疗相关死亡率</td><td style="padding: 7px 10px; border: 1px solid #f0f0f0; color: #135200;"><strong>&lt;1%（非常安全）</strong></td></tr>
+        <tr style="background: #fafafa;"><td style="padding: 7px 10px; border: 1px solid #f0f0f0;">住院需求</td><td style="padding: 7px 10px; border: 1px solid #f0f0f0;">通常门诊即可</td></tr>
+      </tbody>
+    </table>
+    <section style="background: #fff7e6; border: 1px solid #ffd591; border-radius: 6px; padding: 10px 14px;">
+      <p style="margin: 0; font-size: 13.5px; color: #7c4a00;">💡 <strong>家属提示：</strong>如果医生说"不适合手术"，请询问是否可以做 SBRT，不要轻易放弃根治机会！（NCCN/CSCO 1A 类证据）</p>
+    </section>
+  </section>
+
+  <!-- 六、基因检测 -->
+  <section style="margin-bottom: 28px;">
+    <h3 style="font-size: 18px; font-weight: 700; color: #003a8c; background: #f0f7ff; padding: 10px 16px; border-radius: 6px; margin: 0 0 16px 0; border-left: 4px solid #1677ff;">六、基因检测——为什么这么重要？</h3>
+    <section style="background: #f0f7ff; border-radius: 8px; padding: 12px 16px; margin-bottom: 14px;">
+      <p style="margin: 0; font-size: 14px; color: #003a8c;">📱 买手机要先了解它用的什么系统才能配合使用；💊 用药前要先了解肿瘤的"基因类型"，才能选对最有效的药！</p>
+    </section>
+    <table style="width: 100%; border-collapse: collapse; font-size: 13.5px; margin-bottom: 12px;">
+      <thead><tr style="background: #1677ff; color: white;"><th style="padding: 8px 10px;">检测项目</th><th style="padding: 8px 10px;">意义</th><th style="padding: 8px 10px;">阳性率</th></tr></thead>
+      <tbody>
+        <tr><td style="padding: 7px 10px; border: 1px solid #f0f0f0;"><strong>EGFR 突变</strong></td><td style="padding: 7px 10px; border: 1px solid #f0f0f0;">决定是否用奥希替尼</td><td style="padding: 7px 10px; border: 1px solid #f0f0f0;">40%~50%（腺癌）</td></tr>
+        <tr style="background: #fafafa;"><td style="padding: 7px 10px; border: 1px solid #f0f0f0;"><strong>ALK 融合</strong></td><td style="padding: 7px 10px; border: 1px solid #f0f0f0;">决定是否用阿来替尼</td><td style="padding: 7px 10px; border: 1px solid #f0f0f0;">3%~7%</td></tr>
+        <tr><td style="padding: 7px 10px; border: 1px solid #f0f0f0;"><strong>PD-L1</strong></td><td style="padding: 7px 10px; border: 1px solid #f0f0f0;">决定免疫治疗获益</td><td style="padding: 7px 10px; border: 1px solid #f0f0f0;">约 30%~50% 高表达</td></tr>
+      </tbody>
+    </table>
+    <section style="background: #fff2f0; border: 1px solid #ffccc7; border-radius: 6px; padding: 10px 14px;">
+      <p style="margin: 0; font-size: 13.5px; color: #a8071a;">⚠️ <strong>注意：</strong>手术切下来的标本是最佳检测材料，一定要让医院<strong>保留足够标本</strong>用于基因检测！手术前就可以提出这个要求。</p>
+    </section>
+  </section>
+
+  <!-- 七、治疗决策流程 -->
+  <section style="margin-bottom: 28px;">
+    <h3 style="font-size: 18px; font-weight: 700; color: #003a8c; background: #f0f7ff; padding: 10px 16px; border-radius: 6px; margin: 0 0 16px 0; border-left: 4px solid #1677ff;">七、治疗决策全流程</h3>
+    <section style="background: #fafafa; border: 1px solid #e8e8e8; border-radius: 8px; padding: 20px; font-size: 13.5px;">
+      <div style="text-align: center; margin-bottom: 12px;">
+        <span style="background: #1677ff; color: white; padding: 6px 16px; border-radius: 20px; font-weight: 600;">确诊早期肺癌（Stage 0 ~ IIA）</span>
+      </div>
+      <div style="text-align: center; color: #999; font-size: 16px; margin-bottom: 8px;">↓</div>
+      <div style="background: #fff7e6; border: 1px solid #ffd591; border-radius: 6px; padding: 10px 14px; margin-bottom: 8px; text-align: center;"><strong>第一步：评估能不能手术</strong>（心肺功能 + 体力 + 合并症）</div>
+      <div style="display: flex; gap: 8px; margin-bottom: 8px;">
+        <div style="flex: 1; background: #f6ffed; border: 1px solid #b7eb8f; border-radius: 6px; padding: 8px 12px; text-align: center; font-size: 13px;"><strong style="color: #389e0d;">能手术</strong><br>肺段 / 楔形 / 肺叶切除</div>
+        <div style="flex: 1; background: #f0f7ff; border: 1px solid #91caff; border-radius: 6px; padding: 8px 12px; text-align: center; font-size: 13px;"><strong style="color: #1677ff;">不能手术</strong><br>立体定向放疗（SBRT）</div>
+      </div>
+      <div style="text-align: center; color: #999; font-size: 16px; margin-bottom: 8px;">↓</div>
+      <div style="background: #fff7e6; border: 1px solid #ffd591; border-radius: 6px; padding: 10px 14px; margin-bottom: 8px; text-align: center;"><strong>第二步：手术后基因检测</strong>（NGS 多基因检测）</div>
+      <div style="display: flex; gap: 6px; margin-bottom: 8px;">
+        <div style="flex: 1; background: #f9f0ff; border: 1px solid #d3adf7; border-radius: 6px; padding: 8px 10px; text-align: center; font-size: 12px;"><strong>EGFR 阳性</strong><br>↓<br>奥希替尼<br>每天1粒·3年</div>
+        <div style="flex: 1; background: #f9f0ff; border: 1px solid #d3adf7; border-radius: 6px; padding: 8px 10px; text-align: center; font-size: 12px;"><strong>ALK 阳性</strong><br>↓<br>阿来替尼<br>每天2次·2年</div>
+        <div style="flex: 1; background: #f0f7ff; border: 1px solid #91caff; border-radius: 6px; padding: 8px 10px; text-align: center; font-size: 12px;"><strong>两者均阴性</strong><br>↓<br>含铂化疗<br>±免疫治疗</div>
+      </div>
+      <div style="text-align: center; color: #999; font-size: 16px; margin-bottom: 8px;">↓</div>
+      <div style="background: #f6ffed; border: 1px solid #b7eb8f; border-radius: 6px; padding: 10px 14px; text-align: center;"><strong>第三步：定期随访</strong><br><span style="font-size: 12px; color: #666;">前 2 年：每 3~6 月 CT · 后 3 年：每 6~12 月 CT</span></div>
+    </section>
+  </section>
+
+  <!-- 八、Q&A -->
+  <section style="margin-bottom: 28px;">
+    <h3 style="font-size: 18px; font-weight: 700; color: #003a8c; background: #f0f7ff; padding: 10px 16px; border-radius: 6px; margin: 0 0 16px 0; border-left: 4px solid #1677ff;">八、常见问题 Q&amp;A</h3>
+    <section style="border: 1px solid #e8e8e8; border-radius: 8px; overflow: hidden; margin-bottom: 10px;">
+      <div style="background: #f5f5f5; padding: 10px 14px; font-size: 14px; font-weight: 600; color: #333;">❓ Q1：早期肺癌能治好吗？</div>
+      <div style="padding: 10px 14px; font-size: 14px; line-height: 1.7; color: #444;">能！IA 期肺癌 5 年生存率可达 90% 以上，很多患者可以实现临床治愈。规范治疗是关键。</div>
+    </section>
+    <section style="border: 1px solid #e8e8e8; border-radius: 8px; overflow: hidden; margin-bottom: 10px;">
+      <div style="background: #f5f5f5; padding: 10px 14px; font-size: 14px; font-weight: 600; color: #333;">❓ Q2：手术会不会切掉太多肺，以后呼吸困难？</div>
+      <div style="padding: 10px 14px; font-size: 14px; line-height: 1.7; color: #444;">现代微创手术已经非常精准。小肿瘤（≤2厘米）"肺段切除"只切除一个小区域，术后肺功能保留明显优于传统肺叶切除。大多数患者 3~6 个月肺功能恢复稳定，日常生活不受明显影响。</div>
+    </section>
+    <section style="border: 1px solid #e8e8e8; border-radius: 8px; overflow: hidden; margin-bottom: 10px;">
+      <div style="background: #f5f5f5; padding: 10px 14px; font-size: 14px; font-weight: 600; color: #333;">❓ Q3：基因检测必须做吗？如果不做会怎样？</div>
+      <div style="padding: 10px 14px; font-size: 14px; line-height: 1.7; color: #444;">强烈建议做。不做基因检测：EGFR 阳性患者可能错过奥希替尼（复发风险大幅增加）；ALK 阳性患者可能错过 98% 四年生存率的阿来替尼；还可能被错误地给予免疫治疗（对有突变患者无效甚至有害）。基因检测是个人化用药的"地图"，费用有限，价值巨大。</div>
+    </section>
+    <section style="border: 1px solid #e8e8e8; border-radius: 8px; overflow: hidden; margin-bottom: 10px;">
+      <div style="background: #f5f5f5; padding: 10px 14px; font-size: 14px; font-weight: 600; color: #333;">❓ Q4：靶向治疗要吃多久？吃完了会不会复发？</div>
+      <div style="padding: 10px 14px; font-size: 14px; line-height: 1.7; color: #444;">奥希替尼标准疗程 <strong>3 年</strong>；阿来替尼 <strong>2 年</strong>。吃完后继续随访。即使规范治疗，仍有约 20%~30% 复发概率，但靶向治疗明显降低了复发风险，且复发后还有后续方案可选。</div>
+    </section>
+    <section style="border: 1px solid #e8e8e8; border-radius: 8px; overflow: hidden; margin-bottom: 10px;">
+      <div style="background: #f5f5f5; padding: 10px 14px; font-size: 14px; font-weight: 600; color: #333;">❓ Q5：什么是"磨玻璃结节"，需要手术吗？</div>
+      <div style="padding: 10px 14px; font-size: 14px; line-height: 1.7; color: #444;">磨玻璃结节（GGO）是 CT 上看起来像磨砂玻璃的阴影。纯磨玻璃结节通常是极早期或良性病变，<strong>大多数不需要立即手术</strong>，可以密切随访观察。如果结节增大或出现实性成分（CTR &gt; 0.5），再考虑手术。</div>
+    </section>
+  </section>
+
+  <!-- 九、家属须知 -->
+  <section style="margin-bottom: 28px;">
+    <h3 style="font-size: 18px; font-weight: 700; color: #003a8c; background: #f0f7ff; padding: 10px 16px; border-radius: 6px; margin: 0 0 16px 0; border-left: 4px solid #1677ff;">九、家属须知：如何支持患者</h3>
+    <p style="margin: 0 0 8px 0; font-size: 14px; font-weight: 600;">🤝 情感支持</p>
+    <ul style="margin: 0 0 14px 0; padding-left: 20px; font-size: 14px;">
+      <li style="margin-bottom: 6px;"><strong>不要过度保护：</strong>患者需要参与治疗决策，不是"被保护"的对象</li>
+      <li style="margin-bottom: 6px;"><strong>允许情绪表达：</strong>恐惧、愤怒、悲伤都是正常反应，倾听比劝说更重要</li>
+      <li style="margin-bottom: 6px;"><strong>保持正常生活节奏：</strong>过度的"病人化"对心理恢复不利</li>
+    </ul>
+    <p style="margin: 0 0 8px 0; font-size: 14px; font-weight: 600;">🥗 营养与生活要点</p>
+    <table style="width: 100%; border-collapse: collapse; font-size: 13.5px; margin-bottom: 12px;">
+      <thead><tr style="background: #f0f7ff;"><th style="padding: 8px 10px; border: 1px solid #d6e4ff;">阶段</th><th style="padding: 8px 10px; border: 1px solid #d6e4ff;">建议</th></tr></thead>
+      <tbody>
+        <tr><td style="padding: 7px 10px; border: 1px solid #f0f0f0;"><strong>手术前</strong></td><td style="padding: 7px 10px; border: 1px solid #f0f0f0;">高蛋白饮食，戒烟，适度运动</td></tr>
+        <tr style="background: #fafafa;"><td style="padding: 7px 10px; border: 1px solid #f0f0f0;"><strong>手术后</strong></td><td style="padding: 7px 10px; border: 1px solid #f0f0f0;">清淡易消化，少量多餐；进行腹式呼吸锻炼</td></tr>
+        <tr><td style="padding: 7px 10px; border: 1px solid #f0f0f0;"><strong>化疗期</strong></td><td style="padding: 7px 10px; border: 1px solid #f0f0f0;">少量多餐，避免空腹化疗；多补充水分</td></tr>
+        <tr style="background: #fafafa;"><td style="padding: 7px 10px; border: 1px solid #f0f0f0;"><strong>靶向治疗期</strong></td><td style="padding: 7px 10px; border: 1px solid #f0f0f0;">正常饮食；避免大量摄入葡萄柚</td></tr>
+      </tbody>
+    </table>
+    <section style="background: #f0f7ff; border-radius: 6px; padding: 10px 14px; font-size: 13.5px; color: #003a8c;">
+      <p style="margin: 0;">📝 <strong>重要提示：</strong>保存所有报告（CT、病理、基因检测）；记录副作用日记；按时复查；积极参加 MDT（多学科讨论）门诊。</p>
+    </section>
+  </section>
+
+  <!-- 十、就医指引 -->
+  <section style="margin-bottom: 28px;">
+    <h3 style="font-size: 18px; font-weight: 700; color: #003a8c; background: #f0f7ff; padding: 10px 16px; border-radius: 6px; margin: 0 0 16px 0; border-left: 4px solid #1677ff;">十、就医指引：问医生的关键问题</h3>
+    <p style="margin: 0 0 10px 0; font-size: 14px; color: #666;">💡 把这些问题写在纸上，就诊前准备好，不要怕问。</p>
+    <section style="border: 1px solid #b7eb8f; border-radius: 8px; padding: 14px 16px; margin-bottom: 10px; background: #f6ffed;">
+      <p style="margin: 0 0 8px 0; font-size: 13.5px; font-weight: 600; color: #135200;">📋 确诊后第一次就诊</p>
+      <p style="margin: 0; font-size: 13.5px; color: #333; line-height: 2;">☐ 我的肿瘤是哪个分期？是几厘米？<br>☐ 是否适合手术？能做微创手术吗？<br>☐ 需要做基因检测吗？费用多少？<br>☐ 手术前需要哪些准备？</p>
+    </section>
+    <section style="border: 1px solid #91caff; border-radius: 8px; padding: 14px 16px; margin-bottom: 10px; background: #f0f7ff;">
+      <p style="margin: 0 0 8px 0; font-size: 13.5px; font-weight: 600; color: #003a8c;">📋 拿到基因检测报告后</p>
+      <p style="margin: 0; font-size: 13.5px; color: #333; line-height: 2;">☐ 我的基因检测结果是什么？<br>☐ 是否适合靶向治疗？（EGFR / ALK）<br>☐ 手术后需要化疗或免疫治疗吗？<br>☐ 预计费用多少？医保能报销多少？</p>
+    </section>
+    <section style="border: 1px solid #d3adf7; border-radius: 8px; padding: 14px 16px; background: #f9f0ff;">
+      <p style="margin: 0 0 8px 0; font-size: 13.5px; font-weight: 600; color: #531dab;">📋 治疗结束后随访</p>
+      <p style="margin: 0; font-size: 13.5px; color: #333; line-height: 2;">☐ 我的随访计划是什么？多久复查一次？<br>☐ 复查时需要做哪些检查？<br>☐ 出现哪些症状要警惕复发？</p>
+    </section>
+  </section>
+
+  <!-- 词汇表 -->
+  <section style="margin-bottom: 28px;">
+    <h3 style="font-size: 18px; font-weight: 700; color: #003a8c; background: #f0f7ff; padding: 10px 16px; border-radius: 6px; margin: 0 0 16px 0; border-left: 4px solid #1677ff;">附录：常见医学词汇</h3>
+    <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
+      <thead><tr style="background: #f5f5f5;"><th style="padding: 8px 10px; border: 1px solid #e8e8e8; text-align: left;">词汇</th><th style="padding: 8px 10px; border: 1px solid #e8e8e8; text-align: left;">通俗解释</th></tr></thead>
+      <tbody>
+        <tr><td style="padding: 7px 10px; border: 1px solid #f0f0f0;"><strong>NSCLC</strong></td><td style="padding: 7px 10px; border: 1px solid #f0f0f0;">非小细胞肺癌，最常见类型（占 85%）</td></tr>
+        <tr style="background: #fafafa;"><td style="padding: 7px 10px; border: 1px solid #f0f0f0;"><strong>EGFR 突变</strong></td><td style="padding: 7px 10px; border: 1px solid #f0f0f0;">基因上的"开关故障"；中国患者中约 40% 有此突变</td></tr>
+        <tr><td style="padding: 7px 10px; border: 1px solid #f0f0f0;"><strong>靶向治疗</strong></td><td style="padding: 7px 10px; border: 1px solid #f0f0f0;">针对特定基因突变的精准用药，副作用比化疗小</td></tr>
+        <tr style="background: #fafafa;"><td style="padding: 7px 10px; border: 1px solid #f0f0f0;"><strong>辅助治疗</strong></td><td style="padding: 7px 10px; border: 1px solid #f0f0f0;">手术后的额外治疗，消灭可能残留的癌细胞</td></tr>
+        <tr><td style="padding: 7px 10px; border: 1px solid #f0f0f0;"><strong>SBRT/SABR</strong></td><td style="padding: 7px 10px; border: 1px solid #f0f0f0;">立体定向放疗，精准高剂量，适用于不能手术患者</td></tr>
+        <tr style="background: #fafafa;"><td style="padding: 7px 10px; border: 1px solid #f0f0f0;"><strong>ctDNA</strong></td><td style="padding: 7px 10px; border: 1px solid #f0f0f0;">血液中的循环肿瘤 DNA，可早期发现复发</td></tr>
+        <tr><td style="padding: 7px 10px; border: 1px solid #f0f0f0;"><strong>MDT</strong></td><td style="padding: 7px 10px; border: 1px solid #f0f0f0;">多学科会诊，外科 + 内科 + 放疗科共同讨论方案</td></tr>
+        <tr style="background: #fafafa;"><td style="padding: 7px 10px; border: 1px solid #f0f0f0;"><strong>pCR</strong></td><td style="padding: 7px 10px; border: 1px solid #f0f0f0;">病理完全缓解，手术时发现肿瘤已基本消失，预后极好</td></tr>
+        <tr><td style="padding: 7px 10px; border: 1px solid #f0f0f0;"><strong>磨玻璃结节</strong></td><td style="padding: 7px 10px; border: 1px solid #f0f0f0;">CT 上呈磨砂玻璃样阴影，多为极早期病变</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 结语 -->
+  <section style="background: linear-gradient(135deg, #003a8c, #1677ff); border-radius: 10px; padding: 24px; text-align: center; margin-bottom: 16px;">
+    <p style="color: #bdd7f5; font-size: 13px; margin: 0 0 10px 0;">💙 最后的话</p>
+    <p style="color: white; font-size: 15px; font-weight: 600; line-height: 1.8; margin: 0 0 10px 0;">早期肺癌，是肺癌中预后最好的阶段。<br>现代医学已经能为绝大多数早期肺癌患者提供有效的根治方案。</p>
+    <p style="color: #bdd7f5; font-size: 14px; margin: 0;"><strong style="color: white;">规范治疗 + 积极配合 + 定期随访</strong> = 最好的结果 🌟</p>
+  </section>
+  <p style="font-size: 11px; color: #aaa; text-align: center; margin: 0;">指南更新日期：2026 年 4 月 · 基于 NCCN 2025–2026 · CSCO 2025 · ASCO/ESMO 2024–2025<br>本指南由 AI 辅助撰写，内容经医学文献核实，仅供参考，请以主治医生建议为准</p>
+
 </section>
 
 <!-- 作者信息 -->
